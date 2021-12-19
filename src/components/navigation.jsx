@@ -64,7 +64,7 @@ export const Navigation = (props) => {
             
           </button>
           <Link to='/' className='navbar-brand page-scroll'>
-          Hands Of Thambapanni
+          Ayubowan Sri Lanka 
                 </Link>
         
         </div>
