@@ -4,7 +4,6 @@ import { auth } from "../database/firebase-config";
 import "./Modal.css";
 
 
-
 function Register({ setOpenModal }) {
 
     const [registerEmail, setRegisterEmail] = useState("");
@@ -47,21 +46,11 @@ function Register({ setOpenModal }) {
             }}
           >  X </button>
   
-      
-
-        <p className="link">
-              <a href="#">Forgot password ?</a> Or<a href="#">Sign Up</a>
-            </p>
           </div>
 
-
-
-
-
-        
          
           <div>
-          <h3> Register User </h3>
+          <h3> Sign Up </h3>
           <input
             placeholder="Email..." 
             onChange={(event) => { 
@@ -75,7 +64,7 @@ function Register({ setOpenModal }) {
             }}
           />
   
-          <button onClick={register}> Create User</button>
+          <button onClick={register}> Sign Up</button>
        
         </div>
         

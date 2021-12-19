@@ -69,10 +69,6 @@ function Login({ setOpenModal }) {
         </div>
         
   
-        <h4> User Logged In As: </h4>
-        
-        {user?.email}
-  
         <button onClick={logout}> Sign Out </button>
 
         <p className="link">
