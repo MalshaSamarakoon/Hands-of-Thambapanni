@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { HashLink } from "react-router-hash-link";
 import { alpha, makeStyles } from '@material-ui/core/styles';
-import{Button, Modal} from 'react-bootstrap'
-
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "firebase/auth";
+import { auth } from "../database/firebase-config";
 
 import SearchBar from "./SearchBar";
 import BookData from "../Data.json";
@@ -12,6 +12,37 @@ import Login from "./Login";
 
 export const Navigation = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
+
+
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const [user, setUser] = useState({});
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+
+
+ const login = async  () => {
+  try {
+    const user = await signInWithEmailAndPassword(
+      auth,
+      loginEmail,
+      loginPassword
+    );
+    console.log(user);
+  } catch (error) {
+    console.log(error.message);
+  }
+ };
+
+ const logout = async () => {
+  await signOut(auth);
+ };
+  
   
   return (
     <nav id='menu' className='navbar navbar-default navbar-fixed-top'>
@@ -79,11 +110,15 @@ export const Navigation = (props) => {
                 </div>
             </li>
 
-            <li>              
-              <SearchBar placeholder="Search Enterprise..." data={BookData} />
-            </li>
-            
+          <li>
+  {user?.email}
+  <button onClick={logout}> Sign Out </button>
+          </li>
 
+          <li>              
+              <SearchBar placeholder="Search Enterprise..." data={BookData} />
+          </li>
+            
 
           </ul>
         </div>
