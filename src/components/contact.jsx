@@ -145,7 +145,7 @@ export const Contact = (props) => {
                 <span>
                   <i className='fa fa-phone'></i> Phone
                 </span>{' '}
-                +94 123 456 789
+                +94 712223619
               </p>
             </div>
             <div className='contact-item'>
@@ -153,7 +153,7 @@ export const Contact = (props) => {
                 <span>
                   <i className='fa fa-envelope-o'></i> Email
                 </span>{' '}
-                uwurotaract@gmail.com
+                racuwub@gmail.com
               </p>
             </div>
           </div>
@@ -162,7 +162,7 @@ export const Contact = (props) => {
               <div className='social'>
                 <ul>
                   <li>
-                    <a href={props.data ? props.data.facebook : '/'}>
+                    <a href={props.data ? props.data.facebook : 'https://www.facebook.com/RACUWUBadulla/'}>
                       <i className='fa fa-facebook'></i>
                     </a>
                   </li>
@@ -185,7 +185,8 @@ export const Contact = (props) => {
       <div id='footer'>
         <div className='container text-center'>
           <p>
-            &copy; 2021 Rotaract Club.UWU
+            &copy; Project Initiated By Rotaract Club Of Uva Wellassa University,
+                   Sri Lanka.
           </p>
         </div>
       </div>
