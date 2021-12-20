@@ -21,10 +21,6 @@ function Features() {
          
           </div>
 
-          <div className='section-title'>
-                <h2>Enterprises</h2>
-          </div>
-
         </div>
          
         </div>
