@@ -1,27 +1,19 @@
+import React from 'react'
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import React, { Component } from 'react'
-
-import { useState, useRef, useEffect } from "react";
-
-import { Contact } from "./contact";
-import { Features } from "./features";
 import Profile from "./profiles";
+import About from "./about";
+import Features from "./features";
+import { Contact } from "./contact";
 
 function Home() {
+    return (
+        <div>
+<div>  <About/></div>
+<div>  <Profile/></div>
+<div > <Features/></div>
+<div > <Contact/></div>    
+        </div>
+    )
+}
 
-    return(
-    
-      <div>
-<div>
-
-   
-
-</div>
-
-    </div>   
-
-    );
-    }
-    export default Home;
-    
+export default Home

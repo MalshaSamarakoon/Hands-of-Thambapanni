@@ -1,4 +1,4 @@
-export const Features = (props) => {
+function Features() {
   return (
     <div id='features' >   
     {/* className='text-center' */}
@@ -32,3 +32,4 @@ export const Features = (props) => {
   
   )
 }
+export default Features;

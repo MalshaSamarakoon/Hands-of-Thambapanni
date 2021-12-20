@@ -9,9 +9,12 @@ import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
 import { Contact } from "./components/contact";
 import Profile from "./components/profiles";
+import About from "./components/about";
 import Register from "./components/register";
 import PayPal from "./components/PayPal";
 import Donation from "./components/donations";
+import Home from "./components/home";
+
 
 import Cane from "./components/enterprise/cane";
 import Carvings from "./components/enterprise/carvings";
@@ -45,8 +48,7 @@ function App() {
 
     <Route exact path = '/login' element = {<Login/>} />
     <Route exact path = '/register' element = {<Register/>} />
-    <Route exact path = '/' element = {<Contact/>} />
-    <Route exact path = '/profile' element = {<Profile/>} />
+    <Route exact path = '/' element = {<Home/>} />
     <Route exact path = '/donation' element = {<Donation/>} />
 
     <Route exact path = '/cane' element = {<Cane/>} />
