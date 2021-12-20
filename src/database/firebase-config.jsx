@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
+import 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDORl_IzISIEAP9LnTBQPYr054gHMGxuLc",
@@ -14,3 +15,28 @@ const firebaseConfig = {
   const app = initializeApp(firebaseConfig);
 
   export const auth = getAuth(app)
+
+  // export const firestore = firebase.firestore();
+
+  // export const createUserDocument = async (user, additionalData) => {
+  //   if (!user) return;
+
+  //   const userRef = firestore.doc('users/${user.uid}');
+
+  //   const snapshot=await userRef.get();
+
+  //   if(!snapshot.exists){
+  //     const {email}=user;
+  //     const {name} = additionalData;
+
+  //     try{
+  //       userRef.set({
+  //         name,
+  //         email,
+  //         createdAt:newDate(),
+  //       });
+  //     }catch (error){
+  //       console.log('Error',error)
+  //     }
+  //   }
+  // }

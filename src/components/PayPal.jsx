@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from "react";
+// import { BrowserRouter as Navigate } from "react-router-dom";
 
-export default function Paypal() {
+
+export default function Paypal(authorized) {
   const paypal = useRef();
 
   useEffect(() => {
@@ -31,9 +33,16 @@ export default function Paypal() {
       .render(paypal.current);
   }, []);
 
+  
+  // if (!authorized){
+  //   return <Navigate to="/" />
+  // }
+
   return (
     <div>
       <div ref={paypal}></div>
     </div>
   );
+
+  
 }

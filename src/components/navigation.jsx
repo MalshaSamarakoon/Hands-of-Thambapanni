@@ -42,7 +42,8 @@ export const Navigation = (props) => {
  const logout = async () => {
   await signOut(auth);
  };
-  
+ 
+ 
   
   return (
     <nav id='menu' className='navbar navbar-default navbar-fixed-top'>
@@ -85,40 +86,21 @@ export const Navigation = (props) => {
               </Link>
             </li>
             <li>
-              <HashLink to='/paypal' className='page-scroll'>
+              <HashLink to='/donation' className='page-scroll'>
                 Donations
               </HashLink>
             </li>
-            <li>
-              <HashLink to='/profile' className='page-scroll'>
-                Profiles
-              </HashLink>
-            </li>
-
-            <li>
-            <div className='page-scroll'>
-                  <button
-                    className="openModalBtn"
-                    onClick={() => {
-                      setModalOpen(true);
-                    }}
-                  >
-                    Login
-                  </button>
-
-                  {modalOpen && <Login setOpenModal={setModalOpen} />}
-                </div>
-            </li>
+           
+          
+          <li>              
+              <SearchBar placeholder="Search Enterprise..." data={BookData} />
+          </li>
 
           <li>
   {user?.email}
   <button onClick={logout}> Sign Out </button>
           </li>
 
-          <li>              
-              <SearchBar placeholder="Search Enterprise..." data={BookData} />
-          </li>
-            
 
           </ul>
         </div>
