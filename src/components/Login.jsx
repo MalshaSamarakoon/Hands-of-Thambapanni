@@ -1,11 +1,14 @@
 import { useState,useRef, useEffect, useCallback  } from "react";
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "firebase/auth";
 import { auth } from "../database/firebase-config";
+import { useNavigate } from "react-router-dom"
 import "./Modal.css";
-
-
+import Profile from "./profiles";
 
 function Login({ setOpenModal }) {
+
+  const history = useNavigate();
+  // history.push('/')
 
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
@@ -65,14 +68,20 @@ function Login({ setOpenModal }) {
             }}
           />
   
-          <button onClick={login}> Login</button>
+    <div> 
+      <button onClick={() => { login();
+                               history("/paypal"); 
+                              }}> Login
+          </button>
+    </div>     
+        
         </div>
         
-  
-        <button onClick={logout}> Sign Out </button>
+{/*   
+        <button onClick={logout}> Sign Out </button> */}
 
         <p className="link">
-              <a href="#">Forgot password ?</a> Or<a href="/register">Sign Up</a>
+              <a href="#">Forgot password ?</a> Or <a href="/register"> Sign Up</a>
             </p>
           </div>
 

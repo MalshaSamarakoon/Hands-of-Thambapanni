@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
@@ -57,8 +58,8 @@ import Typography from '@material-ui/core/Typography';
           width: '25%',
         },
         {
-          url: '/img/others.jpg',
-          title: 'Others',
+          url: '/img/coir.jpg',
+          title: 'Coir',
           width: '25%',
         },
         {
@@ -147,7 +148,9 @@ import Typography from '@material-ui/core/Typography';
       }));
       
       export default function Profile() {
-        const classes = useStyles();      
+      
+ 
+const classes = useStyles();            
 
     return(
         <div id='Profiles' >   
@@ -191,13 +194,6 @@ import Typography from '@material-ui/core/Typography';
       ))}
     </div>
 
-    <div id='footer'>
-        <div className='container text-center'>
-          <p>
-            &copy; 2021 Rotaract Club.UWU
-          </p>
-        </div>
-      </div>
 
     </div>
     );

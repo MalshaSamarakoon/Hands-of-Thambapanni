@@ -1,4 +1,4 @@
-export const Features = (props) => {
+function Features() {
   return (
     <div id='features' >   
     {/* className='text-center' */}
@@ -21,10 +21,6 @@ export const Features = (props) => {
          
           </div>
 
-          <div className='section-title'>
-                <h2>Enterprises</h2>
-          </div>
-
         </div>
          
         </div>
@@ -32,3 +28,4 @@ export const Features = (props) => {
   
   )
 }
+export default Features;

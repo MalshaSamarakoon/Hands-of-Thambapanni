@@ -1,14 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; 
 import React, { useState } from "react";
 import { HashLink } from "react-router-hash-link";
 import { alpha, makeStyles } from '@material-ui/core/styles';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "firebase/auth";
 import { auth } from "../database/firebase-config";
+//import * as ReactBootStrap from "react-bootstrap";
+
 
 import SearchBar from "./SearchBar";
 import BookData from "../Data.json";
 
-import Login from "./Login";
+
 
 export const Navigation = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -26,24 +28,9 @@ export const Navigation = (props) => {
   });
 
 
-  const login = async () => {
-    try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
-      console.log(user);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-  const logout = async () => {
-    await signOut(auth);
-  };
-
-
+ 
+ 
+  
   return (
     <nav id='menu' className='navbar navbar-default navbar-fixed-top'>
       <div className='container'>
@@ -61,12 +48,12 @@ export const Navigation = (props) => {
             <span className='icon-bar'></span>{' '}
 
 
-
+            
           </button>
           <Link to='/' className='navbar-brand page-scroll'>
-            Ayubowan Sri Lanka
-          </Link>
-
+          Ayubowan Sri Lanka 
+                </Link>
+        
         </div>
 
         {/* <div>
@@ -78,48 +65,29 @@ export const Navigation = (props) => {
           id='bs-example-navbar-collapse-1'
         >
           <ul className='nav navbar-nav navbar-right'>
-
-            <li>
+         
+          <li>
               <Link to='/' className='page-scroll'>
                 Home
               </Link>
             </li>
             <li>
-              <HashLink to='/paypal' className='page-scroll'>
+              <HashLink to='/donation' className='page-scroll'>
                 Donations
               </HashLink>
             </li>
-            <li>
-              <HashLink to='/profile' className='page-scroll'>
-                Profiles
-              </HashLink>
-            </li>
-
-            <li>
+           
+          
+          <li>              
               <SearchBar placeholder="Search Enterprise..." data={BookData} />
-            </li>
-            <li>
-              <div className='page-scroll'>
-                <button
-                  className="openModalBtn"
-                  onClick={() => {
-                    setModalOpen(true);
-                  }}
-                >
-                  Login
-                </button>
-              </div>
-            </li>
+          </li>
 
-            {/* <li>
-              {user?.email}
-              <button onClick={logout}> Sign Out </button>
-            </li> */}
+     
+
 
           </ul>
         </div>
       </div>
-      {modalOpen && <Login setOpenModal={setModalOpen} />}
     </nav>
   )
 }
