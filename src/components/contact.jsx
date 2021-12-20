@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import emailjs from 'emailjs-com'
 import Profile from "./profiles";
+import { Navigation } from "./navigation";
+import { Header } from "./header";
 
 
 const initialState = {
@@ -36,6 +38,8 @@ export const Contact = (props) => {
   }
   return (
     <div>
+      <Navigation />
+      <Header/>
 
 <div id='features' >   
     {/* className='text-center' */}

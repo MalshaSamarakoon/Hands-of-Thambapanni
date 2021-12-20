@@ -11,72 +11,66 @@ import Login from "./components/Login";
 import Register from "./components/register";
 import PayPal from "./components/PayPal";
 import Cane from "./components/cane";
-import{Button, Modal} from 'react-bootstrap'
+import { Button, Modal } from 'react-bootstrap'
+import MyForm from "./admin/login";
 
 
 
 
 function App() {
-    
-    const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false);
 
-    return (
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-
-      <div>
-
-<>
-        <Button variant="primary" onClick={handleShow}>
-          Launch demo modal
-        </Button>
-  
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-              
-
-jhgfdfxchvhkjlk;gh
+  return (
 
 
+    //       <div>
 
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </>
+    // <>
+    //         <Button variant="primary" onClick={handleShow}>
+    //           Launch demo modal
+    //         </Button>
 
-<Router>
-    <div>
-    <Navigation />
-    <Header/>
+    //         <Modal show={show} onHide={handleClose}>
+    //           <Modal.Header closeButton>
+    //             <Modal.Title>Modal heading</Modal.Title>
+    //           </Modal.Header>
+    //           <Modal.Body>
 
 
-<Routes>
-    <Route exact path = '/paypal' element = {<PayPal/>} />
-    <Route exact path = '/login' element = {<Login/>} />
-    <Route exact path = '/register' element = {<Register/>} />
+    // jhgfdfxchvhkjlk;gh
 
-    <Route exact path = '/' element = {<Contact/>} />
-    <Route exact path = '/profile' element = {<Profile/>} />
-    <Route exact path = '/cane' element = {<Cane/>} />
-</Routes>
 
-    </div>
-</Router>
-  </div>
 
-    )
+    //           </Modal.Body>
+    //           <Modal.Footer>
+    //             <Button variant="secondary" onClick={handleClose}>
+    //               Close
+    //             </Button>
+    //             <Button variant="primary" onClick={handleClose}>
+    //               Save Changes
+    //             </Button>
+    //           </Modal.Footer>
+    //         </Modal>
+    //       </>
+
+    <Router>
+      {/* <Navigation />
+      <Header /> */}
+      <Routes>
+        <Route exact path='/paypal' element={<PayPal />} />
+        <Route exact path='/login' element={<Login />} />
+        <Route exact path='/register' element={<Register />} />
+        <Route exact path='/admin/login' element={<MyForm />} />
+        <Route exact path='/' element={<Contact />} />
+        <Route exact path='/profile' element={<Profile />} />
+        <Route exact path='/cane' element={<Cane />} />
+      </Routes>
+    </Router>
+  )
 }
 
 export default App;
