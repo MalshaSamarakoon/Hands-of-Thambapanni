@@ -2,6 +2,9 @@ import { useState } from 'react'
 import emailjs from 'emailjs-com'
 
 
+
+
+
 const initialState = {
   name: '',
   email: '',
@@ -35,8 +38,7 @@ export const Contact = (props) => {
   }
   return (
     <div>
-      <Navigation />
-      <Header/>
+     
 
 
       <div id='contact'>
