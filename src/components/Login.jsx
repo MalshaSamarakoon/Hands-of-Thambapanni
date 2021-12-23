@@ -83,16 +83,7 @@ function Login({ setOpenModal }) {
         <p className="link">
               <a href="#">Forgot password ?</a> Or <a href="/register"> Sign Up</a>
             </p>
-          </div>
-
-
-
-
-
-
-
-        
-        
+          </div>  
       </div>
         </div>
       </div>
