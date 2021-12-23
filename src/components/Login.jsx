@@ -1,103 +1,101 @@
-import { useState,useRef, useEffect, useCallback  } from "react";
-import { createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "firebase/auth";
-import { auth } from "../database/firebase-config";
-import { useNavigate } from "react-router-dom"
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Form, Alert } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import GoogleButton from "react-google-button";
+import { useUserAuth } from "../context/UserAuthContext";
+
 import "./Modal.css";
-import Profile from "./profiles";
+
 
 function Login({ setOpenModal }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { logIn, googleSignIn } = useUserAuth();
+  const navigate = useNavigate();
 
-  const history = useNavigate();
-  // history.push('/')
-
-    const [registerEmail, setRegisterEmail] = useState("");
-    const [registerPassword, setRegisterPassword] = useState("");
-    const [loginEmail, setLoginEmail] = useState("");
-    const [loginPassword, setLoginPassword] = useState("");
-  
-    const [user, setUser] = useState({});
-  
-    onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-
-  
-   const login = async  () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
     try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
-      console.log(user);
+      await logIn(email, password);
+      navigate("/paypal");
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const handleGoogleSignIn = async (e) => {
+    e.preventDefault();
+    try {
+      await googleSignIn();
+      navigate("/paypal");
     } catch (error) {
       console.log(error.message);
     }
-   };
-  
-   const logout = async () => {
-    await signOut(auth);
-   };
-    
-    return (
-      <div className="modalBackground">
+  };
+
+  return (
+    <>
+
+<div className="modalBackground">
       <div className="modalContainer">
-        <div className="titleCloseBtn">
-          
-      <div className="App">
-        <button
+
+        <div className="p-4 box">     
+        <div>
+        <button class="cancelBtn"
             onClick={() => {
               setOpenModal(false);
             }}
-          >  X </button>
-  
-        <div className="title">
-          <h3> Login </h3>
-
-          <div className="body">
-          <input
-            placeholder="Email..."
-            onChange={(event) => {
-              setLoginEmail(event.target.value);
-            }}
-          />
-          <input
-            placeholder="Password..."
-            onChange={(event) => {
-             setLoginPassword(event.target.value);
-            }}
-          />
-  
-    <div> 
-      <button onClick={() => { login();
-                               history("/paypal"); 
-                              }}> Login
-          </button>
-    </div>     
-        
+          >     <h3 className="mb-3">X</h3> </button>
         </div>
-        
-{/*   
-        <button onClick={logout}> Sign Out </button> */}
 
-        <p className="link">
-              <a href="#">Forgot password ?</a> Or <a href="/register"> Sign Up</a>
-            </p>
+        <h2 className="mb-3">Login</h2>
+
+    
+        {error && <Alert variant="danger">{error}</Alert>}
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Control
+              type="email" className="pw"
+              placeholder="Email address"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Control
+              type="password"
+              placeholder="Password" className="pw"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Group>
+
+          <div className="d-grid gap-2">
+            <Button variant="primary" type="Submit" className="pw">
+              Log In
+            </Button>
           </div>
-
-
-
-
-
-
-
-        
-        
-      </div>
+        </Form>
+        <hr />
+        <div>
+          <GoogleButton
+            className="g-btn"
+            type="dark"
+            onClick={handleGoogleSignIn}
+          />
         </div>
+        <div className="p-4 box mt-3 text-center">
+      <h4>Don't have an account?  <Link to="/signup">Sign up</Link></h4> 
       </div>
-    </div>
-    );
-  }
+      </div>
+      </div>
+      </div>
 
-  export default Login;
+ 
+          </>
+  );
+};
+
+export default Login;
