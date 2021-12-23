@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import ReactDOM from 'react-dom';
 
-import "./login.css";
 
  function NewUser() {
   return (

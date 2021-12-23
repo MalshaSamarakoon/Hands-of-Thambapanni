@@ -28,6 +28,22 @@ export const Navigation = (props) => {
   });
 
 
+ const login = async  () => {
+  try {
+    const user = await signInWithEmailAndPassword(
+      auth,
+      loginEmail,
+      loginPassword
+    );
+    console.log(user);
+  } catch (error) {
+    console.log(error.message);
+  }
+ };
+
+ const logout = async () => {
+  await signOut(auth);
+ };
  
  
   
@@ -82,7 +98,10 @@ export const Navigation = (props) => {
               <SearchBar placeholder="Search Enterprise..." data={BookData} />
           </li>
 
-     
+          <li>
+  {user?.email}
+  <button onClick={logout}> Sign Out </button>
+          </li>
 
 
           </ul>

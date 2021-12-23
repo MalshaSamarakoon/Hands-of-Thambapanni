@@ -1,8 +1,5 @@
 import React from 'react'
 import Donations from '../donations'
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
-import ReactDOM from 'react-dom';
 
 function Cane() {
     return (

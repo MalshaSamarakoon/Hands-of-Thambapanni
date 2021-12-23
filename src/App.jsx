@@ -1,12 +1,11 @@
-import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { Component } from 'react'
 import { useState, useRef, useEffect } from "react";
 
 
 import "./App.css";
 import Login from "./components/Login";
-import { Navigation } from "./components/navigation";
-import { Header } from "./components/header";
+
 import { Contact } from "./components/contact";
 import Profile from "./components/profiles";
 import About from "./components/about";
@@ -20,40 +19,48 @@ import NewUser from "./components/admin/login";
 import Cane from "./components/enterprise/cane";
 import Carvings from "./components/enterprise/carvings";
 
+
+
+
+
 function App() {
-    
-    const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false);
 
-    return (
-      <div>
-<Router>
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  return (
     <div>
-    <Navigation />
-    <Header/>
 
 
-<Routes>
-    {/* <Route exact path = '/paypal' component={()=> <PayPal authorized={false}/>} /> */}
-    <Route exact path = '/paypal' element = {<PayPal/>} />
-
-    <Route exact path = '/login' element = {<Login/>} />
-    <Route exact path = '/register' element = {<Register/>} />
-    <Route exact path = '/' element = {<Home/>} />
-    <Route exact path = '/donation' element = {<Donation/>} />
-
-    <Route exact path = '/cane' element = {<Cane/>} />
+      <Router>
+        <div>
+        
 
 
-</Routes>
 
+
+          <Routes>
+            {/* <Route exact path = '/paypal' component={()=> <PayPal authorized={false}/>} /> */}
+            <Route exact path='/paypal' element={<PayPal />} />
+
+            <Route exact path='/login' element={<Login />} />
+            <Route exact path='/register' element={<Register />} />
+            <Route exact path='/' element={<Home />} />
+            <Route exact path='/donation' element={<Donation />} />
+            <Route exact path='/admin/login' element={<NewUser />} />
+
+            <Route exact path='enterprise/cane' element={<Cane />} />
+
+
+          </Routes>
+
+        </div>
+      </Router>
     </div>
-</Router>
-  </div>
 
-    )
+  )
 }
 
 export default App;
