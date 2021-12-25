@@ -5,6 +5,7 @@ function Cane() {
     return (
   
         <div>     
+            <div></div>
              <div>
         <h1>Jayasiri wewal</h1> 
 
@@ -13,7 +14,7 @@ function Cane() {
 Cane stalks are bent and wound into different shapes while being heated, and it is known to last for up to 15 years or more. A favoured local product, cane woven products are found in almost every household.</p>
      </div>
 
-     <div><Donations/></div>
+    
 </div>
     )
 }

@@ -13,48 +13,17 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import handleSubmit from '@mui/material/styles/makeStyles';
-import { useState,useRef, useEffect, useCallback  } from "react";
-import { createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "firebase/auth";
+// import { Form, Alert } from "react-bootstrap";
+// import GoogleButton from "react-google-button";
+// import { useUserAuth } from "../context/UserAuthContext";
 
 
-function NewUser({ setOpenModal }) {
-
-  const history = useNavigate();
-  // history.push('/')
-
-    const [registerEmail, setRegisterEmail] = useState("");
-    const [registerPassword, setRegisterPassword] = useState("");
-    const [loginEmail, setLoginEmail] = useState("");
-    const [loginPassword, setLoginPassword] = useState("");
-  
-    const [user, setUser] = useState({});
-  
-    onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-
-  
-   const login = async  () => {
-    try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
-      console.log(user);
-    } catch (error) {
-      console.log(error.message);
-    }
-   };
-  
-   const logout = async () => {
-    await signOut(auth);
-   };
+import { useNavigate } from "react-router-dom";
 
 
 const theme = createTheme();
-  function NewUser () {
-    return (
+    function ANewUser(){
+          return (
     <ThemeProvider theme={theme}>
        
         <CssBaseline />
@@ -140,4 +109,4 @@ const theme = createTheme();
     </ThemeProvider>
   );
 }
-export default NewUser
+export default ANewUser

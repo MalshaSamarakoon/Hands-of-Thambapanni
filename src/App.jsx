@@ -1,15 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { Component } from 'react'
 import { useState, useRef, useEffect } from "react";
-
+import ProtectedRoute from "./components/ProtectedRoute";
+import { UserAuthContextProvider } from "./context/UserAuthContext";
 
 import "./App.css";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
 
-import { Contact } from "./components/contact";
-import Profile from "./components/profiles";
-import About from "./components/about";
-import Register from "./components/register";
 import PayPal from "./components/PayPal";
 import Donation from "./components/donations";
 import Home from "./components/home";
@@ -17,11 +15,6 @@ import NewUser from "./components/admin/login";
 
 
 import Cane from "./components/enterprise/cane";
-import Carvings from "./components/enterprise/carvings";
-
-
-
-
 
 function App() {
 
@@ -30,35 +23,37 @@ function App() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  return (
-    <div>
+    return (
+      <div>
+          <Router>
+          <UserAuthContextProvider>
+            <Routes>
+              <Route
+                path="/home"
+                element={
+                  <ProtectedRoute>
+                    <Home />
+                  </ProtectedRoute>
+                }
+              />
 
+    {/* <Route exact path = '/paypal' Component={()=> <PayPal authorized={false}/>} /> } */}
+    <Route exact path = '/paypal' element = {<PayPal/>} /> 
 
-      <Router>
-        <div>
-        
-
-
-
-
-          <Routes>
-            {/* <Route exact path = '/paypal' component={()=> <PayPal authorized={false}/>} /> */}
-            <Route exact path='/paypal' element={<PayPal />} />
-
-            <Route exact path='/login' element={<Login />} />
-            <Route exact path='/register' element={<Register />} />
-            <Route exact path='/' element={<Home />} />
-            <Route exact path='/donation' element={<Donation />} />
-            <Route exact path='/admin/login' element={<NewUser />} />
+    <Route exact path = '/' element = {<Home/>} />
+    <Route exact path = '/login' element = {<Login/>} />
+    <Route exact path = '/donation' element = {<Donation/>} />
+    <Route exact path = '/signup' element = {<Signup/>} />
+    <Route exact path = '/admin/login' element = {<NewUser/>} />
+   
 
             <Route exact path='enterprise/cane' element={<Cane />} />
 
-
-          </Routes>
-
-        </div>
-      </Router>
-    </div>
+    </Routes>
+          </UserAuthContextProvider>
+          </Router>
+ 
+  </div>
 
   )
 }
