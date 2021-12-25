@@ -12,6 +12,7 @@ import PayPal from "./components/PayPal";
 import Donation from "./components/donations";
 import Home from "./components/home";
 import NewUser from "./components/admin/login";
+import AUser from "./components/admin/newUser/NewUser";
 
 
 import Cane from "./components/enterprise/cane";
@@ -45,6 +46,7 @@ function App() {
     <Route exact path = '/donation' element = {<Donation/>} />
     <Route exact path = '/signup' element = {<Signup/>} />
     <Route exact path = '/admin/login' element = {<NewUser/>} />
+    <Route exact path = '/admin/newUser/NewUser' element = {<AUser/>} />
    
 
             <Route exact path='enterprise/cane' element={<Cane />} />
