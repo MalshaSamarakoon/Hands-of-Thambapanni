@@ -174,15 +174,6 @@ input{
   font-size: 40px;
 }
 
-
-.cancelBtn {
-  background-color: crimson;
-  width: 0px;
-  height: 0px;
-  margin-left: 400px;
-
-}
-
 .login {
   background-color: rgb(44, 157, 228);
   border-radius: 12px;
@@ -208,11 +199,19 @@ input{
 }
 .mb-3{
   color: #eee;
+  margin-top: 0px;
 }
 
 .cancelBtn{
-  margin-right: -20px;
+  margin-left: -20px;
   margin-top: -20px;
-  margin-left: ;
+  width: 0px;
+  height: 0px;
+  }
+
+  .mb-4{
+    color: #eee;
+    margin-top: -10px;
+    margin-left: 500px;
+  }
   
-}

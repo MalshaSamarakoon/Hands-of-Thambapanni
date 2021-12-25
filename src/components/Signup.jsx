@@ -33,7 +33,8 @@ import "./Modal.css";
       <div className="p-4 box">
         <h2 className="mb-3">Signup</h2>
         {error && <Alert variant="danger">{error}</Alert>}
-        <Form onSubmit={handleSubmit}>
+
+        <Form id="signup-form" onSubmit={handleSubmit}>
 
         <Form.Group className="mb-3" >
             <Form.Control

@@ -36,8 +36,8 @@ function App() {
                 }
               />
 
-    {/* <Route exact path = '/paypal' Component={()=> <PayPal authorized={false}/>} /> } */}
-    <Route exact path = '/paypal' element = {<PayPal/>} /> 
+    {/* <Route exact path = '/paypal' element={()=> <PayPal authorized={false}/>} />   */}
+ <Route exact path = '/paypal' element = {<PayPal/>} /> 
 
     <Route exact path = '/' element = {<Home/>} />
     <Route exact path = '/login' element = {<Login/>} />

@@ -212,7 +212,7 @@ a:focus,
 /* Header Section */
 .intro {
   display: table;
-    margin-top: -25;
+    margin-top: 0;
 
   width: 100%;
   padding: 0;
