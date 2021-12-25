@@ -5,6 +5,7 @@ import { Button } from "react-bootstrap";
 import GoogleButton from "react-google-button";
 import { useUserAuth } from "../context/UserAuthContext";
 
+
 import "./Modal.css";
 
 
@@ -64,7 +65,7 @@ function Login({ setOpenModal }) {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Control
+            <Form.Control 
               type="password"
               placeholder="Password" className="pw"
               onChange={(e) => setPassword(e.target.value)}
