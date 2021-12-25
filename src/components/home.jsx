@@ -9,8 +9,9 @@ function Home() {
     return (
         <div>
 <div>  <About/></div>
-<div>  <Profile/></div>
+
 <div > <Features/></div>
+<div>  <Profile/></div>
 <div > <Contact/></div>    
         </div>
     )
