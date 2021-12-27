@@ -10,6 +10,9 @@ import React, { useState } from "react";
 // import { alpha, makeStyles } from '@material-ui/core/styles';
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "firebase/auth";
 
+import logo from '../logo.png';
+import profile from '../profile.png'
+
 import SearchBar from "./SearchBar";
 import BookData from "../Data.json";
 
@@ -36,37 +39,39 @@ const logout = async () => {
  };
 
     return(
-        <div className="App">
-    <ReactBootStrap.Navbar collapseOnSelect expand="xl" bg="danger" variant="dark">
-  <ReactBootStrap.Navbar.Brand href="#home" className="navbar-brand"><h1>AYUBOWAN SRI LANKA</h1></ReactBootStrap.Navbar.Brand>
-  <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <img src={logo} width="50px" height="50px" alt=""/>
+        <a style={{height: '35px', fontSize: "15px"}} className="navbar-brand fw-bold" href="#">Hands Of Thumbapanni</a>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item px-3">
+              <a className="nav-link active px-13 text-uppercase" aria-current="page" href="/">Home</a>
+            </li>
+            <li className="nav-item px-3">
+              <a className="nav-link active px-13 text-uppercase" aria-current="page" href="/donation">Donation</a>
+            </li>
 
+          </ul>
+          <div className="d-flex align-items-center">
+            <form className="d-flex pe-3">
+            <SearchBar placeholder="Search Enterprise..." data={BookData} />
+            </form>
+            <img src={profile} width="35px" height="35px" alt=""/>
 
-  <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
-   
-    <ReactBootStrap.Nav className="mr-auto">  
-    <SearchBar placeholder="Search Enterprise..." data={BookData} />
-    </ReactBootStrap.Nav>
-
-  <ReactBootStrap.Nav>
-
-  <Link to="/" className='navbar-item'>
-    <ReactBootStrap.Nav.Link href="#home"><h3>Home</h3></ReactBootStrap.Nav.Link>
-    </Link>    
-  
-  <Link to="/donation" className='navbar-item'>
-    <ReactBootStrap.Nav.Link href="#donation"><h3>Donations</h3></ReactBootStrap.Nav.Link>
-  </Link>
-
-  <ReactBootStrap.NavDropdown className='navbar-item' title={user?.email} id="collasible-nav-dropdown">
+            <ReactBootStrap.NavDropdown className='navbar-item' title={user?.email} id="collasible-nav-dropdown">
     <ReactBootStrap.NavDropdown.Item href="#action/3.1" onClick={logout}>Logout</ReactBootStrap.NavDropdown.Item>
   </ReactBootStrap.NavDropdown> 
 
-  </ReactBootStrap.Nav> 
 
-  </ReactBootStrap.Navbar.Collapse>
-</ReactBootStrap.Navbar>
+          </div>
         </div>
+      </div>
+    </nav>
     )
 }
-
