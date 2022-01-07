@@ -11,12 +11,12 @@
   display:flex !important;
   float:left;
   background-color: #ffffff;
-   margin-left: 540px; 
-   opacity: 750;
+   margin-left: 54px; 
+   margin-top: -200px;
+   opacity: 1000;
    /* z-index must be below .modal and above everything else  */
    z-index: 1;
 }
-
 
 .modalContainer {
   width: 330px;
@@ -30,7 +30,6 @@
 }
 
 .modalContainer-signup{
-
 width: 340px;
   height: 460px;
   /* border-radius: 12px; */

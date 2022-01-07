@@ -9,6 +9,12 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { purple } from '@mui/material/colors';
 
+
+import HomeCarousel from '../HomeCarousel';
+
+
+
+
 export const Donations = (props) => {
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -26,7 +32,7 @@ export const Donations = (props) => {
 
           {modalOpen && <Login setOpenModal={setModalOpen} />}
         <Navigation/>
-          <Header/>
+        <div><Header/></div>
         
 
       {/* className='text-center' */}
@@ -39,34 +45,22 @@ export const Donations = (props) => {
                   <div>
  
 
-<ColorButton variant="contained" onClick={() => {
+<Button variant="contained"  color="success" onClick={() => {
          setModalOpen(true);
-       }}><h3>Login</h3></ColorButton>    
+       }}><h3>Login</h3></Button>    
    </div>
 
        <div className='page-scroll'>
 
-       <h1>Preservation, development, encouragement and Promotion of local handicrafts with a traditional and cultural value and enhancement of economic and social status of craftsmen.</h1>
+       <h1>Login here to make donations</h1>
 
-<h3>Login here to make donations </h3>
-      
-               <div>    
+     <div>    
   
    </div>     
-                      </div>
-
-            <h3>something</h3>
-      
-            <h3>something</h3>
-      
-            <h3>something</h3>
-      
-           
-            </div>
-      
-          </div>
-           
-          </div>
+    </div>
+    </div>
+     </div>
+      </div>
           
         </div>
     )

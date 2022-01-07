@@ -43,8 +43,7 @@ export const Contact = (props) => {
                             <div className='section-title'>
                                 <h2>Get In Touch</h2>
                                 <p>
-                                    Please fill out the form below to send us an email and we will
-                                    get back to you as soon as possible.
+                                Send an email to get in touch with us. We will get back to you at the soonest possible!
                                 </p>
                             </div>
                             <form name='sentMessage' validate onSubmit={handleSubmit}>
@@ -129,13 +128,13 @@ export const Contact = (props) => {
                             <div className='social'>
                                 <ul>
                                     <li>
-                                        <a href={props.data ? props.data.facebook : 'https://www.facebook.com/RACUWUBadulla/'}>
+                                        <a href='https://www.facebook.com/RACUWUBadulla/'>
                                             <i className='fa fa-facebook'></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href={props.data ? props.data.twitter : '/'}>
-                                            <i className='fa fa-twitter'></i>
+                                        <a href='https://www.linkedin.com/in/rotaract-club-of-uva-wellassa-university-449b33192/?originalSubdomain=lk'>
+                                            <i className='fa fa-linkedin'></i>
                                         </a>
                                     </li>
                                     <li>
@@ -152,8 +151,7 @@ export const Contact = (props) => {
             <div id='footer'>
                 <div className='container text-center'>
                     <p>
-                        &copy; Project Initiated By Rotaract Club Of Uva Wellassa University,
-                        Sri Lanka.
+                        &copy; A Project By The Rotaract Club Of Uva Wellassa University - Badulla
                     </p>
                 </div>
             </div>

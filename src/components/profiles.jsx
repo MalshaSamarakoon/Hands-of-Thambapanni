@@ -156,7 +156,7 @@ const classes = useStyles();
         <div id='Profiles' >   
 <div className = "container mt-4">
           <div className='section-title'>
-                <h2>Top Enterprises</h2>
+                <h2 style={{color:'#318E6F'}}>Top Enterprises</h2>
           </div>
 </div>
 

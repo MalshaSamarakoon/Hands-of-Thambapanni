@@ -8,7 +8,7 @@ export const Header = (props) => {
 
   const [modalOpen, setModalOpen] = useState(false);
   return (
-    <header id='header'>
+    <header id='header' style={{padding:'0px'}}>
       <div className='intro'>
         
         <div className='overlay'>

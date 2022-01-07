@@ -50,7 +50,7 @@ export default function AUser() {
                   }}/>
         </div>
         <div className="newUserItem">
-          <label>Phone</label>
+          <label>Email</label>
           <input type="email" placeholder="john@gmail.com" 
                   onChange={(event) => {
                     setNewPhone(event.target.value);
@@ -64,8 +64,8 @@ export default function AUser() {
                   }}/>
         </div>
         <div className="newUserItem">
-          <label>Email</label>
-          <input type="text" placeholder="New York | USA" onChange={(event) => {
+          <label>Address</label>
+          <input type="text" placeholder="Mawathagama | Kurunegala" onChange={(event) => {
                     setNewEmail(event.target.value);
                   }}/>
         </div>

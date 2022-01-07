@@ -39,10 +39,10 @@ const logout = async () => {
  };
 
     return(
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{margin:'0px'}}>
       <div className="container-fluid">
         <img src={logo} width="50px" height="50px" alt=""/>
-        <a style={{height: '35px', fontSize: "15px"}} className="navbar-brand fw-bold" href="#">Hands Of Thumbapanni</a>
+        <a style={{height: '35px', fontSize: "15px"}} className="navbar-brand fw-bold" href="#">Hands Of Thambapanni</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -54,7 +54,7 @@ const logout = async () => {
               <a className="nav-link active px-13 text-uppercase" aria-current="page" href="/">Home</a>
             </li>
             <li className="nav-item px-3">
-              <a className="nav-link active px-13 text-uppercase" aria-current="page" href="/donation">Donation</a>
+              <a className="nav-link active px-13 text-uppercase" aria-current="page" href="/donation">Donations</a>
             </li>
 
           </ul>
