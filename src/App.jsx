@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import { useState, useRef, useEffect } from "react";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
-
 import "./App.css";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
