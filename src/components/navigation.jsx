@@ -1,139 +1,74 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+import * as ReactBootStrap from "react-bootstrap";
+import {
+    BrowserRouter as Router,
+    Link
+  } from "react-router-dom";
+  import { auth } from "../database/firebase-config";
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import React, { useState } from "react";
+// import { HashLink } from "react-router-hash-link";
+// import { alpha, makeStyles } from '@material-ui/core/styles';
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "firebase/auth";
 
-export const Navigation = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+import SearchBar from "./SearchBar";
+import BookData from "../Data.json";
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+import Login from "./Login";
+import Signup from "./Signup";
+import { useUserAuth } from "../context/UserAuthContext";
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+ 
+ export const Navigation = () => {
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-            Hands of Thambapanni   
-          </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
+const [user, setUser] = useState({});
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
-};
+onAuthStateChanged(auth, (currentUser) => {
+  setUser(currentUser);
+});
+
+
+const logout = async () => {
+  await signOut(auth);
+ };
+
+    return(
+        <div className="App">
+    <ReactBootStrap.Navbar collapseOnSelect expand="xl" bg="bg-dark" variant="dark">
+  <ReactBootStrap.Navbar.Brand href="#home" className="navbar-brand"><h1>AYUBOWAN SRI LANKA</h1></ReactBootStrap.Navbar.Brand>
+  <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+
+  <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
+   
+    <ReactBootStrap.Nav className="mr-auto">  
+    <SearchBar placeholder="Search Enterprise..." data={BookData} />
+    </ReactBootStrap.Nav>
+
+  <ReactBootStrap.Nav>
+
+  <Link to="/" className='navbar-item'>
+  <div class="container">
+    <ReactBootStrap.Nav.Link href="#home"><h3>Home</h3></ReactBootStrap.Nav.Link>
+    </div>
+    </Link>    
+  
+  <Link to="/donation" className='navbar-item'>
+    <ReactBootStrap.Nav.Link href="#donation"><h3>Donations</h3></ReactBootStrap.Nav.Link>
+  </Link>
+
+  <ReactBootStrap.NavDropdown className='navbar-item' title={user?.email} id="collasible-nav-dropdown">
+    <ReactBootStrap.NavDropdown.Item href="#action/3.1" onClick={logout}>Logout</ReactBootStrap.NavDropdown.Item>
+  </ReactBootStrap.NavDropdown> 
+
+  </ReactBootStrap.Nav> 
+
+  </ReactBootStrap.Navbar.Collapse>
+</ReactBootStrap.Navbar>
+        </div>
+    )
+}
+
