@@ -54,6 +54,7 @@ export const Donations = (props) => {
 
        <h1>Login here to make donations</h1>
 
+
      <div>    
   
    </div>     

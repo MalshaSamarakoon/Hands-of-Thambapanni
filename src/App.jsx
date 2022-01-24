@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import {useState, useRef, useEffect} from "react";
 import ProtectedRoute from "./components/ProtectedRoute";
 import {UserAuthContextProvider} from "./context/UserAuthContext";
+import { ContactUs } from "./components/mailer";
 
 import "./App.css";
 import Login from "./components/Login";
@@ -31,6 +32,9 @@ function App() {
 
   {/* <Route exact path = '/paypal' element={()=> <PayPal authorized={false}/>} />   */}
  <Route exact path = '/paypal' element = {<PayPal/>} /> 
+
+ <Route exact path = '/mailer' element = {<ContactUs/>} />
+
 
     <Route exact path = '/' element = {<Home/>} />
     <Route exact path = '/login' element = {<Login/>} />
