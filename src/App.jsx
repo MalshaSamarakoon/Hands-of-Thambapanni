@@ -11,7 +11,6 @@ import Donation from "./components/donations";
 import Home from "./components/home";
 import NewUser from "./components/admin/login";
 import AUser from "./components/admin/newUser/NewUser";
-import Bathik from "./components/enterprise/bathik";
 
 import Cane from "./components/enterprise/cane";
 
@@ -39,7 +38,6 @@ function App() {
     <Route exact path = '/admin/newUser/NewUser' element = {<AUser/>} />
    
  <Route exact path='/cane' element={<Cane />} />
- <Route exact path='/bathik' element={<Bathik />} />
  <Route exact path = '/adduser' element = {<AUser/>} />
 
     </Routes>
