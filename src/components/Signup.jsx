@@ -29,28 +29,29 @@ import "./Modal.css";
   return (
     <>
     <div className="modalBackground">
-      <div className="modalContainer">
+      <div className="modalContainer-signup">
       <div className="p-4 box">
         <h2 className="mb-3">Signup</h2>
         {error && <Alert variant="danger">{error}</Alert>}
-        <Form onSubmit={handleSubmit}>
+
+        <Form id="signup-form" onSubmit={handleSubmit}>
 
         <Form.Group className="mb-3" >
             <Form.Control
               type="text"
-              placeholder="First Name" />
+              placeholder="First Name"  className="pw"/>
           </Form.Group>
 
           <Form.Group className="mb-3" >
             <Form.Control
               type="text"
-              placeholder="Last Name" />
+              placeholder="Last Name"  className="pw"/>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control
               type="email"
-              placeholder="Email address"
+              placeholder="Email address"  className="pw"
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
@@ -58,20 +59,20 @@ import "./Modal.css";
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Control
               type="password"
-              placeholder="Password"
+              placeholder="Password"  className="pw"
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
 
           <div className="d-grid gap-2">
-            <Button variant="primary" type="Submit">
+            <Button variant="primary"  className="pw" type="Submit">
               Sign up
             </Button>
           </div>
         </Form>
         <hr />
       <div className="p-4 box mt-3 text-center">
-      <h4>Already have an account? <Link to="/">Log In</Link></h4> 
+      <h4>Already have an account? <Link to="/donation">Log In</Link></h4> 
       </div>
       </div>
       </div>

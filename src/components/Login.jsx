@@ -39,7 +39,6 @@ function Login({ setOpenModal }) {
 
   return (
     <>
-
 <div className="modalBackground">
       <div className="modalContainer">
 
@@ -49,12 +48,12 @@ function Login({ setOpenModal }) {
             onClick={() => {
               setOpenModal(false);
             }}
-          >     <h3 className="mb-3">X</h3> </button>
+          >     <h3 className="mb-4">X</h3> </button>
         </div>
 
         <h2 className="mb-3">Login</h2>
 
-    
+
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -66,7 +65,7 @@ function Login({ setOpenModal }) {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Control
+            <Form.Control 
               type="password"
               placeholder="Password" className="pw"
               onChange={(e) => setPassword(e.target.value)}
@@ -93,8 +92,6 @@ function Login({ setOpenModal }) {
       </div>
       </div>
       </div>
-
- 
           </>
   );
 };

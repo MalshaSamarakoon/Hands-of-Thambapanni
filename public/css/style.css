@@ -71,9 +71,10 @@ hr {
   border: 0;
 }
 
+
 Navigation
 #menu {
-  padding: 15px;
+  padding: 0px;
   transition: all 0.8s;
 
 }
@@ -212,7 +213,7 @@ a:focus,
 /* Header Section */
 .intro {
   display: table;
-    margin-top: -25;
+    margin-top: 0;
 
   width: 100%;
   padding: 0;
@@ -253,9 +254,13 @@ header .intro-text {
   padding-bottom: 40px;
   text-align: center;
 }
+
+
 /* Features Section */
 #features {
-  background: #f6f6f6;
+  background: #ffffff;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 #features .section-title h2::after {
   position: absolute;
@@ -265,6 +270,7 @@ header .intro-text {
   width: 60px;
   bottom: 0;
   left: 30px;
+  
 }
 #features i.fa {
   font-size: 38px;
@@ -308,6 +314,7 @@ header .intro-text {
 /* About Section */
 #about {
   padding: 100px 0;
+  background: linear-gradient(to right, #318E6F 0%, #15B07D 100%);
 }
 #about h3 {
   font-size: 22px;
@@ -354,7 +361,7 @@ header .intro-text {
 }
 /* Services Section */
 #profiles {
-  padding: 100px 0;
+  padding: 0px;
   background: linear-gradient(to right, #ffffff 0%, #ffffff 100%);
   color: rgb(0, 0, 0);
 }
@@ -507,7 +514,7 @@ header .intro-text {
 /* Contact Section */
 #contact {
   padding: 100px 0 60px;
-  background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%);
+  background: linear-gradient(to right, #318E6F 0%, #15B07D 100%);
   color: rgba(255, 255, 255, 0.75);
 }
 #contact .section-title {
@@ -549,6 +556,7 @@ header .intro-text {
   margin: 30px 0;
   background: transparent;
   border: 2px solid #fff;
+  color: white;
 }
 #contact .btn-custom:hover {
   color: #1f386e;
@@ -654,4 +662,12 @@ label {
 
 .openModalBtn{
   
+}
+
+.px-13{
+  font-size: 13px !important;
+}
+
+.bg-blue {
+  background-color: #1b6d85;
 }
