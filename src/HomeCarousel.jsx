@@ -30,22 +30,22 @@ function HomeCarousel() {
   };
 
   return (
-    <Carousel>
-      <Carousel.Item interval={1000}>
+    <Carousel fade>
+      <Carousel.Item interval={2000} fade={true}>
         <img className="d-block w-100" src={img1} alt="First slide" style={{height:'650px'}}/>
         <Carousel.Caption>
           <h3>Hands of Thambapanni</h3>
           <p>Strengthening the hands that drive Sri Lanka</p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item interval={500}>
+      <Carousel.Item interval={2000} fade={true}>
         <img className="d-block w-100" src={img2} alt="Second slide" style={{height:'650px'}}/>
         <Carousel.Caption>
           <h3>Hands of Thambapanni</h3>
           <p>Strengthening the hands that drive Sri Lanka</p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
+      <Carousel.Item interval={2000} fade={true}>
         <img className="d-block w-100" src={img3} alt="Third slide" style={{height:'650px'}}/>
         <Carousel.Caption>
           <h3>Hands of Thambapanni</h3>

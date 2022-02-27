@@ -3,11 +3,9 @@ import React, {Component} from 'react'
 import {useState, useRef, useEffect} from "react";
 import ProtectedRoute from "./components/ProtectedRoute";
 import {UserAuthContextProvider} from "./context/UserAuthContext";
-
 import "./App.css";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-
 import PayPal from "./components/PayPal";
 import Donation from "./components/donations";
 import Home from "./components/home";
@@ -37,6 +35,7 @@ function App() {
     <Route exact path = '/donation' element = {<Donation/>} />
     <Route exact path = '/signup' element = {<Signup/>} />
     <Route exact path = '/admin/login' element = {<NewUser/>} />
+    <Route exact path = '/admin/newUser/NewUser' element = {<AUser/>} />
    
  <Route exact path='/cane' element={<Cane />} />
  <Route exact path = '/adduser' element = {<AUser/>} />

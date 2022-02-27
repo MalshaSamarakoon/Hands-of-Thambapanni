@@ -6,8 +6,6 @@ import {
   import { auth } from "../database/firebase-config";
 
 import React, { useState } from "react";
-// import { HashLink } from "react-router-hash-link";
-// import { alpha, makeStyles } from '@material-ui/core/styles';
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "firebase/auth";
 
 import logo from '../logo.png';
