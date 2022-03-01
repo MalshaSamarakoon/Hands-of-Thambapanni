@@ -4,6 +4,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 
     const images = [
         {
@@ -161,9 +162,11 @@ const classes = useStyles();
 </div>
 
 
+
 <div className={classes.root}>
       {images.map((image) => (
-        <ButtonBase 
+       <ButtonBase component={Link} to="/cane"
+        // <ButtonBase component={Link} to="(${image.link})"
           focusRipple
           key={image.title}
           className={classes.image}

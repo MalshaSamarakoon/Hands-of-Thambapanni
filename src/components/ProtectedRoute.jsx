@@ -1,14 +1,29 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import React, { Component } from "react";
+import { Navigate, Route } from "react-router-dom";
 import { useUserAuth } from "../context/UserAuthContext";
-const ProtectedRoute = ({ children }) => {
-  const { user } = useUserAuth();
+import { auth } from "../database/firebase-config";
 
-  console.log("Check user in Private: ", user);
-  if (!user) {
-    return <Navigate to="/" />;
-  }
-  return children;
-};
+function ProtectedRoute( {isAuth: isAuth, component: Component, ...rest }) {
+  return (
+
+<Route
+    {...rest}
+      render ={(props) => {
+
+          if (isAuth) {
+            return <Component/>;
+          } 
+          else {
+            return(
+              <Navigate to = {{pathname:"/donation", states: {from: props.location}}}/>
+            );
+          }
+
+        }
+      }
+/>  
+
+  );
+}
 
 export default ProtectedRoute;

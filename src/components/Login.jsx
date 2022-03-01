@@ -21,7 +21,7 @@ function Login({ setOpenModal }) {
     setError("");
     try {
       await logIn(email, password);
-      navigate("/paypal");
+      window.open("/paypal", "_blank");
     } catch (err) {
       setError(err.message);
     }
@@ -31,7 +31,7 @@ function Login({ setOpenModal }) {
     e.preventDefault();
     try {
       await googleSignIn();
-      navigate("/paypal");
+      window.open("/paypal");
     } catch (error) {
       console.log(error.message);
     }
@@ -72,20 +72,28 @@ function Login({ setOpenModal }) {
             />
           </Form.Group>
 
+
           <div className="d-grid gap-2">
-            <Button variant="primary" type="Submit" className="pw">
+            <Button variant="primary" type="Submit" className="pw" 
+             onClick={() => {
+              setOpenModal(false);
+            }}>
               Log In
             </Button>
           </div>
         </Form>
+        
         <hr />
+     
         <div>
+
           <GoogleButton
             className="g-btn"
             type="dark"
             onClick={handleGoogleSignIn}
           />
         </div>
+
         <div className="p-4 box mt-3 text-center">
       <h4>Don't have an account?  <Link to="/signup">Sign up</Link></h4> 
       </div>
