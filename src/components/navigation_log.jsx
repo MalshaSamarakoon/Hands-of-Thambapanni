@@ -65,7 +65,7 @@ const logout = async () => {
             <img src={profile} width="35px" height="35px" alt=""/>
 
             <ReactBootStrap.NavDropdown className='navbar-item' title={user?.email} id="collasible-nav-dropdown">
-    <ReactBootStrap.NavDropdown.Item href="#action/3.1" onClick={logout}>Logout</ReactBootStrap.NavDropdown.Item>
+    <ReactBootStrap.NavDropdown.Item href="#" onClick={logout}>Logout</ReactBootStrap.NavDropdown.Item>
   </ReactBootStrap.NavDropdown> 
 
 

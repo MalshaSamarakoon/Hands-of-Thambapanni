@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import {db} from './../database/firebase-config';
 import {collection,getDocs, addDoc } from "@firebase/firestore";
 
+
 import { Element } from 'react-scroll'
 
 import emailjs from 'emailjs-com';
@@ -102,12 +103,15 @@ export const ContactUs = () => {
 
       </Element>
   <div class="container">
+  <div class="row-2">
+
   <div class="row">
 <div class="col-md-12 section-heading text-left">
 				<h2 class=" left-border to-animate" style={{color:'white'}}>MAKE A DONATION</h2>
-				
-				</div>
-				</div>
+</div>
+		</div>
+    </div> 
+   
     <div class="screen">
     
       <div class="screen-body">
@@ -158,13 +162,15 @@ export const ContactUs = () => {
      <form action="https://www.sandbox.paypal.com/donate" method="post" target="_top">
 <input type="hidden" name="hosted_button_id" value="W3W2K9FNY8ASC" />
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+{/* <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" /> */}
 </form>
 </div>
-        
+
           <div class="app-contact">
             <div>
-<Button class="app-form-button"  onClick={createDoner}>SEND </Button>    
+            <a className="nav-link active px-13 text-uppercase" aria-current="page" href="/mailer">MAILER</a>
+            <a className="nav-link active px-13 text-uppercase" aria-current="page" href="/adduser">Add user</a>
+
 </div>
 </div>
 
@@ -177,7 +183,6 @@ export const ContactUs = () => {
     </div>
     
   </div>
-
 
     </React.Fragment>
 

@@ -1,12 +1,16 @@
 import Login from "./Login";
+import Signup from "./Signup";
+
 import {ContactUs} from "./mailer";
+import EventCarousel from '../EventCarousel'
+
 
 import React, { useState } from "react";
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "firebase/auth";
 import { auth } from "../database/firebase-config";
 import { Header } from "./header";
-import { Navigation } from "./navigation";
+import { Navigation_log } from "./navigation_log";
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { purple } from '@mui/material/colors'; 
@@ -34,7 +38,9 @@ export const Donations = (props) => {
       
       <div id='donations' >   
           {modalOpen && <Login setOpenModal={setModalOpen} />}
-        <Navigation/>
+		  
+        <Navigation_log/>     
+
    <div> 
 
 <section id="fh5co-home" data-section="home" >
@@ -47,11 +53,6 @@ export const Donations = (props) => {
            
 		    {/* <div><Header/></div> */}
 
-              {/* <div>
-<Button variant="contained"  color="success" onClick={() => {
-         setModalOpen(true);
-       }}><h3>Login</h3></Button>    
-</div> */}
 						</div>
 					</div>
 				</div>
@@ -59,58 +60,48 @@ export const Donations = (props) => {
 		</div>
 		{/* <div class="slant"></div> */}
 	</section>
+	
+	{modalOpen && <Signup setOpenModal={setModalOpen} />}
 
-	<ScrollLink to="mailer" 
-            spy={true} 
-            smooth={true} 
-            duration={500} 
-            className='some-class' 
-            activeClass='some-active-class'>  
-				<div class="fh5co-block to-animate" >
-					<div class="overlay-darker"></div>
-					<div class="overlay"></div>
-					<div class="fh5co-text">
-						<i class="fh5co-intro-icon icon-bulb"></i>
-						<h2>Plan</h2>
-						{/* <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> */}
-						<p>      
-    
-	                </p>
-					</div>
-				</div>
 
-</ScrollLink> 
+
+
+
+
 
 	<section id="fh5co-intro">
 		<div class="container">
 			<div class="row row-bottom-padded-lg">
-
-			
-				<div class="fh5co-block to-animate" >
+				<div class="fh5co-block to-animate">
 					<div class="overlay-darker"></div>
 					<div class="overlay"></div>
 					<div class="fh5co-text">
-						<i class="fh5co-intro-icon icon-wrench"></i>
+						<i class="fh5co-intro-icon icon-bulb"></i>
 						<h2>Make a Donation</h2>
-						<p>Login to make donations.</p>
-<div>
-<Button class="btn btn-primary btn-lg" onClick={() => {
+					
+						<p>		<div>
+<button  class="btn btn-primary"  onClick={() => {
          setModalOpen(true);
-       }}><a>Login</a></Button>    
-</div>
+       }}><h3>Login</h3></button>    
+</div></p>
 					</div>
 				</div>
-
 				
 			</div>
-			{/* <div class="row watch-video text-center to-animate">
-				<span>Watch the video</span>
-
-				<a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo btn-video"><i class="icon-play2"></i></a>
-			</div> */}
 		</div>
 	</section>
-	
+
+
+
+
+
+
+
+
+
+
+
+
 	<section id="fh5co-about" data-section="about">
 		<div class="container">
 			<div class="row">
@@ -125,55 +116,12 @@ Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones n
 Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
 
 Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-					{/* <div class="row">
-						<div class="col-md-8 col-md-offset-2 subtext to-animate">
-							<h3>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</h3>
-						</div>
-					</div> */}
-				</div>
-			</div>
-
-
-			<div class="row">
-				<div class="col-md-4">
-					{/* <div class="fh5co-person text-center to-animate">
-						<h3>Jean Smith</h3>
-						<span class="fh5co-position">Web Designer</span>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts</p>
-						<ul class="social social-circle">
-							<li><a href="#"><i class="icon-twitter"></i></a></li>
-							<li><a href="#"><i class="icon-facebook"></i></a></li>
-							<li><a href="#"><i class="icon-dribbble"></i></a></li>
-						</ul>
-					</div> */}
-				</div>
-				<div class="col-md-4">
-					{/* <div class="fh5co-person text-center to-animate">
-						<h3>Rob Smith</h3>
-						<span class="fh5co-position">Web Developer</span>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts</p>
-						<ul class="social social-circle">
-							<li><a href="#"><i class="icon-twitter"></i></a></li>
-							<li><a href="#"><i class="icon-facebook"></i></a></li>
-							<li><a href="#"><i class="icon-github"></i></a></li>
-						</ul>
-					</div> */}
-				</div>
-				<div class="col-md-4">
-					{/* <div class="fh5co-person text-center to-animate">
-						<h3>Larry Ben</h3>
-						<span class="fh5co-position">Web Designer</span>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts</p>
-						<ul class="social social-circle">
-							<li><a href="#"><i class="icon-twitter"></i></a></li>
-							<li><a href="#"><i class="icon-facebook"></i></a></li>
-							<li><a href="#"><i class="icon-dribbble"></i></a></li>
-						</ul>
-					</div> */}
+			
 				</div>
 			</div>
 		</div>
 	</section>
+
 
 
 	{/* <div id='about'>	 */}
@@ -182,17 +130,30 @@ Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones n
 			<div class="row">
 			<div class="col-md-12 section-heading text-left">
 				<h2 class=" left-border to-animate" style={{color:'black'}}>What we have done?</h2>
-					{/* <div class="row">
-						<div class="col-md-8 col-md-offset-2 subtext to-animate">
-							<h3>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</h3>
-						</div>
-					</div> */}
-				</div>
 			</div>
+			</div>
+			
+   <div className='row-1' style={aboutStyle1}>
+		
+		<div className='col-md-5' >
 
-            {/* <div><EventCarousel/></div> */}
+		<div class="screen-body">
+		<div class="screen-body-item"><EventCarousel/></div>
+		</div>
 
-			<br/>
+		</div>
+
+		<div className='col-md-2'></div>
+
+		  <div className='col-md-5'>
+		  
+		  <div className='section-title'>
+			<p style={{color:'black'}}>Hands of Thambapanni is the best way to extend your help to those who run Sri Lanka's economy; the Small and Medium Scale Entrepreneurs. The truly working hands of Sri Lanka need support in these hard times, and Hands of Thambapanni is the best conduit which connects the current socially-distanced world to the courageous SMEs that strive hard to keep going. Hands of Thambapanni is the best way to extend your help to those who run Sri Lanka's economy; the Small and Medium Scale Entrepreneurs. </p>
+		  </div>
+
+		</div>
+	  </div>
+
 
 			<div class="row" style={aboutStyle1}>
 			<div class="row watch-video text-center to-animate">

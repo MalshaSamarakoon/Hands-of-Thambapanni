@@ -9,6 +9,8 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+
+
 import PayPal from "./components/PayPal";
 import Donation from "./components/donations";
 import Home from "./components/home";
@@ -30,12 +32,8 @@ function App() {
     <Router>
       <UserAuthContextProvider>
         <Routes>
-
-        {/* <ProtectedRoute path = '/paypal' element = {PayPal} isAuth={isAuth}/> */}
-
-    <Route exact path = '/paypal' element = {<PayPal/>} />        
-    <Route exact path = '/mailer' element = {<ContactUs/>} />
-
+        
+{/* user */}
     <Route exact path = '/' element = {<Home/>} />
     <Route exact path = '/login' element = {<Login/>} />
     <Route exact path = '/donation' element = {<Donation/>} />
@@ -43,9 +41,19 @@ function App() {
     <Route exact path = '/admin/login' element = {<NewUser/>} />
     <Route exact path = '/upload' element = {<ImageUpload/>} />
 
-   
- <Route exact path='/cane' element={<Cane />} />
- <Route exact path = '/adduser' element = {<AUser/>} />
+    
+    {/* <ProtectedRoute path = '/paypal' element = {PayPal} isAuth={isAuth}/> */}
+    <Route exact path = '/paypal' element = {<PayPal/>} /> 
+    <Route element={<ProtectedRoute/>}>
+      <Route exact path = '/mailer' element = {<ContactUs/>} />
+    </Route>
+
+{/* profiles */}
+   <Route exact path='/cane' element={<Cane />} />
+
+
+{/* admin */}
+   <Route exact path = '/adduser' element = {<AUser/>} />
 
     </Routes>
       </UserAuthContextProvider>

@@ -699,8 +699,10 @@ label {
 
 
 
-
-
+.row{
+  margin-top: 100px !important;
+margin-bottom: 1px !important;
+}
 
 @font-face {
   font-family: 'icomoon';
@@ -898,7 +900,9 @@ h1, h2, h3, h4, h5, h6 {
 
 
 #fh5co-about {
+margin-bottom: -300px;
 margin-top: -50px;
+
 }
 
 
@@ -1102,6 +1106,9 @@ margin-top: -50px;
   width: 100%;
   display: block;
   float: left;
+  margin-bottom: 250px !important;
+  margin-top: -30px !important;
+
 }
 .watch-video span {
   display: block;
@@ -1145,6 +1152,10 @@ margin-top: -50px;
   -ms-transform: scale(1.1);
   -o-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+.row-2{
+  margin-top: -100px;
 }
 
 #fh5co-services, #fh5co-testimonials, #fh5co-counters, #fh5co-work, #fh5co-contact, #fh5co-about {
@@ -2007,8 +2018,7 @@ body {
 }
 
 body, button, input {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 1.4px;
 }
 
@@ -2089,6 +2099,7 @@ body, button, input {
 
 .screen-body {
   display: flex;
+  margin-top: -100px !important;
 }
 
 .screen-body-item {
@@ -2228,4 +2239,109 @@ body, button, input {
   .screen-body-item {
     padding: 0;
   }
+}
+
+
+
+
+
+
+
+.pw{
+  font-size: 18px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pic-ctn {
+  width: 100vw;
+  height: 20px;
+}
+
+@keyframes display {
+  0% {
+    transform: translateX(-1px);
+    opacity: 0;
+  }
+  10% {
+    transform: translateX(1px);
+    opacity: 1;
+  }
+  20% {
+    transform: translateX(1px);
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(1px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-1px);
+    opacity: 0;
+  }
+}
+
+.pic-ctn {
+  position: relative;
+  width: 100vw;
+  height: 300px;
+  margin-top: -15px !important;
+}
+
+.pic-ctn > img {
+  position: absolute;
+  top: 0;
+  left: calc(5% - 100px);
+  opacity: 0;
+  animation: display 10s infinite;
+}
+
+img:nth-child(2) {
+  animation-delay: 2s;
+}
+img:nth-child(3) {
+  animation-delay: 4s;
+}
+img:nth-child(4) {
+  animation-delay: 6s;
+}
+img:nth-child(5) {
+  animation-delay: 8s;
 }

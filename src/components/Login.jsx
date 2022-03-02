@@ -18,10 +18,10 @@ function Login({ setOpenModal }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setError("error");
     try {
       await logIn(email, password);
-      window.open("/paypal", "_blank");
+      window.open("/paypal");
     } catch (err) {
       setError(err.message);
     }
@@ -51,7 +51,7 @@ function Login({ setOpenModal }) {
           >     <h3 className="mb-4">X</h3> </button>
         </div>
 
-        <h2 className="mb-3">Login</h2>
+        {/* <h2 className="mb-3">Login</h2> */}
 
 
         {error && <Alert variant="danger">{error}</Alert>}
@@ -75,9 +75,10 @@ function Login({ setOpenModal }) {
 
           <div className="d-grid gap-2">
             <Button variant="primary" type="Submit" className="pw" 
-             onClick={() => {
-              setOpenModal(false);
-            }}>
+            //  onClick={() => {
+            //   setOpenModal(false);
+            // }}
+            >
               Log In
             </Button>
           </div>

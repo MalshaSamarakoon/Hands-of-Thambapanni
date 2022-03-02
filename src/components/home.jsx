@@ -15,7 +15,7 @@ function Home() {
             <div><HomeCarousel/></div>
             <div><About/></div> 
             <div><Features/></div>
-            <div><Profile/></div>
+            <div id = "profile"><Profile/></div>
             <div><Contact/></div>
         </div>
     )

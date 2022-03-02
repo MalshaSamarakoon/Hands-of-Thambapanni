@@ -1,14 +1,12 @@
 import * as ReactBootStrap from "react-bootstrap";
-import {
-    BrowserRouter as Router,
-    Link
-  } from "react-router-dom";
-  import { auth } from "../database/firebase-config";
+import {BrowserRouter as Router} from "react-router-dom";
+import { auth } from "../database/firebase-config";
 
 import React, { useState } from "react";
 // import { HashLink } from "react-router-hash-link";
 // import { alpha, makeStyles } from '@material-ui/core/styles';
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "firebase/auth";
+import {Link} from 'react-scroll';
 
 import logo from '../logo.png';
 import profile from '../profile.png'
@@ -49,9 +47,12 @@ const logout = async () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{display: 'flex', listStyle: 'none', justifyContent: 'space-around'}}>
             <li className="nav-item px-3">
               <a className="nav-link active px-13 text-uppercase" aria-current="page" href="/">Home</a>
+            </li>
+            <li className="nav-item px-3">
+            <Link  to="profile" spy={true} smooth={true}><a className="nav-link active px-13 text-uppercase" aria-current="page" >Enterprise</a></Link>
             </li>
             <li className="nav-item px-3">
               <a className="nav-link active px-13 text-uppercase" aria-current="page" href="/donation">Donations</a>

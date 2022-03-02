@@ -39,13 +39,13 @@ export default function AUser() {
         
       <div className="newUserItem">
           <label>Phone</label>
-          <input type="text" placeholder="+1 123 456 78"onChange={(event) => {
+          <input type="text" placeholder="+94 123 456 78"onChange={(event) => {
                     setNewAddress(event.target.value);
                   }}/>
         </div>
         <div className="newUserItem">
           <label>Full Name</label>
-          <input type="text" placeholder="John Smith" onChange={(event) => {
+          <input type="text" placeholder="John Doe" onChange={(event) => {
                     setNewOwner(event.target.value);
                   }}/>
         </div>
