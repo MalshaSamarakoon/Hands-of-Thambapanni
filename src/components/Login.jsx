@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import GoogleButton from "react-google-button";
 import { useUserAuth } from "../context/UserAuthContext";
+import {ContactUs} from "./mailer";
+import {Link} from 'react-scroll';
+
+
 
 
 import "./Modal.css";
@@ -13,16 +17,19 @@ function Login({ setOpenModal }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { logIn, googleSignIn } = useUserAuth();
+  const { logIn, googleSignIn, user } = useUserAuth();
   const navigate = useNavigate();
+
+  console.log(user?.email,"*****")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
       await logIn(email, password);
-      navigate("/paypal");
-    } catch (err) {
+<Link to="mailer" spy={true} smooth={true}/> 
+} 
+catch (err) {
       setError(err.message);
     }
   };
@@ -31,8 +38,9 @@ function Login({ setOpenModal }) {
     e.preventDefault();
     try {
       await googleSignIn();
-      navigate("/paypal");
-    } catch (error) {
+<Link to="mailer" spy={true} smooth={true}/> 
+    }
+     catch (error) {
       console.log(error.message);
     }
   };

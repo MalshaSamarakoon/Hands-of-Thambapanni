@@ -8,17 +8,14 @@ import {Header} from "./header";
 import {Navigation} from "./navigation";
 import HomeCarousel from '../HomeCarousel';
 
-function Home() {
+function Front() {
     return (
-        <div>
-            <div><Navigation/></div>
-            <div><HomeCarousel/></div>
-            <div><About/></div> 
-            <div><Features/></div>
-            <div id="profiles"><Profile/></div>
-            <div><Contact/></div>
-        </div>
+      <div>
+
+
+          
+      </div>
     )
 }
 
-export default Home
+export default Front

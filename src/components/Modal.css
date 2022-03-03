@@ -11,15 +11,15 @@
   display:flex !important;
   float:left;
   background-color: #ffffff;
-   margin-left: 54px; 
-   margin-top: -200px;
+   margin-left: 1250px; 
+   margin-top: -100px;
    opacity: 1000;
    /* z-index must be below .modal and above everything else  */
-   z-index: 1;
+   z-index: 50;
 }
 
 .modalContainer {
-  width: 330px;
+  width: 400px;
   height: 400px;
   /* border-radius: 12px; */
   background-color: #ffffff;
@@ -30,7 +30,7 @@
 }
 
 .modalContainer-signup{
-width: 340px;
+width: 400px;
   height: 460px;
   /* border-radius: 12px; */
   background-color: #ffffff;
@@ -63,6 +63,7 @@ width: 340px;
   border: none;
   font-size: 25px;
   cursor: pointer;
+  margin-right: 500px !important;
 }
 
 .modalContainer .body {
@@ -86,7 +87,7 @@ width: 340px;
 .input-container {
   height: 50px;
   position: relative;
-  width: 100%;
+  width: 150%;
 }
 
 .ic1 {

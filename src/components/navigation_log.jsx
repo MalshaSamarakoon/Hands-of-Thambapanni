@@ -1,9 +1,13 @@
 import * as ReactBootStrap from "react-bootstrap";
-import {BrowserRouter as Router} from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Link
+  } from "react-router-dom";
   import { auth } from "../database/firebase-config";
-  import {Link} from 'react-scroll';
 
 import React, { useState } from "react";
+// import { HashLink } from "react-router-hash-link";
+// import { alpha, makeStyles } from '@material-ui/core/styles';
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "firebase/auth";
 
 import logo from '../logo.png';
@@ -17,7 +21,7 @@ import Signup from "./Signup";
 import { useUserAuth } from "../context/UserAuthContext";
 
  
- export const Navigation = () => {
+ export const Navigation_log = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -50,9 +54,6 @@ const logout = async () => {
               <a className="nav-link active px-13 text-uppercase" aria-current="page" href="/">Home</a>
             </li>
             <li className="nav-item px-3">
-              <a className="nav-link active px-13 text-uppercase" aria-current="page"><Link  to="profiles" spy={true} smooth={true}>Enterprises</Link></a>
-            </li>
-            <li className="nav-item px-3">
               <a className="nav-link active px-13 text-uppercase" aria-current="page" href="/donation">Donations</a>
             </li>
 
@@ -64,7 +65,7 @@ const logout = async () => {
             <img src={profile} width="35px" height="35px" alt=""/>
 
             <ReactBootStrap.NavDropdown className='navbar-item' title={user?.email} id="collasible-nav-dropdown">
-    <ReactBootStrap.NavDropdown.Item href="#action/3.1" onClick={logout}>Logout</ReactBootStrap.NavDropdown.Item>
+    <ReactBootStrap.NavDropdown.Item href="#" onClick={logout}>Logout</ReactBootStrap.NavDropdown.Item>
   </ReactBootStrap.NavDropdown> 
 
 
