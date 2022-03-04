@@ -1,5 +1,4 @@
-import "./newUser.css";
-import {db} from './../../../database/firebase-config';
+import {db} from './../../database/firebase-config';
 import { useState, useRef, useEffect } from "react";
 import {collection,getDocs, addDoc } from "@firebase/firestore";
 import { getScopedCssBaselineUtilityClass } from "@mui/material";

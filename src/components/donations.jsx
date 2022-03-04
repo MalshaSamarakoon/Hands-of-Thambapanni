@@ -19,11 +19,13 @@ import { styled } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 
 import Scroll from "react-scroll";
+import { Link } from "react-scroll";
+
 import EventCarousel from "../EventCarousel";
 
 const ScrollLink = Scroll.ScrollLink;
 
-export const Donations = (props) => {
+const Donations = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const ColorButton = styled(Button)(({ theme }) => ({
@@ -72,15 +74,20 @@ export const Donations = (props) => {
                 <div class="fh5co-text">
                   <i class="fh5co-intro-icon icon-wrench"></i>
                   <h2>Make a Donation</h2>
-                  <p>Login to make donations.</p>
+                  <p>bla bla bla to bla bla</p>
                   <div>
-                    <Button
+                    {/* <Button
                       class="btn btn-primary btn-lg"
                       onClick={() => {
                         setModalOpen(true);
                       }}
                     >
                       <a>Login</a>
+                    </Button> */}
+                     <Button class="btn btn-primary btn-lg">
+                      <a>  <Link to="mailer" spy={true} smooth={true}>
+                  Donate
+                </Link></a>
                     </Button>
                   </div>
                 </div>
@@ -170,13 +177,13 @@ export const Donations = (props) => {
         </section>
 
         {/* </div> */}
-
+        <div id='mailer'>
         <div class="row">
           <div id="about">
             <ContactUs />
           </div>
         </div>
-
+</div>
         <div id="footer">
           <div className="container text-center">
             <p>

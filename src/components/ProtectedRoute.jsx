@@ -4,41 +4,20 @@ import { useUserAuth } from "../context/UserAuthContext";
 import { auth } from "../database/firebase-config";
 import Login from "./Login";
 
-// function ProtectedRoute( {isAuth: isAuth, component: Component, ...rest }) {
-//   return (
+const ProtectedRoute = (props) => {
+  const {user} = useUserAuth()
+  
+  console.log(user);
 
-// <Route
-//     {...rest}
-//       render ={(props) => {
+  if (user) {
+      return (
+          <>
+              {props.children}
+          </>
+      )
+  } else {
+      return <Navigate to="/login" />
+  }
 
-//           if (isAuth) {
-//             return <Component/>;
-//           } 
-//           else {
-//             return(
-//               <Navigate to = {{pathname:"/donation", states: {from: props.location}}}/>
-//             );
-//           }
-
-//         }
-//       }
-// />  
-
-//   );
-// }
-
-// export default ProtectedRoute;
-
-
-
-const useAuth = () => {
-  const user = { loggedIn: false };
-  return user && user.loggedIn;
-};
-
-const ProtectedRoutes = () => {
-  const isAuth = useAuth();
-  return isAuth ? <Outlet /> : <Login />;
-};
-
-export default ProtectedRoutes;
+}
+export default ProtectedRoute;
