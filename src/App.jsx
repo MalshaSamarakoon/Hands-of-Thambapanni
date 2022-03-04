@@ -15,9 +15,8 @@ import Home from "./components/home";
 import NewUser from "./components/admin/login";
 import ImageUpload from "./components/ImageUpload";
 
-import Cane from "./components/enterprise/cane";
-import Bathik from "./components/enterprise/bathik";
-
+import Cane from "./components/enterprise/cane/cane";
+import Bathik from "./components/enterprise/bathik/bathik";
 
 
 

@@ -8,16 +8,26 @@ import { ownerDocument } from "@material-ui/core";
 
 export default function AUser() {
   const [users, setUsers] = useState([]);
-  const usersCollectionRef = collection(db, "enterprise");
+  const usersCollectionRef = collection(db, "Enterprise");
 
-  const [newAddress, setNewAddress] = useState("");
+  const [enterprise, setNewEnterprise] = useState("");
+  const [type, setNewType] = useState("");
   const [owner, setNewOwner] = useState(0);
+  const [address, setNewAddress] = useState("");
   const [phone, setNewPhone] = useState("");
-  const [title, setNewtitle] = useState("");
-  const [email, setNewEmail] = useState(0);
+  const [since, setNewSince] = useState("");
+  const [description, setNewDescription] = useState(0);
 
   const createUser = async () => {
-    await addDoc(usersCollectionRef, { address: newAddress, owner_name: owner,phone:phone,title:title,email:email });
+    await addDoc(usersCollectionRef, { 
+      enterpriseName: enterprise, 
+      type: type,
+      ownerName: owner, 
+      address: address, 
+      phone: phone, 
+      since: since,
+      description: des 
+    });
   };
 
   useEffect(() => {
@@ -37,39 +47,14 @@ export default function AUser() {
       <form className="newUserForm">
         
       <div className="newUserItem">
-          <label>Phone</label>
-          <input type="text" placeholder="+1 123 456 78"onChange={(event) => {
-                    setNewAddress(event.target.value);
-                  }}/>
-        </div>
-        <div className="newUserItem">
-          <label>Full Name</label>
-          <input type="text" placeholder="John Smith" onChange={(event) => {
-                    setNewOwner(event.target.value);
-                  }}/>
-        </div>
-        <div className="newUserItem">
-          <label>Email</label>
-          <input type="email" placeholder="john@gmail.com" 
-                  onChange={(event) => {
-                    setNewPhone(event.target.value);
-                  }}/>
-        </div>
-        
-        <div className="newUserItem">
           <label>Enterprise Name</label>
-          <input type="text" placeholder="" onChange={(event) => {
-                    setNewtitle(event.target.value);
+          <input type="text" onChange={(event) => {
+                    setNewEnterprise(event.target.value);
                   }}/>
         </div>
+
         <div className="newUserItem">
-          <label>Address</label>
-          <input type="text" placeholder="Mawathagama | Kurunegala" onChange={(event) => {
-                    setNewEmail(event.target.value);
-                  }}/>
-        </div>
-        <div className="newUserItem">
-          <label>Gender</label>
+          <label>Enterprise Type</label>
           <div className="newUserGender">
             <input type="radio" name="gender" id="male" value="male" />
             <label for="male">Male</label>
@@ -79,13 +64,66 @@ export default function AUser() {
             <label for="other">Other</label>
           </div>
         </div>
+
         <div className="newUserItem">
+          <label>Owner Name</label>
+          <input type="text" 
+                  onChange={(event) => {
+                    setNewOwner(event.target.value);
+                  }}/>
+        </div>
+
+        <div className="newUserItem">
+          <label>Address</label>
+          <input type="text"
+                  onChange={(event) => {
+                    setNewAddress(event.target.value);
+                  }}/>
+        </div>
+        
+        <div className="newUserItem">
+          <label>Telephone</label>
+          <input type="text" 
+                  onChange={(event) => {
+                    setNewPhone(event.target.value);
+                  }}/>
+        </div>
+
+        <div className="newUserItem">
+          <label>Since</label>
+          <input type="text" 
+                  onChange={(event) => {
+                    setNewSince(event.target.value);
+                  }}/>
+        </div>
+
+        <div className="newUserItem">
+          <label>Description</label>
+          <input type="text" 
+                  onChange={(event) => {
+                    setNewDescription(event.target.value);
+                  }}/>
+        </div>
+
+     
+        {/* <div className="newUserItem">
+          <label>Gender</label>
+          <div className="newUserGender">
+            <input type="radio" name="gender" id="male" value="male" />
+            <label for="male">Male</label>
+            <input type="radio" name="gender" id="female" value="female" />
+            <label for="female">Female</label>
+            <input type="radio" name="gender" id="other" value="other" />
+            <label for="other">Other</label>
+          </div>
+        </div> */}
+        {/* <div className="newUserItem">
           <label>Active</label>
           <select className="newUserSelect" name="active" id="active">
             <option value="yes">Yes</option>
             <option value="no">No</option>
           </select>
-        </div>
+        </div> */}
         <button className="newUserButton"onClick={createUser}>Create</button>
       </form>
     </div>
