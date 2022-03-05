@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { db } from "./../database/firebase-config";
 import { collection, getDocs, addDoc } from "@firebase/firestore";
 import { PayPalButton } from "react-paypal-button-v2";
-import { Element } from "react-scroll";
+import Scroll from "react-scroll";
+import { Link } from "react-scroll";
 
 import emailjs from "emailjs-com";
 
@@ -19,19 +20,18 @@ export const ContactUs = () => {
   const [doners, setDoners] = useState([]);
   const donersCollectionRef = collection(db, "payments");
 
-  const [doner, setNewDoner] = useState("");
   const [amount, setNewAmount] = useState(0);
   const [email, setNewEmail] = useState("");
-  const [paypalAmount, setPaypalAmount] = useState("");
+  const [type, setNewType] = useState("");
 
   const { user } = useUserAuth();
 
   const createDoner = async () => {
-  await sendEmail()
+    await sendEmail();
     await addDoc(donersCollectionRef, {
-      doner: doner,
       amount: amount,
-      email: email,
+      email: user?.email,
+      // type:type
     });
   };
 
@@ -44,34 +44,148 @@ export const ContactUs = () => {
     getDoners();
   }, []);
 
-
   var templateParams = {
     user_email: user?.email,
-    amount
-};
-
-  const sendEmail = async () => {
-
-    emailjs.send('service_ukg9fte', 'template_uh9yzgf', templateParams,"user_CaVgj9aXnYjHxUjP7Pc9g")
-    .then(function(response) {
-       console.log('SUCCESS!', response.status, response.text);
-    }, function(error) {
-       console.log('FAILED...', error);
-    });
+    amount,
+    // type:type
   };
 
-  const ColorButton = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText(purple[500]),
-    backgroundColor: purple[500],
-    "&:hover": {
-      backgroundColor: purple[700],
-    },
-  }));
+  const sendEmail = async () => {
+    emailjs
+      .send(
+        "service_ukg9fte",
+        "template_uh9yzgf",
+        templateParams,
+        "user_CaVgj9aXnYjHxUjP7Pc9g"
+      )
+      .then(
+        function (response) {
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        function (error) {
+          console.log("FAILED...", error);
+        }
+      );
+  };
 
   return (
     <React.Fragment>
-        
-     <div class="container">
+      <section id="fh5co-intro">
+        <div class="container">
+          <div class="row row-bottom-padded-lg">
+            <div class="fh5co-block to-animate">
+              <div class="overlay-darker"></div>
+              <div class="overlay"></div>
+              <div class="fh5co-text">
+                <i class="fh5co-intro-icon icon-wrench"></i>
+                <h2>Make a Donation</h2>
+                <div class="app-form">
+                  <form>
+                    <div class="app-form-group">
+                      <input
+                        class="app-form-control"
+                        placeholder="EMAIL"
+                        type="hidden"
+                        value={user?.email}
+                        name="user_email"
+                        onChange={(event) => {
+                          setNewEmail(event.target.value);
+                        }}
+                      />
+                    </div>
+
+                    <div class="app-form-group-d">
+                      <label class="dollar">$</label>
+                      <input
+                        class="app-form-control"
+                        name="amount"
+                        onChange={(event) => {
+                          setNewAmount(event.target.value);
+                        }}
+                      />
+                    </div>
+                    {/* <div class="app-form-group">
+                    <input
+                      class="app-form-control"
+                      name="type"
+                      placeholder="type"
+                      onChange={(event) => {
+                        setNewType(event.target.value);
+                      }}
+                    />
+                  </div> */}
+
+                    {/* <div class="app-form-group buttons">
+                    <button class="app-form-button" onClick={createDoner}>
+                      SEND
+                    </button>
+                  </div> */}
+                  </form>
+                </div>
+                {/*PAYPAL BTN STARTS HERE  */}
+
+                <Helmet>
+                  <script src="https://www.paypal.com/sdk/js?client-id=ATHibLN3m7DP7mbN5k5BpbpP9JDcRZH8GtrTOwYpkJDlT4zLIccyxEQWCs0t4rL8qwMMpaqQrmZ09PrM&currency=USD"></script>
+                </Helmet>
+
+                {amount > 0 ? (
+                  <PayPalButton
+                    createOrder={(data, actions) => {
+                      return actions.order.create({
+                        purchase_units: [
+                          {
+                            amount: {
+                              currency_code: "USD",
+                              value: amount,
+                            },
+                          },
+                        ],
+                      });
+                    }}
+                    onApprove={(data, actions) => {
+                      // Capture the funds from the transaction
+                      return actions.order.capture().then(function (details) {
+                        // Show a success message to your buyer
+                        // alert("Transaction completed by " + user?.email);
+                        console.log("Transaction completed by " + user?.email);
+                        createDoner();
+                        sendEmail();
+
+                        // OPTIONAL: Call your server to save the transaction
+                        return fetch("/paypal-transaction-complete", {
+                          method: "post",
+                          body: JSON.stringify({
+                            orderID: data.orderID,
+                          }),
+                        });
+                      });
+                    }}
+                  />
+                ) : (
+                  <h3></h3>
+                )}
+
+                {/* PAYPAL BTN ENDS */}
+
+                {/* <div>
+                     <Button class="btn btn-primary btn-lg">
+                      <a>  <Link to="mailer" spy={true} smooth={true}>
+                  Donate
+                </Link></a>
+                    </Button>
+                  </div> */}
+              </div>
+            </div>
+          </div>
+          {/* <div class="row watch-video text-center to-animate">
+				<span>Watch the video</span>
+
+				<a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo btn-video"><i class="icon-play2"></i></a>
+			</div> */}
+        </div>
+      </section>
+
+      {/* <div class="container">
         <div class="row">
           <div class="col-md-12 section-heading text-left">
             <h2 class=" left-border to-animate" style={{ color: "white" }}>
@@ -84,22 +198,12 @@ export const ContactUs = () => {
             <div class="screen-body-item">
               <div class="app-form">
                 <form>
-                  <div class="app-form-group">
-                    {/* <input
-                      type="text"
-                      name="user_name"
-                      class="app-form-control"
-                      placeholder="NAME"
-                      onChange={(event) => {
-                        setNewDoner(event.target.value);
-                      }}
-                    /> */}
-                  </div>
+                  <div class="app-form-group"></div>
                   <div class="app-form-group">
                     <input
                       class="app-form-control"
                       placeholder="EMAIL"
-                      type="email"
+                      type="hidden"
                       value={user?.email}
                       name="user_email"
                       onChange={(event) => {
@@ -107,97 +211,66 @@ export const ContactUs = () => {
                       }}
                     />
                   </div>
-                  <div class="app-form-group">
+
+                  <div class="app-form-group-d">
+                    <label class="dollar">$</label>
                     <input
                       class="app-form-control"
-                      placeholder="AMOUNT"
                       name="amount"
                       onChange={(event) => {
                         setNewAmount(event.target.value);
                       }}
                     />
                   </div>
-                  {/* <div class="app-form-group message">
-                    <input
-                      class="app-form-control"
-                      name="message"
-                      placeholder="MESSAGE"
-                    />
-                  </div> */}
-                  {/* <div class="app-form-group buttons">
-                    <button class="app-form-button" onClick={createDoner}>
-                      SEND
-                    </button>
-                  </div> */}
                 </form>
               </div>
             </div>
 
-  
-
             <div class="screen-body-item left">
-              {/*PAYPAL BTN STARTS HERE  */}
 
               <Helmet>
-                <script src="https://www.paypal.com/sdk/js?client-id=ATHibLN3m7DP7mbN5k5BpbpP9JDcRZH8GtrTOwYpkJDlT4zLIccyxEQWCs0t4rL8qwMMpaqQrmZ09PrM&currency=USD">
-                </script>
+                <script src="https://www.paypal.com/sdk/js?client-id=ATHibLN3m7DP7mbN5k5BpbpP9JDcRZH8GtrTOwYpkJDlT4zLIccyxEQWCs0t4rL8qwMMpaqQrmZ09PrM&currency=USD"></script>
               </Helmet>
 
-              {
-                amount > 0 ? <PayPalButton
-                createOrder={(data, actions) => {
-                  return actions.order.create({
-                    purchase_units: [
-                      {
-                        amount: {
-                          currency_code: "USD",
-                          value: amount,
+              {amount > 0 ? (
+                <PayPalButton
+                  createOrder={(data, actions) => {
+                    return actions.order.create({
+                      purchase_units: [
+                        {
+                          amount: {
+                            currency_code: "USD",
+                            value: amount,
+                          },
                         },
-                      },
-                    ],
-                
-                  });
-                }}
-                onApprove={(data, actions) => {
-                  // Capture the funds from the transaction
-                  return actions.order.capture().then(function (details) {
-                    // Show a success message to your buyer
-                    // alert("Transaction completed by " + user?.email);
-                    console.log("Transaction completed by " + user?.email)
-                    createDoner();
-                    sendEmail();
-
-
-                    // OPTIONAL: Call your server to save the transaction
-                    return fetch("/paypal-transaction-complete", {
-                      method: "post",
-                      body: JSON.stringify({
-                        orderID: data.orderID,
-                      }),
+                      ],
                     });
-                  });
-                }}
-              /> : <h3>Please add a amount</h3>
-              }
+                  }}
+                  onApprove={(data, actions) => {
+                    return actions.order.capture().then(function (details) {
+                     
+                      console.log("Transaction completed by " + user?.email);
+                      createDoner();
+                      sendEmail();
 
-              {/* PAYPAL BTN ENDS */}
+                      return fetch("/paypal-transaction-complete", {
+                        method: "post",
+                        body: JSON.stringify({
+                          orderID: data.orderID,
+                        }),
+                      });
+                    });
+                  }}
+                />
+              ) : (
+                <h3></h3>
+              )}
 
-              <div class="app-contact">
-                {/* <div>
-                  <a
-                    className="nav-link active px-13 text-uppercase"
-                    aria-current="page"
-                    href="/mailer"
-                  >
-                    MAILER
-                  </a>
-                </div> */}
-              </div>
+
             </div>
           </div>
         </div>
-      </div>      
-     
+      </div> */}
     </React.Fragment>
   );
 };

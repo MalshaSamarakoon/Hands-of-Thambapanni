@@ -25,7 +25,7 @@ import AdHome from "./components/admin/Home"
 import AUser from "./components/admin/NewUser";
 import WidgetLg from "./components/admin/WidgetLg";
 import WidgetSm from "./components/admin/WidgetSm";
-import Alogin from "./components/admin/login";
+import ANewUser from "./components/admin/login"
 
 function App() {
   const [show, setShow] = useState(false);
@@ -38,8 +38,8 @@ function App() {
       <Router>
         <UserAuthContextProvider>
           <Routes>
-            {/* <ProtectedRoute path = '/paypal' element = {PayPal} isAuth={isAuth}/> */}
 
+{/* USER */}
             <Route exact path="/paypal" element={<PayPal />} />
 
             <Route exact path="/" element={<Home />} />
@@ -58,12 +58,9 @@ function App() {
             </ProtectedRoute>} />
          
          
-         
-         
-         
-         
-         
-            <Route exact path="/alogin" element={<Alogin />} />
+{/* ADMIN */}
+            
+            <Route exact path="/alogin" element={<ANewUser />} />
             <Route exact path="/adhome" element={<AdHome />} />
             <Route exact path="/adduser" element={<AUser />} />
             <Route exact path="/transactions" element={<WidgetLg />} />

@@ -1029,8 +1029,8 @@ margin-top: -50px;
   background-size: cover;
   position: relative;
   backgroun-repeat: no-repeat;
-  margin-top: -350px;
-  margin-bottom: 300px;
+  margin-top: -1700px;
+  margin-bottom: 1400px;
   margin-left: 700px;
 }
 @media screen and (max-width: 768px) {
@@ -2726,4 +2726,33 @@ img:nth-child(5) {
 
 .chartTitle {
   margin-bottom: 20px;
+}
+
+
+
+.app-form-control{
+  width: 200px;
+  height: 50px;
+  padding: 12px 20px;
+  font-size: 60px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px;
+  border-color: transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.dollar{
+  font-size: 60px;
+color: white;
+}
+
+.app-form-group-d{
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 300px;
+}
+
+.amount{
+  font-size: 40px;
 }

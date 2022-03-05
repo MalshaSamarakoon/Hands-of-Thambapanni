@@ -1,3 +1,116 @@
+// import { useState, useRef, useEffect } from "react";
+// import {collection,getDocs, addDoc } from "@firebase/firestore";
+
+// import {db} from '../../database/firebase-config';
+  
+// const WidgetLg = () => {
+  
+//   const [users, setUsers] = useState([]);
+//   const usersCollectionRef = collection(db, "Enterprise");
+
+  
+//     // Start the fetch operation as soon as
+//     // the page loads
+//     window.addEventListener('load', () => {
+//         Fetchdata();
+//       });
+  
+//     // Fetch the required data using the get() method
+//     const Fetchdata = ()=>{
+//         db.collection("data").get().then((querySnapshot) => {
+             
+//             // Loop through the data and store
+//             // it in array to display
+//             querySnapshot.forEach(element => {
+//                 var data = element.data();
+//                 setInfo(arr => [...arr , data]);
+                  
+//             });
+//         })
+//     }
+      
+//     // Display the result on the page
+//     return (
+//         <div>
+//             <center>
+//             <h2>Enterprise Details</h2>
+//             </center>
+          
+//         {
+//             info.map((Enterprise) => (
+//             <Frame enterpriseName={Enterprise.enterpriseName} 
+//                    type={Enterprise.type} 
+//                    ownerName={Enterprise.ownerName}
+//                    address={Enterprise.address} 
+//                    phone={Enterprise.phone} 
+//                    since={Enterprise.since}
+//                    description={Enterprise.description}
+//             />
+//             ))
+//         }
+//         </div>
+  
+//     );
+// }
+  
+// // Define how each display entry will be structured
+// const Frame = ({enterpriseName , type , ownerName, address , phone , since, description }) => {
+//     console.log(enterpriseName + " " + type + " " + ownerName + " " + address + " " + phone + " " + since + " " + description);
+//     return (
+//         <center>
+//             <div className="div">
+                  
+// <p>enterpriseName : {enterpriseName}</p>
+   
+                  
+// <p>type : {type}</p>
+  
+                  
+// <p>ownerName : {ownerName}</p>
+
+                   
+// <p>address : {address}</p>
+   
+                  
+// <p>phone : {phone}</p>
+  
+                  
+// <p>since : {since}</p> 
+
+// <p>description : {description}</p>  
+
+//             </div>
+//         </center>
+//     );
+// }
+  
+// export default WidgetLg;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default function WidgetLg() {
   const Button = ({ type }) => {

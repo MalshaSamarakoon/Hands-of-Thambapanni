@@ -49,23 +49,16 @@ const Donations = (props) => {
               <div class="text-inner">
                 <div class="row">
                   <div class="col-md-8 col-md-offset-2">
-                   
-
-                    {/* <div>
-<Button variant="contained"  color="success" onClick={() => {
-         setModalOpen(true);
-       }}><h3>Login</h3></Button>    
-</div> */}
+                  
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          {/* <div class="slant"></div> */}
         </section>
         {modalOpen && <Signup setOpenModal={setModalOpen} />}
 
-        <section id="fh5co-intro">
+        {/* <section id="fh5co-intro">
           <div class="container">
             <div class="row row-bottom-padded-lg">
               <div class="fh5co-block to-animate">
@@ -76,14 +69,6 @@ const Donations = (props) => {
                   <h2>Make a Donation</h2>
                   <p>bla bla bla to bla bla</p>
                   <div>
-                    {/* <Button
-                      class="btn btn-primary btn-lg"
-                      onClick={() => {
-                        setModalOpen(true);
-                      }}
-                    >
-                      <a>Login</a>
-                    </Button> */}
                      <Button class="btn btn-primary btn-lg">
                       <a>  <Link to="mailer" spy={true} smooth={true}>
                   Donate
@@ -93,13 +78,9 @@ const Donations = (props) => {
                 </div>
               </div>
             </div>
-            {/* <div class="row watch-video text-center to-animate">
-				<span>Watch the video</span>
 
-				<a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo btn-video"><i class="icon-play2"></i></a>
-			</div> */}
           </div>
-        </section>
+        </section> */}
 
         <section id="fh5co-about" data-section="about">
           <div class="container">

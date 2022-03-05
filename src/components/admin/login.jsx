@@ -19,67 +19,94 @@ import handleSubmit from '@mui/material/styles/makeStyles';
 
 
 import { useNavigate } from "react-router-dom";
-import "./login.css";
- 
 
-    function Alogin(){
+
+const theme = createTheme();
+    function ANewUser(){
           return (
-   <>
-
-  <div class="container" id="container">
-
-    <div class="form-container sign-in-container">
-      <form method="POST" action="#" class="form" id="login">
-        <h1 class="form__title">Login</h1>
-        <div class="form__input-group">
-          <label for="username">Username: </label>
-          <input type="text" class="form__input" name="username" id="username" maxlength="20" required/> 
-        </div>
-        <div class="form__input-group">
-          <label for="pass">Password: </label>
-          <input type="password" class="form__input" name="pass" id="pass" maxlength="20" required/> 
-        </div>
-        <div class="form__input-group">
-          <button type="submit" class="form__button">Submit</button>
-        </div>
-     </form>
-    </div>
-    
-   {/* <!--  create account page --> */}
-   <div class="form-container sign-up-container">
-     <form method="POST" action="#" class="form" id="register">
-       <h1 class="form__title">Register</h1>
-       <div class="form__input-group">
-         <label for="username"> Username: </label>
-         <input type="text" class="form__input" name="username" id="username" maxlength="20" required/>
-       </div>
-        <div class="form__input-group">
-          <label for="pass">Password: </label>
-          <input type="password" class="form__input" name="pass" id="pass" maxlength="20" required/> 
-        </div>
-       <button class="form__button" type="submit">Submit</button>
-     </form>
-   </div> 
-    
-   <div class="overlay-container">
-		<div class="overlay">
-			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>Please login with your personal info</p>
-				<button class="ghost" id="signIn">Sign In</button>
-			</div>
-			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
-				<button class="ghost" id="signUp">Sign Up</button>
-			</div>
-		</div>
-	</div>
- </div>
-  
-  <script src="scripts/main.js"></script>
-  
-   </>
+    <ThemeProvider theme={theme}>
+       
+        <CssBaseline />
+        <Grid
+          item
+          xs={false}
+          sm={4}
+          md={7}
+          sx={{
+            backgroundImage: 'url(https://source.unsplash.com/random)',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: (t) =>
+              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+           />
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Admin
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Login
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>                     
+      </Container>
+    </ThemeProvider>
   );
 }
-export default Alogin;
+export default ANewUser

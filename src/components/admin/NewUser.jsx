@@ -16,7 +16,7 @@ export default function AUser() {
   const [address, setNewAddress] = useState("");
   const [phone, setNewPhone] = useState("");
   const [since, setNewSince] = useState("");
-  const [description, setNewDescription] = useState(0);
+  const [des, setNewDescription] = useState(0);
 
   const createUser = async () => {
     await addDoc(usersCollectionRef, { 
