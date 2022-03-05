@@ -36,7 +36,7 @@ function App() {
       <Router>
         <UserAuthContextProvider>
           <Routes>
-            {/* USER */}
+            {/* <Route exact path = '/paypal' element={()=> <PayPal authorized={false}/>} />   */}
             <Route exact path="/paypal" element={<PayPal />} />
 
             <Route exact path="/" element={<Home />} />
