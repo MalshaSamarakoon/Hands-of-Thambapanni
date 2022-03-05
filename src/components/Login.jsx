@@ -24,6 +24,7 @@ function Login({ setOpenModal }) {
     setError("");
     try {
       await logIn(email, password);
+      navigate("/donation");
       <Link to="mailer" spy={true} smooth={true} />;
     } catch (err) {
       setError(err.message);
@@ -37,7 +38,7 @@ function Login({ setOpenModal }) {
       navigate("/donation");
       <Link to="mailer" spy={true} smooth={true} />;
     } catch (error) {
-      console.log(error.message);
+      setError(error.message);
     }
   };
 
@@ -49,7 +50,9 @@ function Login({ setOpenModal }) {
             <img src={logo} width="200px" height="200px" alt="" />
             <h2 className="center">Hands Of Thambapanni</h2>
 
-            {error && <Alert variant="danger">{error}</Alert>}
+            {error && (
+              <p style={{ color: "red" }}>Please Enter correct credentials</p>
+            )}
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Control
@@ -89,7 +92,9 @@ function Login({ setOpenModal }) {
               </h4>
             </div>
             <div className="p-4 box mt-3 text-center">
-              <h4><a href="/">Cancel</a></h4>
+              <h4>
+                <a href="/">Cancel</a>
+              </h4>
             </div>
           </div>
         </div>

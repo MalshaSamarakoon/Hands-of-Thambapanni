@@ -8,6 +8,7 @@ import "./App.css";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminProtectedRoute from "./components/AdminProtectedRoute";
 
 import PayPal from "./components/PayPal";
 import Donation from "./components/donations";
@@ -18,14 +19,11 @@ import ImageUpload from "./components/ImageUpload";
 import Cane from "./components/enterprise/cane/cane";
 import Bathik from "./components/enterprise/bathik/bathik";
 
-
-
-
-import AdHome from "./components/admin/Home"
+import AdHome from "./components/admin/Home";
 import AUser from "./components/admin/NewUser";
 import WidgetLg from "./components/admin/WidgetLg";
 import WidgetSm from "./components/admin/WidgetSm";
-import ANewUser from "./components/admin/login"
+import ANewUser from "./components/admin/login";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -38,8 +36,7 @@ function App() {
       <Router>
         <UserAuthContextProvider>
           <Routes>
-
-{/* USER */}
+            {/* USER */}
             <Route exact path="/paypal" element={<PayPal />} />
 
             <Route exact path="/" element={<Home />} />
@@ -52,23 +49,55 @@ function App() {
             <Route exact path="/cane" element={<Cane />} />
             <Route exact path="/bathik" element={<Bathik />} />
 
-            
-            <Route exact path="/donation" element={<ProtectedRoute>
-              <Donation />
-            </ProtectedRoute>} />
-         
-         
-{/* ADMIN */}
-            
+            <Route
+              exact
+              path="/donation"
+              element={
+                <ProtectedRoute>
+                  <Donation />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* ADMIN */}
+
             <Route exact path="/alogin" element={<ANewUser />} />
-            <Route exact path="/adhome" element={<AdHome />} />
-            <Route exact path="/adduser" element={<AUser />} />
-            <Route exact path="/transactions" element={<WidgetLg />} />
-            <Route exact path="/users" element={<WidgetSm />} />
-
-
-         
-         
+            <Route
+              exact
+              path="/adhome"
+              element={
+                <AdminProtectedRoute>
+                  <AdHome />
+                </AdminProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path="/adduser"
+              element={
+                <AdminProtectedRoute>
+                  <AUser />
+                </AdminProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path="/transactions"
+              element={
+                <AdminProtectedRoute>
+                  <WidgetLg />
+                </AdminProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path="/users"
+              element={
+                <AdminProtectedRoute>
+                  <WidgetSm />
+                </AdminProtectedRoute>
+              }
+            />
           </Routes>
         </UserAuthContextProvider>
       </Router>
