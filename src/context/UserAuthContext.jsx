@@ -13,8 +13,8 @@ import { doc, getDoc } from "@firebase/firestore";
 const userAuthContext = createContext();
 
 export function UserAuthContextProvider({ children }) {
-  const [user, setUser] = useState({});
-  const [userRole, setUserRole] = useState(null);
+  // const [user, setUser] = useState(null);
+  // const [userRole, setUserRole] = useState(null);
 
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
@@ -34,31 +34,34 @@ export function UserAuthContextProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-      console.log("Auth", currentuser);
-      setUser(currentuser);
-    });
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
+  //     setUser(currentuser);
+  //     console.log("Auth", currentuser);
+  //     setUserRole("ADMIN");
+  //   });
 
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, []);
 
-  useEffect(async () => {
-    if (user && user.uid) {
-      const docRef = doc(db, "Users", user.uid);
-      const docSnap = await getDoc(docRef);
+  // useEffect(() => {
+  //   if (user && user.uid) {
+  //     // const docRef = doc(db, "Users", user.uid);
+  //     // const docSnap = await getDoc(docRef);
 
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-        setUserRole(docSnap.data().Role);
-      } else {
-        setUserRole(null);
-      }
-      console.log(userRole);
-    }
-  }, [user]);
+  //     // if (docSnap.exists()) {
+  //     //   console.log("Document data:", docSnap.data().Role);
+  //     //   setUserRole("ADMIN");
+  //     // } else {
+  //     //   console.log("test");
+  //     //   setUserRole(null);
+  //     // }
+  //     setUserRole("ADMIN");
+  //     console.log("teateateata", userRole);
+  //   }
+  // }, [user]);
 
   return (
     <userAuthContext.Provider
