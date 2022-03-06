@@ -9,13 +9,12 @@ import { useUserAuth } from "../context/UserAuthContext";
 
 import { Helmet } from "react-helmet";
 
-export const ContactUs = () => {
+export const ContactUs = (enterpriseName = null) => {
   const [doners, setDoners] = useState([]);
   const donersCollectionRef = collection(db, "payments");
 
   const [amount, setNewAmount] = useState(0);
   const [email, setNewEmail] = useState("");
-  
 
   const { user } = useUserAuth();
 
@@ -24,8 +23,8 @@ export const ContactUs = () => {
     await addDoc(donersCollectionRef, {
       amount: amount,
       email: user?.email,
-    date: new Date().toLocaleString(),
-    
+      date: new Date().toLocaleString(),
+      enterpriseName: enterpriseName,
     });
   };
 
@@ -72,7 +71,8 @@ export const ContactUs = () => {
               <div class="fh5co-text">
                 <i class="fh5co-intro-icon icon-wrench"></i>
                 <h2>Make a Donation</h2>
-               <br/><p> Enter amount to danate</p>
+                <br />
+                <p> Enter amount to danate</p>
                 <div class="app-form">
                   <form>
                     <div class="app-form-group">
@@ -116,7 +116,7 @@ export const ContactUs = () => {
                   </div> */}
                   </form>
                 </div>
-                
+
                 {/*PAYPAL BTN STARTS HERE  */}
 
                 <Helmet>
@@ -161,7 +161,6 @@ export const ContactUs = () => {
                 )}
 
                 {/* PAYPAL BTN ENDS */}
-
               </div>
             </div>
           </div>
@@ -172,7 +171,6 @@ export const ContactUs = () => {
 			</div> */}
         </div>
       </section>
-
     </React.Fragment>
   );
 };

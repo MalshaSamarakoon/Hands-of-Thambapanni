@@ -4,9 +4,12 @@ import { db } from "../../../database/firebase-config";
 import { doc, getDoc } from "@firebase/firestore";
 
 import { ContactUs } from "../../mailer";
+import { useUserAuth } from "../../../context/UserAuthContext";
 
 const BathikDetails = () => {
   let params = useParams();
+
+  const { user } = useUserAuth();
 
   const [bathikDetails, setBathikDetails] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -27,13 +30,13 @@ const BathikDetails = () => {
       <p>{bathikDetails.since}</p>
       <p>{bathikDetails.ownerName}</p>
       <p>{bathikDetails.phone}</p>
-
-      <div id="mailer">
+      {user && (
+        <div id="mailer">
           <div class="row">
-            <ContactUs />
+            <ContactUs enterpriseName={bathikDetails.enterpriseName} />
           </div>
         </div>
-
+      )}
     </>
   );
 };
