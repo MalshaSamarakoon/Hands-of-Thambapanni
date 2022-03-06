@@ -4,11 +4,10 @@ import { useState, useRef, useEffect } from "react";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 import { ContactUs } from "./components/mailer";
 
-import "./App.css";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import ProtectedRoute from "./components/ProtectedRoute";
-
+                                                                                                                                                                                                                             
 import PayPal from "./components/PayPal";
 import Donation from "./components/donations";
 import Home from "./components/home";
