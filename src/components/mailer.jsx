@@ -24,7 +24,7 @@ export const ContactUs = (enterpriseName = null) => {
       amount: amount,
       email: user?.email,
       date: new Date().toLocaleString(),
-      enterpriseName: enterpriseName,
+      enterpriseName,
     });
   };
 

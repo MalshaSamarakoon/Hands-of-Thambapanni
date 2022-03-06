@@ -13,7 +13,7 @@ import { doc, getDoc } from "@firebase/firestore";
 const userAuthContext = createContext();
 
 export function UserAuthContextProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [userRole, setUserRole] = useState(null);
 
   function logIn(email, password) {
