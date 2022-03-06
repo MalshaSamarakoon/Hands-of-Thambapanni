@@ -8,6 +8,21 @@ import { ContactUs } from "./mailer";
 import { Link } from "react-scroll";
 import logo from "../logo.png";
 
+import Avatar from "@mui/material/Avatar";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import handleSubmit from "@mui/material/styles/makeStyles";
+
+const theme = createTheme();
+
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -23,6 +38,7 @@ function Login() {
     setError("");
     try {
       await logIn(email, password);
+      navigate("/donation");
       <Link to="mailer" spy={true} smooth={true} />;
     } catch (err) {
       setError(err.message);
@@ -36,19 +52,52 @@ function Login() {
       navigate("/donation");
       <Link to="mailer" spy={true} smooth={true} />;
     } catch (error) {
-      console.log(error.message);
+      setError(error.message);
     }
   };
 
   return (
     <>
-      <div className="modalBackground">
-        <div className="modalContainer">
-          <div className="p-4 box">
-            <img src={logo} width="200px" height="200px" alt="" />
-            <h2 className="center">Hands Of Thambapanni</h2>
-
-            {error && <Alert variant="danger">{error}</Alert>}
+      <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Grid
+        item
+        xs={false}
+        sm={4}
+        md={7}
+        sx={{
+          backgroundImage: "url(https://source.unsplash.com/random)",
+          backgroundRepeat: "no-repeat",
+          backgroundColor: (t) =>
+            t.palette.mode === "light"
+              ? t.palette.grey[50]
+              : t.palette.grey[900],
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Admin
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Control
@@ -82,17 +131,22 @@ function Login() {
                 onClick={handleGoogleSignIn}
               />
             </div>
-            <div className="p-4 box mt-3 text-center">
-              <h4>
-                Don't have an account? <a href="/signup">Sign Up</a>
-              </h4>
-            </div>
-            <div className="p-4 box mt-3 text-center">
-              <h4><a href="/">Cancel</a></h4>
-            </div>
-          </div>
-        </div>
-      </div>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Container>
+    </ThemeProvider>
     </>
   );
 }

@@ -17,8 +17,9 @@ export default function AUser() {
   const [since, setNewSince] = useState("");
   const [des, setNewDescription] = useState(0);
 
-  const createUser = async () => {
-    await addDoc(usersCollectionRef, { 
+  const createUser = async (e) => {
+    e.preventDefault();
+    const enter = await addDoc(usersCollectionRef, { 
       enterpriseName: enterprise, 
       type: type,
       ownerName: owner, 
@@ -27,17 +28,18 @@ export default function AUser() {
       since: since,
       description: des 
     });
+    console.log(enter.id)
   };
 
-  useEffect(() => {
-    const getUsers = async () => {
-      const data=await getDocs(usersCollectionRef)
-      // console.log(data);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    }
+  // useEffect(() => {
+  //   const getUsers = async () => {
+  //     const data=await getDocs(usersCollectionRef)
+  //     // console.log(data);
+  //     setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  //   }
 
-    getUsers();
-  }, [] );
+  //   getUsers();
+  // }, [] );
 
   
   return (
@@ -55,12 +57,10 @@ export default function AUser() {
         <div className="newUserItem">
           <label>Enterprise Type</label>
           <div className="newUserGender">
-            <input type="radio" name="gender" id="male" value="male" />
-            <label for="male">Male</label>
-            <input type="radio" name="gender" id="female" value="female" />
-            <label for="female">Female</label>
-            <input type="radio" name="gender" id="other" value="other" />
-            <label for="other">Other</label>
+            <input type="text" 
+                  onChange={(event) => {
+                    setNewType(event.target.value);
+                  }}/>
           </div>
         </div>
 

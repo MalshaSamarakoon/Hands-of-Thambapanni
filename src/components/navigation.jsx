@@ -1,7 +1,7 @@
 import * as ReactBootStrap from "react-bootstrap";
 import { BrowserRouter as Router } from "react-router-dom";
 import { auth } from "../database/firebase-config";
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 
 import React, { useState } from "react";
 import {
@@ -37,14 +37,15 @@ export const Navigation = () => {
       style={{ margin: "0px" }}
     >
       <div className="container-fluid">
-        <img src={logo} width="50px" height="50px" alt="" />
-        <a
+        <img src="https://lh3.googleusercontent.com/a-/AOh14GhrnsWjgDEygxwhk90SUwjgPYoA7wiVm3Oqi2Of1w=s96-c" width="50px" height="50px" alt="" />
+        <Link
+          to="/"
           style={{ height: "35px", fontSize: "15px" }}
           className="navbar-brand fw-bold"
-          href="#"
         >
           Hands Of Thambapanni
-        </a>
+        </Link>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -59,13 +60,9 @@ export const Navigation = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item px-3">
-              <a
-                className="nav-link active px-13 text-uppercase"
-                aria-current="page"
-                href="/"
-              >
+              <Link to="/" className="nav-link active px-13 text-uppercase">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item px-3">
               <a
@@ -78,13 +75,14 @@ export const Navigation = () => {
               </a>
             </li>
             <li className="nav-item px-3">
-              <a
+              <Link
+                to="/donation"
+                spy={true}
+                smooth={true}
                 className="nav-link active px-13 text-uppercase"
-                aria-current="page"
-                href="/donation"
               >
                 Donations
-              </a>
+              </Link>
             </li>
           </ul>
           <div className="d-flex align-items-center">
@@ -98,16 +96,16 @@ export const Navigation = () => {
               title={user?.email}
               id="collasible-nav-dropdown"
             >
-             {user &&  <ReactBootStrap.NavDropdown.Item
-                onClick={logout}
-              >
-                Logout
-              </ReactBootStrap.NavDropdown.Item>}
-             {!user &&  <ReactBootStrap.NavDropdown.Item
-                href="/login"
-              >
-                Login
-              </ReactBootStrap.NavDropdown.Item>}
+              {user && (
+                <ReactBootStrap.NavDropdown.Item onClick={logout}>
+                  Logout
+                </ReactBootStrap.NavDropdown.Item>
+              )}
+              {!user && (
+                <ReactBootStrap.NavDropdown.Item href="/login">
+                  Login
+                </ReactBootStrap.NavDropdown.Item>
+              )}
             </ReactBootStrap.NavDropdown>
           </div>
         </div>

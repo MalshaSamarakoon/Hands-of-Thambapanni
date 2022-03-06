@@ -20,18 +20,19 @@ import Login from "./Login";
 import Signup from "./Signup";
 import { useUserAuth } from "../context/UserAuthContext";
 
- 
+
+
  export const Navigation_log = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { user } = useUserAuth();
 
+// const [user, setUser] = useState({});
 
-const [user, setUser] = useState({});
-
-onAuthStateChanged(auth, (currentUser) => {
-  setUser(currentUser);
-});
+// onAuthStateChanged(auth, (currentUser) => {
+//   setUser(currentUser);
+// });
 
 
 const logout = async () => {
@@ -62,9 +63,9 @@ const logout = async () => {
             <form className="d-flex pe-3">
             <SearchBar placeholder="Search Enterprise..." data={BookData} />
             </form>
-            <img src={profile} width="35px" height="35px" alt=""/>
+            <img src={user?.photoURL != "" ? user?.photoURL : profile} width="35px" height="35px" alt=""/>
 
-            <ReactBootStrap.NavDropdown className='navbar-item' title={user?.email} id="collasible-nav-dropdown">
+            <ReactBootStrap.NavDropdown className='navbar-item' title={user?.displayName != "" ? user?.displayName : profile} id="collasible-nav-dropdown">
     <ReactBootStrap.NavDropdown.Item href="#" onClick={logout}>Logout</ReactBootStrap.NavDropdown.Item>
   </ReactBootStrap.NavDropdown> 
 

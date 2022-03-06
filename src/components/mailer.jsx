@@ -2,18 +2,11 @@ import React, { useState, useRef, useEffect } from "react";
 import { db } from "./../database/firebase-config";
 import { collection, getDocs, addDoc } from "@firebase/firestore";
 import { PayPalButton } from "react-paypal-button-v2";
-import Scroll from "react-scroll";
-import { Link } from "react-scroll";
 
 import emailjs from "emailjs-com";
 
-import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
-import { purple } from "@mui/material/colors";
-import Login from "./Login";
 import { useUserAuth } from "../context/UserAuthContext";
 
-import { Navigation_log } from "./navigation_log";
 import { Helmet } from "react-helmet";
 
 export const ContactUs = () => {
@@ -22,7 +15,7 @@ export const ContactUs = () => {
 
   const [amount, setNewAmount] = useState(0);
   const [email, setNewEmail] = useState("");
-  const [type, setNewType] = useState("");
+  
 
   const { user } = useUserAuth();
 
@@ -31,7 +24,7 @@ export const ContactUs = () => {
     await addDoc(donersCollectionRef, {
       amount: amount,
       email: user?.email,
-      // type:type
+    date: new Date().toLocaleString(),
     });
   };
 
@@ -47,7 +40,6 @@ export const ContactUs = () => {
   var templateParams = {
     user_email: user?.email,
     amount,
-    // type:type
   };
 
   const sendEmail = async () => {
@@ -79,7 +71,7 @@ export const ContactUs = () => {
               <div class="fh5co-text">
                 <i class="fh5co-intro-icon icon-wrench"></i>
                 <h2>Make a Donation</h2>
-               <br/><p> Enter an amount to danate</p>
+               <br/><p> Enter amount to danate</p>
                 <div class="app-form">
                   <form>
                     <div class="app-form-group">
