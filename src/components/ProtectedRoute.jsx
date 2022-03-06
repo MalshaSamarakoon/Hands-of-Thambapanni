@@ -5,19 +5,11 @@ import { auth } from "../database/firebase-config";
 import Login from "./Login";
 
 const ProtectedRoute = (props) => {
-  const {user} = useUserAuth()
-  
-  console.log(user);
-
+  const { user } = useUserAuth();
   if (user) {
-      return (
-          <>
-              {props.children}
-          </>
-      )
+    return <>{props.children}</>;
   } else {
-      return <Navigate to="/login" />
+    return <Navigate to="/login" />;
   }
-
-}
+};
 export default ProtectedRoute;

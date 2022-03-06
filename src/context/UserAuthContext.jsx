@@ -7,13 +7,14 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { auth } from "../database/firebase-config";
+import { auth, db } from "../database/firebase-config";
+import { doc, getDoc } from "@firebase/firestore";
 
 const userAuthContext = createContext();
 
-
 export function UserAuthContextProvider({ children }) {
   const [user, setUser] = useState({});
+  const [userRole, setUserRole] = useState(null);
 
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
@@ -29,6 +30,10 @@ export function UserAuthContextProvider({ children }) {
     return signInWithPopup(auth, googleAuthProvider);
   }
 
+  function adminLogIn(email, password) {
+    return signInWithEmailAndPassword(auth, email, password);
+  }
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
       console.log("Auth", currentuser);
@@ -40,9 +45,32 @@ export function UserAuthContextProvider({ children }) {
     };
   }, []);
 
+  useEffect(async () => {
+    if (user && user.uid) {
+      const docRef = doc(db, "Users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        setUserRole(docSnap.data().Role);
+      } else {
+        setUserRole(null);
+      }
+      console.log(userRole);
+    }
+  }, [user]);
+
   return (
     <userAuthContext.Provider
-      value={{ user, logIn, signUp, logOut, googleSignIn }}
+      value={{
+        user,
+        userRole,
+        logIn,
+        signUp,
+        logOut,
+        googleSignIn,
+        adminLogIn,
+      }}
     >
       {children}
     </userAuthContext.Provider>

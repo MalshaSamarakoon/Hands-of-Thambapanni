@@ -15,13 +15,13 @@ const BathikTile = ({ bathik }) => {
             </a>
 
             <label>Owner</label>
-                <p class="card-text">{bathik.ownerName}</p>
+            <p class="card-text">{bathik.ownerName}</p>
             <label>Address</label>
-                <p class="card-text">{bathik.address}</p>
+            <p class="card-text">{bathik.address}</p>
             <label>Owner</label>
-                <p class="card-text">{bathik.ownerName}</p>
+            <p class="card-text">{bathik.ownerName}</p>
             <label>Telephone</label>
-                <p class="card-text">{bathik.phone}</p>
+            <p class="card-text">{bathik.phone}</p>
 
             <a href="" class="btn btn-outline-danger btn-lg me-2 ">
               <i class="fa fa-heart-o "></i>
