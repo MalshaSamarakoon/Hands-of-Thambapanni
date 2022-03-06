@@ -79,6 +79,7 @@ export const ContactUs = () => {
               <div class="fh5co-text">
                 <i class="fh5co-intro-icon icon-wrench"></i>
                 <h2>Make a Donation</h2>
+               <br/><p> Enter an amount to danate</p>
                 <div class="app-form">
                   <form>
                     <div class="app-form-group">
@@ -122,6 +123,7 @@ export const ContactUs = () => {
                   </div> */}
                   </form>
                 </div>
+                
                 {/*PAYPAL BTN STARTS HERE  */}
 
                 <Helmet>
@@ -167,13 +169,6 @@ export const ContactUs = () => {
 
                 {/* PAYPAL BTN ENDS */}
 
-                {/* <div>
-                     <Button class="btn btn-primary btn-lg">
-                      <a>  <Link to="mailer" spy={true} smooth={true}>
-                  Donate
-                </Link></a>
-                    </Button>
-                  </div> */}
               </div>
             </div>
           </div>
@@ -185,92 +180,6 @@ export const ContactUs = () => {
         </div>
       </section>
 
-      {/* <div class="container">
-        <div class="row">
-          <div class="col-md-12 section-heading text-left">
-            <h2 class=" left-border to-animate" style={{ color: "white" }}>
-              MAKE A DONATION
-            </h2>
-          </div>
-        </div>
-        <div class="screen">
-          <div class="screen-body">
-            <div class="screen-body-item">
-              <div class="app-form">
-                <form>
-                  <div class="app-form-group"></div>
-                  <div class="app-form-group">
-                    <input
-                      class="app-form-control"
-                      placeholder="EMAIL"
-                      type="hidden"
-                      value={user?.email}
-                      name="user_email"
-                      onChange={(event) => {
-                        setNewEmail(event.target.value);
-                      }}
-                    />
-                  </div>
-
-                  <div class="app-form-group-d">
-                    <label class="dollar">$</label>
-                    <input
-                      class="app-form-control"
-                      name="amount"
-                      onChange={(event) => {
-                        setNewAmount(event.target.value);
-                      }}
-                    />
-                  </div>
-                </form>
-              </div>
-            </div>
-
-            <div class="screen-body-item left">
-
-              <Helmet>
-                <script src="https://www.paypal.com/sdk/js?client-id=ATHibLN3m7DP7mbN5k5BpbpP9JDcRZH8GtrTOwYpkJDlT4zLIccyxEQWCs0t4rL8qwMMpaqQrmZ09PrM&currency=USD"></script>
-              </Helmet>
-
-              {amount > 0 ? (
-                <PayPalButton
-                  createOrder={(data, actions) => {
-                    return actions.order.create({
-                      purchase_units: [
-                        {
-                          amount: {
-                            currency_code: "USD",
-                            value: amount,
-                          },
-                        },
-                      ],
-                    });
-                  }}
-                  onApprove={(data, actions) => {
-                    return actions.order.capture().then(function (details) {
-                     
-                      console.log("Transaction completed by " + user?.email);
-                      createDoner();
-                      sendEmail();
-
-                      return fetch("/paypal-transaction-complete", {
-                        method: "post",
-                        body: JSON.stringify({
-                          orderID: data.orderID,
-                        }),
-                      });
-                    });
-                  }}
-                />
-              ) : (
-                <h3></h3>
-              )}
-
-
-            </div>
-          </div>
-        </div>
-      </div> */}
     </React.Fragment>
   );
 };

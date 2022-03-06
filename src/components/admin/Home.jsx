@@ -20,16 +20,8 @@ export default function AdHome() {
         <div className="col-md-10">
           <div className="home">
             <FeaturedInfo />
-            <Chart
-              data={userData}
-              title="User Analytics"
-              grid
-              dataKey="Active User"
-            />
-            <div className="homeWidgets">
-              {/* <WidgetSm />
-              <WidgetLg /> */}
-            </div>
+            <iframe src="https://app.chartbrew.com/chart/3cf51cee-201f-4737-aa5d-c1ec137d81ea/embedded" allowTransparency="true" width="700" height="300" scrolling="no" frameborder="0" ></iframe>
+            <iframe src="https://app.chartbrew.com/chart/0b53b97d-16a4-4f35-9827-11bf82e06f96/embedded" allowTransparency="true" width="700" height="300" scrolling="no" frameborder="0" ></iframe>
           </div>
         </div>
       </div>

@@ -6,7 +6,9 @@ import "./bathik.css";
 import bathikImg from "../../../data/img/b1.jpg";
 import BathikTile from "./bathikTile";
 
-function Bathik() {
+
+
+function Bathik({ children }) {
   const [bathikList, setBathikList] = useState([]);
 
   useEffect(() => {
@@ -21,6 +23,12 @@ function Bathik() {
       });
     });
   }, []);
+
+  const text = children;
+  const [isReadMore, setIsReadMore] = useState(true);
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore);
+  };
 
   return (
     <div>
@@ -52,8 +60,19 @@ function Bathik() {
           </div>
         </div>
       </section>
+
+
+
+      
     </div>
+  
+  
+  
+  
   );
+
+
+  
 }
 
 export default Bathik;

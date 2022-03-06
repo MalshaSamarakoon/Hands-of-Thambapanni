@@ -43,13 +43,15 @@ p.intro {
   line-height: 24px;
 }
 a {
-  color: #608dfd;
   font-weight: 400;
+  color: #1d1d1f !important;
+  font-size: 14px;
+  text-decoration:none !important;
 }
 a:hover,
 a:focus {
   text-decoration: none;
-  color: #608dfd;
+  color: #1d1d1f !important;
 }
 ul,
 ol {
@@ -702,48 +704,8 @@ label {
 
 
 
-@font-face {
-  font-family: 'icomoon';
-  src: url("../fonts/icomoon/icomoon.eot?srf3rx");
-  src: url("../fonts/icomoon/icomoon.eot?srf3rx#iefix") format("embedded-opentype"), url("../fonts/icomoon/icomoon.ttf?srf3rx") format("truetype"), url("../fonts/icomoon/icomoon.woff?srf3rx") format("woff"), url("../fonts/icomoon/icomoon.svg?srf3rx#icomoon") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
 
-body {
-  font-family: "Source Sans Pro", Arial, sans-serif;
-  font-weight: 300;
-  font-size: 20px;
-  line-height: 1.5;
-  color: #777777;
-  color: #7f7f7f;
-  background: #fff;
-  height: 100%;
-  position: relative;
-  
-}
 
-a {
-  color: #52d3aa;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-}
-a:hover, a:active, a:focus {
-  color: #52d3aa;
-  outline: none;
-}
-
-p {
-  margin-bottom: 1.5em;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: #000;
-  font-family: "Source Sans Pro", Arial, sans-serif;
-  font-weight: 400;
-  margin: 0 0 30px 0;
-}
 
 ::-webkit-selection {
   color: #818892;
@@ -984,7 +946,7 @@ margin-top: -50px;
 #fh5co-intro {
   position: relative;
   bottom: 0;
-  margin-top: -150px;
+  margin-top: -190px;
   margin-right: 100px;
   margin-bottom: -100px;
   z-index: 10;
@@ -1102,10 +1064,13 @@ margin-top: -50px;
   width: 100%;
   display: block;
   float: left;
+
 }
 .watch-video span {
   display: block;
   margin-bottom: 20px;
+  margin-top: 100px !important;
+
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: bold;
@@ -1945,6 +1910,11 @@ margin-top: -50px;
   animation-fill-mode: both;
 }
 
+
+.row-why{
+  margin-top:100px;
+  }
+
 /*# sourceMappingURL=style.css.map */
 
 
@@ -2001,27 +1971,7 @@ margin-top: -50px;
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  /* background: linear-gradient(to right, #ea1d6f 0%, #eb466b 100%); */
-  font-size: 12px;
-}
 
-body, button, input {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  letter-spacing: 1.4px;
-}
-
-.background {
-  display: flex;
-  min-height: 50vh;
-}
-
-.container {
-  flex: 0 1 700px;
-  margin: auto;
-  padding: 10px;
-}
 
 .screen {
   position: relative;
@@ -2743,13 +2693,15 @@ img:nth-child(5) {
   box-sizing: border-box;
 }
 .dollar{
-  font-size: 60px;
-color: white;
+  font-size: 50px;
+  color: white;
 }
 
 .app-form-group-d{
   border: 1px solid #ccc;
-  padding: 10px;
+  margin-top: 30px !important;
+  padding: 20px;
+  margin: 10px;
   width: 300px;
 }
 

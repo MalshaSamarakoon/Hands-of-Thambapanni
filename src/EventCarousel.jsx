@@ -41,7 +41,7 @@ import img3 from "./data/img/image3.jpg";
 
 
   <div className='col-md-5'>
-  <p >Hands of Thambapanni is the second phase of the project See Lanka, launched by the Rotaract Club of Uva Wellassa University - Badulla. It was launched with the aim of assisting  The Small and Medium Enterprises  in the tourism sector in Sri Lanka, which were affected by the pandemic. To make See Lanka all the more impactful, the Sri Lanka Tourism Promotion Bureau (SLTPB) and The Hotels Association of Sri Lanka joined hands with the Rotaract Club of Uva Wellassa University - Badulla. After the successful and award-winning project See Lanka, Hands of Thambapanni was launched to further the help given to SMEs, to help them truly stand up on their own. Hands of Thambapanni helps SMEs with product development and augmenting  market space, by exposing them to online platforms and new demographics.</p>
+  <p style={{ color: "white" }}>Hands of Thambapanni is the second phase of the project See Lanka, launched by the Rotaract Club of Uva Wellassa University - Badulla. It was launched with the aim of assisting  The Small and Medium Enterprises  in the tourism sector in Sri Lanka, which were affected by the pandemic. To make See Lanka all the more impactful, the Sri Lanka Tourism Promotion Bureau (SLTPB) and The Hotels Association of Sri Lanka joined hands with the Rotaract Club of Uva Wellassa University - Badulla. After the successful and award-winning project See Lanka, Hands of Thambapanni was launched to further the help given to SMEs, to help them truly stand up on their own. Hands of Thambapanni helps SMEs with product development and augmenting  market space, by exposing them to online platforms and new demographics.</p>
  </div>
 </div>
 

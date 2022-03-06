@@ -7,7 +7,7 @@ import { useUserAuth } from "../context/UserAuthContext";
 import "./Modal.css";
 
 
-  function Signup({ setOpenModal }) {
+  function Signup() {
 
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");

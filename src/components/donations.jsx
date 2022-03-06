@@ -28,13 +28,6 @@ const ScrollLink = Scroll.ScrollLink;
 const Donations = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const ColorButton = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText(purple[500]),
-    backgroundColor: purple[500],
-    "&:hover": {
-      backgroundColor: purple[700],
-    },
-  }));
 
   return (
     <div id="donations">
@@ -48,9 +41,7 @@ const Donations = (props) => {
             <div class="text-wrap">
               <div class="text-inner">
                 <div class="row">
-                  <div class="col-md-8 col-md-offset-2">
-                  
-                  </div>
+                  <div class="col-md-8 col-md-offset-2"></div>
                 </div>
               </div>
             </div>
@@ -84,7 +75,7 @@ const Donations = (props) => {
 
         <section id="fh5co-about" data-section="about">
           <div class="container">
-            <div class="row">
+            <div class="row-why">
               <div class="col-md-12 section-heading text-left">
                 <h2 class=" left-border to-animate">
                   Why we need your donations?
@@ -118,53 +109,46 @@ const Donations = (props) => {
           </div>
         </section>
 
-        {/* <div id='about'>	 */}
-        <section id="fh5co-about" data-section="about">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12 section-heading text-left">
-                <h2 class=" left-border to-animate" style={{ color: "black" }}>
-                  What we have done?
-                </h2>
-                {/* <div class="row">
-						<div class="col-md-8 col-md-offset-2 subtext to-animate">
-							<h3>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</h3>
-						</div>
-					</div> */}
+        <div id="about">
+          <section id="fh5co-about" data-section="about">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12 section-heading text-left">
+                  <h2
+                    class=" left-border to-animate"
+                    style={{ color: "white" }}
+                  >
+                    What we have done?
+                  </h2>
+                </div>
               </div>
-            </div>
 
-            <div>
-              <EventCarousel />
-            </div>
-
-            <br />
-
-            <div class="row" style={aboutStyle1}>
-              <div class="row watch-video text-center to-animate">
-                <span>Watch the video</span>
-
-                <a
-                  href="https://vimeo.com/channels/staffpicks/93951774"
-                  class="popup-vimeo btn-video"
-                >
-                  <i class="icon-play2"></i>
-                </a>
+              <div>
+                <EventCarousel />
               </div>
+
+              <br/>
+
+              {/* <div class="row" style={aboutStyle1}>
+                <div class="row watch-video text-center to-animate">
+                  <span>Watch the video</span>
+
+                  <a
+                    href="https://vimeo.com/channels/staffpicks/93951774"
+                    class="popup-vimeo btn-video"
+                  >
+                    <i class="icon-play2"></i>
+                  </a>
+                </div>
+              </div> */}
             </div>
-
-            <br />
-          </div>
-        </section>
-
-        {/* </div> */}
-        <div id='mailer'>
-        <div class="row">
-          <div id="about">
+          </section>
+        </div>
+        <div id="mailer">
+          <div class="row">
             <ContactUs />
           </div>
         </div>
-</div>
         <div id="footer">
           <div className="container text-center">
             <p>

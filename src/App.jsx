@@ -20,7 +20,7 @@ import Bathik from "./components/enterprise/bathik/bathik";
 
 
 
-
+{/* ADMIN */}
 import AdHome from "./components/admin/Home"
 import AUser from "./components/admin/NewUser";
 import WidgetLg from "./components/admin/WidgetLg";

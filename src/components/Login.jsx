@@ -8,9 +8,8 @@ import { ContactUs } from "./mailer";
 import { Link } from "react-scroll";
 import logo from "../logo.png";
 
-import "./Modal.css";
 
-function Login({ setOpenModal }) {
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
