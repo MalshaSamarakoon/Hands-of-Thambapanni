@@ -8,6 +8,7 @@ import BathikTile from "./bathikTile";
 
 function Bathik() {
   const [bathikList, setBathikList] = useState([]);
+  const [docId, setDocId] = useState(null);
 
   useEffect(() => {
     const q = query(
@@ -17,6 +18,7 @@ function Bathik() {
 
     onSnapshot(q, (querySnapshot) => {
       querySnapshot.docs.map((doc) => {
+        setDocId(doc.id);
         setBathikList((arr) => [...arr, doc.data()]);
       });
     });
@@ -47,7 +49,7 @@ function Bathik() {
           <div class="row">
             {bathikList &&
               bathikList.map((bathik, index) => {
-                return <BathikTile key={index} bathik={bathik} />;
+                return <BathikTile key={index} bathik={bathik} docId={docId} />;
               })}
           </div>
         </div>

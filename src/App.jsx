@@ -24,6 +24,7 @@ import AUser from "./components/admin/NewUser";
 import WidgetLg from "./components/admin/WidgetLg";
 import WidgetSm from "./components/admin/WidgetSm";
 import ANewUser from "./components/admin/login";
+import BathikDetails from "./components/enterprise/bathik/bathikDetails";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -48,6 +49,11 @@ function App() {
 
             <Route exact path="/cane" element={<Cane />} />
             <Route exact path="/bathik" element={<Bathik />} />
+            <Route
+              exact
+              path="/bathikDetails/:docId"
+              element={<BathikDetails />}
+            />
 
             <Route
               exact
