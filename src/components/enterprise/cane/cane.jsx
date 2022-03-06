@@ -2,33 +2,25 @@ import React, { useEffect, useState } from "react";
 import { Navigation } from "../../navigation";
 import { db } from "./../../../database/firebase-config";
 import { collection, where, query, onSnapshot } from "@firebase/firestore";
-import "./bathik.css";
-import bathikImg from "../../../data/img/b1.jpg";
-import BathikTile from "./bathikTile";
+import "./cane.css";
+import BathikImg from "../../../data/img/b1.jpg";
+import CaneTile from "./caneTile";
 
-
-
-function Bathik({ children }) {
-  const [bathikList, setBathikList] = useState([]);
+function Cane() {
+  const [caneList, setCaneList] = useState([]);
 
   useEffect(() => {
     const q = query(
       collection(db, "Enterprises"),
-      where("type", "==", "bathik")
+      where("type", "==", "cane")
     );
 
     onSnapshot(q, (querySnapshot) => {
       querySnapshot.docs.map((doc) => {
-        setBathikList((arr) => [...arr, doc.data()]);
+        setCaneList((arr) => [...arr, doc.data()]);
       });
     });
   }, []);
-
-  const text = children;
-  const [isReadMore, setIsReadMore] = useState(true);
-  const toggleReadMore = () => {
-    setIsReadMore(!isReadMore);
-  };
 
   return (
     <div>
@@ -38,7 +30,7 @@ function Bathik({ children }) {
 
       <section
         style={{
-          backgroundImage: `url(${bathikImg})`,
+          backgroundImage: `url(${BathikImg})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
           backgroundSize: "cover",
@@ -47,32 +39,21 @@ function Bathik({ children }) {
         class="jumbotron text-center"
       >
         {/* <img src={bathikImg} alt="" srcset="" /> */}
-        <h1 class="display-3">BATIK </h1>
+        <h1 class="display-3">CANE </h1>
         <p class="lead">Slogan on batik.</p>
       </section>
       <section id="gallery">
         <div class="container">
           <div class="row">
-            {bathikList &&
-              bathikList.map((bathik, index) => {
-                return <BathikTile key={index} bathik={bathik} />;
+            {caneList &&
+              caneList.map((cane, index) => {
+                return <CaneTile key={index} cane={cane} />;
               })}
           </div>
         </div>
       </section>
-
-
-
-      
     </div>
-  
-  
-  
-  
   );
-
-
-  
 }
 
-export default Bathik;
+export default Cane;

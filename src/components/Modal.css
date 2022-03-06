@@ -9,18 +9,18 @@
 .modalBackground {
   position: fixed;
   display:flex !important;
-  float:left;
+  align-items: center !important;
+
   background-color: #ffffff;
-   margin-left: 54px; 
-   margin-top: -200px;
+   margin-left: 50%; 
    opacity: 1000;
    /* z-index must be below .modal and above everything else  */
-   z-index: 1;
+   z-index: 50;
 }
 
 .modalContainer {
-  width: 330px;
-  height: 400px;
+  width: 600px;
+  height: 800px;
   /* border-radius: 12px; */
   background-color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -30,7 +30,7 @@
 }
 
 .modalContainer-signup{
-width: 340px;
+width: 400px;
   height: 460px;
   /* border-radius: 12px; */
   background-color: #ffffff;
@@ -57,13 +57,7 @@ width: 340px;
   /* justify-content: flex-end; */
 }
 
-.titleCloseBtn button {
-  /* background-color: transparent; */
-  background-color: white;
-  border: none;
-  font-size: 25px;
-  cursor: pointer;
-}
+
 
 .modalContainer .body {
   flex: 50%;
@@ -86,7 +80,7 @@ width: 340px;
 .input-container {
   height: 50px;
   position: relative;
-  width: 100%;
+  width: 150%;
 }
 
 .ic1 {
