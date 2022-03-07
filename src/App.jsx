@@ -12,7 +12,6 @@ import AdminProtectedRoute from "./components/AdminProtectedRoute";
 import PayPal from "./components/PayPal";
 import Donation from "./components/donations";
 import Home from "./components/home";
-import NewUser from "./components/admin/login";
 import ImageUpload from "./components/ImageUpload";
 
 import Cane from "./components/enterprise/cane/cane";
@@ -46,7 +45,6 @@ function App() {
             <Route exact path="/login" element={<Login />} />
             {/* <Route exact path="/donation" element={<Donation />} /> */}
             <Route exact path="/signup" element={<Signup />} />
-            <Route exact path="/admin/login" element={<NewUser />} />
             <Route exact path="/upload" element={<ImageUpload />} />
 
             <Route exact path="/cane" element={<Cane />} />

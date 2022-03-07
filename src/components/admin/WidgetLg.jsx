@@ -24,8 +24,7 @@ function WidgetLg() {
     <div className="App">
     
 
-      {users.map((user) => {
-        return (
+      
             <div className="widgetSm">
             <span className="widgetSmTitle">New Join Members</span>
            
@@ -36,16 +35,25 @@ function WidgetLg() {
                 <div className="widgetSmUser">
                 <table class="table table-hover">
   <thead>
+
     <tr>
       <th scope="col">User</th>
       <th scope="col">Amount</th>
+      <th scope="col">Donated time</th>
+      <th scope="col">Enterprise Name</th>
     </tr>
   </thead>
   <tbody>
+  {users.map((user) => {
+        return (
     <tr>
       <td>{user.email}</td>
       <td>{user.amount}</td>
+      <td>{user.date}</td>
+      {/* <td>{user.enterpriseName}</td> */}
     </tr>
+    );
+      })}
   </tbody>
 </table>
 
@@ -55,8 +63,7 @@ function WidgetLg() {
       
             </ul>
           </div>
-        );
-      })}
+
     </div>
   );
 }

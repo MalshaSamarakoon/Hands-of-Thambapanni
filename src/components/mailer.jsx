@@ -45,10 +45,10 @@ export const ContactUs = (enterpriseName = null) => {
   const sendEmail = async () => {
     emailjs
       .send(
-        "service_ukg9fte",
-        "template_uh9yzgf",
+        "service_qmu7wy5",
+        "template_qesi16o",
         templateParams,
-        "user_CaVgj9aXnYjHxUjP7Pc9g"
+        "9lgHgU4Hc45a_tsfL"
       )
       .then(
         function (response) {

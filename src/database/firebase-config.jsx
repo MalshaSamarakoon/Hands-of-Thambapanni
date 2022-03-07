@@ -45,17 +45,38 @@ import { getFirestore } from "@firebase/firestore";
 
 
 //------------------Login
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCdAX6YD4vW4RP6Miz4huhkgRxXz4y2HGM",
+//   authDomain: "login-700f7.firebaseapp.com",
+//   projectId: "login-700f7",
+//   storageBucket: "login-700f7.appspot.com",
+//   messagingSenderId: "736559781326",
+//   appId: "1:736559781326:web:1ff3fe214968fbb703c79f",
+//   measurementId: "G-WM9R9TDW49"
+// };
+
+
+
+//----------newhot
+// const firebaseConfig = {
+//   apiKey: "AIzaSyB1sdOCQ-206jWC-z0sK-8bcXLz3iSpx-0",
+//   authDomain: "new-hot-3aa9e.firebaseapp.com",
+//   projectId: "new-hot-3aa9e",
+//   storageBucket: "new-hot-3aa9e.appspot.com",
+//   messagingSenderId: "193849896162",
+//   appId: "1:193849896162:web:c07e90696bb0e5a53302bb"
+// };
+
+
+//-------Thambapanni
 const firebaseConfig = {
-  apiKey: "AIzaSyCdAX6YD4vW4RP6Miz4huhkgRxXz4y2HGM",
-  authDomain: "login-700f7.firebaseapp.com",
-  projectId: "login-700f7",
-  storageBucket: "login-700f7.appspot.com",
-  messagingSenderId: "736559781326",
-  appId: "1:736559781326:web:1ff3fe214968fbb703c79f",
-  measurementId: "G-WM9R9TDW49"
+  apiKey: "AIzaSyBIhMZJkkiykUXmy4lLgdmPx1CtetCbvTM",
+  authDomain: "thambapanni-1c8f2.firebaseapp.com",
+  projectId: "thambapanni-1c8f2",
+  storageBucket: "thambapanni-1c8f2.appspot.com",
+  messagingSenderId: "577185973919",
+  appId: "1:577185973919:web:b69a0f05916de843a6c4aa"
 };
-
-
 
 
 

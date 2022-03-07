@@ -27,10 +27,13 @@ export default function Sidebar() {
               Home
             </li>
             </Link>
+
+            <Link to="/adhome" className="link">
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
               Analytics
             </li>
+            </Link>
           </ul>
         </div>
 

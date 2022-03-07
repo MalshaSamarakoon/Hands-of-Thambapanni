@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navigation } from "../../navigation";
+import { Navigation_log } from "../../navigation_log";
 import { db } from "./../../../database/firebase-config";
 import { collection, where, query, onSnapshot } from "@firebase/firestore";
 import "./bathik.css";
@@ -35,7 +35,7 @@ function Bathik({ children }) {
   return (
     <div>
       <div>
-        <Navigation />
+        <Navigation_log />
       </div>
 
       <section

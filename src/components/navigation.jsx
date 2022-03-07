@@ -37,7 +37,7 @@ export const Navigation = () => {
       style={{ margin: "0px" }}
     >
       <div className="container-fluid">
-        <img src="https://lh3.googleusercontent.com/a-/AOh14GhrnsWjgDEygxwhk90SUwjgPYoA7wiVm3Oqi2Of1w=s96-c" width="50px" height="50px" alt="" />
+        <img src={logo} width="50px" height="50px" alt="" />
         <Link
           to="/"
           style={{ height: "35px", fontSize: "15px" }}
@@ -89,11 +89,11 @@ export const Navigation = () => {
             <form className="d-flex pe-3">
               <SearchBar placeholder="Search Enterprise..." data={BookData} />
             </form>
-            <img src={profile} width="35px" height="35px" alt="" />
+            <img src={user?.photoURL != "" ? user?.photoURL : profile} width="35px" height="35px" alt=""/>
 
             <ReactBootStrap.NavDropdown
               className="navbar-item"
-              title={user?.email}
+              title={user?.displayName != "" ? user?.displayName : profile}
               id="collasible-nav-dropdown"
             >
               {user && (

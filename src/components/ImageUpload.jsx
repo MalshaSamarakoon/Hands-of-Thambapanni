@@ -5,12 +5,13 @@ import { storage } from "../database/firebase-config";
 
 function ImageUpload() {
   const [progress, setProgress] = useState(0);
+  
   const formHandler = (e) => {
     e.preventDefault();
     const file = e.target[0].files[0];
     uploadFiles(file);
   };
-
+  
   const uploadFiles = (file) => {
     
     if (!file) return;

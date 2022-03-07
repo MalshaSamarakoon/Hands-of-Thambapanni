@@ -11,9 +11,7 @@ const BathikTile = ({ bathik, docId }) => {
             <h5 class="card-title">{bathik.enterpriseName}</h5>
             <p class="card-text">{bathik.since}</p>
             <p class="card-text">{bathik.description}</p>
-            <a href="" class="btn btn-outline-success btn-lg me-2 ">
-              More Details
-            </a>
+          
 
             <label>Owner</label>
             <p class="card-text">{bathik.ownerName}</p>
