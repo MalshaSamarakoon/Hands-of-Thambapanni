@@ -5,6 +5,7 @@ import { doc, getDoc } from "@firebase/firestore";
 
 import { ContactUs } from "../../mailer";
 import { useUserAuth } from "../../../context/UserAuthContext";
+import GoogleMapComponent from "../../map/googleMap";
 
 const BathikDetails = () => {
   let params = useParams();
@@ -13,6 +14,7 @@ const BathikDetails = () => {
 
   const [bathikDetails, setBathikDetails] = useState(null);
   const [loading, setLoading] = useState(true);
+  // const [center, setCenter] = useState({ lat: 59.955413, lng: 30.337844 });
 
   useEffect(async () => {
     const docRef = doc(db, "Enterprises", params.docId);
@@ -37,6 +39,10 @@ const BathikDetails = () => {
           </div>
         </div>
       )}
+      <GoogleMapComponent
+        lat={bathikDetails.location._lat}
+        long={bathikDetails.location._long}
+      />
     </>
   );
 };
