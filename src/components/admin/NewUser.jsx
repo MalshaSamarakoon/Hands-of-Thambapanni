@@ -1,11 +1,9 @@
-import { db } from "./../../database/firebase-config";
+import { db, storage } from "./../../database/firebase-config";
 import { useState, useRef, useEffect } from "react";
 import { collection, getDocs, addDoc } from "@firebase/firestore";
 import Sidebar from "./Sidebar";
 import { Topbar } from "./Topbar";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-import { storage } from "../database/firebase-config";
-
 
 export default function AUser() {
   const [users, setUsers] = useState([]);
@@ -13,14 +11,21 @@ export default function AUser() {
 
   const [progress, setProgress] = useState(0);
 
-  const formHandler = (e) => {
-    
-  };
+  const formHandler = (e) => {};
 
-  const uploadFiles = (file) => {
-    if (!file) return;
-    const sotrageRef = ref(storage, `${file.name}/${file.name}`);
-    const uploadTask = uploadBytesResumable(sotrageRef, file);
+  const [enterprise, setNewEnterprise] = useState("");
+  const [type, setNewType] = useState("");
+  const [owner, setNewOwner] = useState(0);
+  const [address, setNewAddress] = useState("");
+  const [phone, setNewPhone] = useState("");
+  const [since, setNewSince] = useState("");
+  const [des, setNewDescription] = useState(0);
+  const [newImageOwner, setNewImageOwner] = useState("");
+
+  const uploadFiles = () => {
+    if (!newImageOwner) return;
+    const sotrageRef = ref(storage, `images/${newImageOwner.name}`);
+    const uploadTask = uploadBytesResumable(sotrageRef, newImageOwner);
 
     uploadTask.on(
       "state_changed",
@@ -30,7 +35,7 @@ export default function AUser() {
         );
         setProgress(prog);
       },
-      (error) => console.log(error),
+      (error) => console.log("Error in uploading image", error),
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log("File available at", downloadURL);
@@ -38,17 +43,6 @@ export default function AUser() {
       }
     );
   };
-
-  const [enterprise, setNewEnterprise] = useState("");
-  const [type, setNewType] = useState("");
-  const [owner, setNewOwner] = useState(0);
-  const [address, setNewAddress] = useState("");
-  const [phone, setNewPhone] = useState("");
-  const [since, setNewSince] = useState("");
-  const [des, setNewDescription] = useState(0);
-  const [downloadURL, setNewImageOwner] = useState(0);
- 
-
 
   const createUser = async (e) => {
     // e.preventDefault();
@@ -62,10 +56,8 @@ export default function AUser() {
     //   description: des,
     //   imageOwner: downloadURL,
     e.preventDefault();
-    const file = downloadURL;
-    console.log(file)
-    uploadFiles(file);
-  
+    uploadFiles();
+
     // });
     // console.log(enter.id);
   };
@@ -89,8 +81,6 @@ export default function AUser() {
 
       <h1 className="newUserTitle">New User</h1>
       <form className="newUserForm" onSubmit={formHandler}>
-
-
         <div className="newUserItem">
           <label>Enterprise Name</label>
           <input
@@ -167,14 +157,10 @@ export default function AUser() {
           <input
             type="file"
             onChange={(event) => {
-              setNewImageOwner(event.target.value);
+              setNewImageOwner(event.target.files[0]);
             }}
           />
         </div>
-
-       
-
-
 
         <button type="submit" className="newUserButton" onClick={createUser}>
           Create
@@ -183,9 +169,6 @@ export default function AUser() {
     </div>
   );
 }
-
-
-
 
 // import { db } from "./../../database/firebase-config";
 // import { useState, useRef, useEffect } from "react";
@@ -379,7 +362,6 @@ export default function AUser() {
 //             </select>
 //           </div>
 
-
 //           <div className="newUserItem">
 //             <label>About</label>
 //             <textarea
@@ -390,7 +372,6 @@ export default function AUser() {
 //             />
 //           </div>
 
-         
 //           <br></br>
 //           <hr/>
 //           <div className="newUserItem">
