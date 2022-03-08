@@ -5,7 +5,7 @@ import { doc, getDoc } from "@firebase/firestore";
 
 import { ContactUs } from "../../mailer";
 import { useUserAuth } from "../../../context/UserAuthContext";
-import GoogleMapComponent from "../../map/googleMap";
+import GoogleMapComponent from "../../map/googlemapComponent";
 
 import { KadeDescription } from "../../KadeDescription";
 
