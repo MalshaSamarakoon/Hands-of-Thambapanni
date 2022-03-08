@@ -8,13 +8,17 @@ import emailjs from "emailjs-com";
 import { useUserAuth } from "../context/UserAuthContext";
 
 import { Helmet } from "react-helmet";
+import { useAlert } from "react-alert";
 
 export const ContactUs = (enterpriseName = null) => {
+  const alert = useAlert();
+
   const [doners, setDoners] = useState([]);
   const donersCollectionRef = collection(db, "payments");
 
   const [amount, setNewAmount] = useState(0);
   const [email, setNewEmail] = useState("");
+  const [showSuccessMsg, setShowSuccessMsg] = useState(false);
 
   const { user } = useUserAuth();
 
@@ -26,7 +30,14 @@ export const ContactUs = (enterpriseName = null) => {
       date: new Date().toLocaleString(),
       enterpriseName,
     });
+    setShowSuccessMsg(false);
   };
+
+  useEffect(() => {
+    if (showSuccessMsg) {
+      alert.show("You have successfully placed your donation!");
+    }
+  }, [showSuccessMsg]);
 
   useEffect(() => {
     const getDoners = async () => {
@@ -52,11 +63,7 @@ export const ContactUs = (enterpriseName = null) => {
       )
       .then(
         function (response) {
-          <div class="alert alert-info" role="alert">
-          Info Alert
-        </div>
-      
-          console.log("SUCCESS!", response.status, response.text);
+          setShowSuccessMsg(true);
         },
         function (error) {
           console.log("FAILED...", error);
