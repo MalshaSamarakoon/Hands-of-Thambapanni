@@ -1,6 +1,6 @@
 import { db, storage } from "./../../database/firebase-config";
 import { useState, useRef, useEffect } from "react";
-import { collection, getDocs, addDoc } from "@firebase/firestore";
+import { collection, getDocs, addDoc, GeoPoint } from "@firebase/firestore";
 import Sidebar from "./Sidebar";
 import { Topbar } from "./Topbar";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
@@ -16,7 +16,7 @@ export default function AUser() {
   const formHandler = (e) => {};
 
   const [enterprise, setNewEnterprise] = useState("");
-  const [type, setNewType] = useState("");
+  const [type, setNewType] = useState("bathik");
   const [owner, setNewOwner] = useState(0);
   const [address, setNewAddress] = useState("");
   const [phone, setNewPhone] = useState("");
@@ -39,18 +39,21 @@ export default function AUser() {
         );
         setProgress(prog);
       },
-      (error) => console.log("Error in uploading image", error),
+      (error) => {
+        addUser("");
+        console.log("Error in uploading image", error);
+      },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log("File available at", downloadURL);
+          addUser(downloadURL);
         });
       }
     );
   };
 
-  const createUser = async (e) => {
-    e.preventDefault();
-     await addDoc(usersCollectionRef, {
+  const addUser = async (imageUrl) => {
+    await addDoc(usersCollectionRef, {
       enterpriseName: enterprise,
       type: type,
       ownerName: owner,
@@ -58,24 +61,26 @@ export default function AUser() {
       phone: phone,
       since: since,
       description: des,
-      lattitude: lat,
-      longertitude: lon,
-      });
+      image: imageUrl,
+      location: new GeoPoint(Number(lat), Number(lon)),
+    });
+    setNewEnterprise("");
+  };
 
+  const createUser = async (e) => {
     e.preventDefault();
     uploadFiles();
-    // console.log(enter.id);
   };
 
   useEffect(() => {
     const getUsers = async () => {
-      const data=await getDocs(usersCollectionRef)
+      const data = await getDocs(usersCollectionRef);
       // console.log(data);
       setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    }
+    };
 
     getUsers();
-  }, [] );
+  }, []);
 
   return (
     <div className="newUser">
@@ -86,7 +91,6 @@ export default function AUser() {
 
       <h1 className="newUserTitle">New User</h1>
       <form className="newUserForm" onSubmit={formHandler}>
-
         <div className="newUserItem">
           <label>Enterprise Name</label>
           <input
@@ -163,7 +167,7 @@ export default function AUser() {
 
         <div className="newUserItem">
           <label>About</label>
-          <textarea 
+          <textarea
             type="text"
             placeholder="Description about:"
             onChange={(event) => {
@@ -196,7 +200,8 @@ export default function AUser() {
         <div className="newUserItem">
           <label>Image</label>
           <input
-            type="file" className="image"
+            type="file"
+            className="image"
             onChange={(event) => {
               setNewImageOwner(event.target.files[0]);
             }}
@@ -210,11 +215,3 @@ export default function AUser() {
     </div>
   );
 }
-
-
-
-
-
-
-
-

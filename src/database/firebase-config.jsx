@@ -3,30 +3,29 @@ import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "@firebase/firestore";
 
-
 //-------------------Hands-of-Thambapanni (old)
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyDORl_IzISIEAP9LnTBQPYr054gHMGxuLc",
-//   authDomain: "handsofthambapanni.firebaseapp.com",
-//   projectId: "handsofthambapanni",
-//   storageBucket: "handsofthambapanni.appspot.com",
-//   messagingSenderId: "288518372281",
-//   appId: "1:288518372281:web:06e7bbc520569d4b479468",
-//   measurementId: "G-WBYJ8BJ2VF",
-// };
+const firebaseConfig = {
+  apiKey: "AIzaSyDORl_IzISIEAP9LnTBQPYr054gHMGxuLc",
+  authDomain: "handsofthambapanni.firebaseapp.com",
+  projectId: "handsofthambapanni",
+  storageBucket: "handsofthambapanni.appspot.com",
+  messagingSenderId: "288518372281",
+  appId: "1:288518372281:web:06e7bbc520569d4b479468",
+  measurementId: "G-WBYJ8BJ2VF",
+};
 
 //----------------------HOT-Rott (new)
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDt-P74LG6y5fUjjPDPf_m4EWm5uQ537SU",
-  authDomain: "hot-rot.firebaseapp.com",
-  projectId: "hot-rot",
-  storageBucket: "hot-rot.appspot.com",
-  messagingSenderId: "44108530183",
-  appId: "1:44108530183:web:24f75cb56b7d85ebb460a2",
-  measurementId: "G-V7VPCE8YV9",
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDt-P74LG6y5fUjjPDPf_m4EWm5uQ537SU",
+//   authDomain: "hot-rot.firebaseapp.com",
+//   projectId: "hot-rot",
+//   storageBucket: "hot-rot.appspot.com",
+//   messagingSenderId: "44108530183",
+//   appId: "1:44108530183:web:24f75cb56b7d85ebb460a2",
+//   measurementId: "G-V7VPCE8YV9",
+// };
 
 //------------------- Firebase Practice
 
@@ -41,10 +40,6 @@ const firebaseConfig = {
 //   measurementId: "G-9YL2PEC4QP"
 // };
 
-
-
-
-
 //------------------Login
 // const firebaseConfig = {
 //   apiKey: "AIzaSyCdAX6YD4vW4RP6Miz4huhkgRxXz4y2HGM",
@@ -56,8 +51,6 @@ const firebaseConfig = {
 //   measurementId: "G-WM9R9TDW49"
 // };
 
-
-
 //----------newhot
 // const firebaseConfig = {
 //   apiKey: "AIzaSyB1sdOCQ-206jWC-z0sK-8bcXLz3iSpx-0",
@@ -67,7 +60,6 @@ const firebaseConfig = {
 //   messagingSenderId: "193849896162",
 //   appId: "1:193849896162:web:c07e90696bb0e5a53302bb"
 // };
-
 
 //-------Thambapanni
 // const firebaseConfig = {
@@ -79,9 +71,6 @@ const firebaseConfig = {
 //   appId: "1:577185973919:web:b69a0f05916de843a6c4aa"
 // };
 
-
-
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
@@ -90,5 +79,3 @@ export const auth = getAuth(app);
 export const storage = getStorage(app);
 
 export default app;
-
-
