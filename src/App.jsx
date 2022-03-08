@@ -17,10 +17,7 @@ import ImageUpload from "./components/ImageUpload";
 import Cane from "./components/enterprise/cane/cane";
 import Bathik from "./components/enterprise/bathik/bathik";
 
-
-
-{/* ADMIN */}
-import AdHome from "./components/admin/Home"
+import AdHome from "./components/admin/Home";
 import AUser from "./components/admin/NewUser";
 import WidgetLg from "./components/admin/WidgetLg";
 import WidgetSm from "./components/admin/WidgetSm";
@@ -73,7 +70,7 @@ function App() {
               path="/adhome"
               element={
                 // <AdminProtectedRoute>
-                  <AdHome />
+                <AdHome />
                 // </AdminProtectedRoute>
               }
             />
@@ -82,7 +79,7 @@ function App() {
               path="/adduser"
               element={
                 // <AdminProtectedRoute>
-                  <AUser />
+                <AUser />
                 // </AdminProtectedRoute>
               }
             />
@@ -91,7 +88,7 @@ function App() {
               path="/transactions"
               element={
                 // <AdminProtectedRoute>
-                  <WidgetLg />
+                <WidgetLg />
                 // </AdminProtectedRoute>
               }
             />
@@ -100,7 +97,7 @@ function App() {
               path="/users"
               element={
                 // <AdminProtectedRoute>
-                  <WidgetSm />
+                <WidgetSm />
                 // </AdminProtectedRoute>
               }
             />

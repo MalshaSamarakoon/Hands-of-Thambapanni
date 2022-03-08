@@ -57,8 +57,6 @@ function WidgetSm() {
                         </tr>
                                                  );
                                                 })}
-
-                      <img src="https://firebasestorage.googleapis.com/v0/b/thambapanni-1c8f2.appspot.com/o/jayasiri%20wewal.jpg%2Fjayasiri%20wewal.jpg?alt=media&token=0e9d63ad-3f64-4a07-9730-3e82931c621a"/>                         
                       </tbody>
                     </table>
                   </div>

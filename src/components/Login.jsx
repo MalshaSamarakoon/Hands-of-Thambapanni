@@ -37,7 +37,7 @@ function Login() {
     try {
       await logIn(email, password);
       navigate("/donation");
-      <Link to="mailer" spy={true} smooth={true} />;
+      e.preventDefault();
     } catch (err) {
       setError(err.message);
     }
@@ -49,7 +49,6 @@ function Login() {
       e.preventDefault();
 
       navigate("/donation");
-      <Link to="mailer" spy={true} smooth={true} />;
 
     } catch (error) {
       setError(error.message);
@@ -90,7 +89,7 @@ function Login() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Admin
+            Hands of Thambapanni
           </Typography>
           <Box
             component="form"

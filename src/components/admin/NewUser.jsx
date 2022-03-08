@@ -1,8 +1,11 @@
-import { db } from "./../../database/firebase-config";
+import { db, storage } from "./../../database/firebase-config";
 import { useState, useRef, useEffect } from "react";
 import { collection, getDocs, addDoc } from "@firebase/firestore";
 import Sidebar from "./Sidebar";
 import { Topbar } from "./Topbar";
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+
+import "./newUser.css";
 
 export default function AUser() {
   const [users, setUsers] = useState([]);
@@ -10,16 +13,23 @@ export default function AUser() {
 
   const [progress, setProgress] = useState(0);
 
-  const formHandler = (e) => {
-    e.preventDefault();
-    const file = e.target[0].files[0];
-    uploadFiles(file);
-  };
+  const formHandler = (e) => {};
 
-  const uploadFiles = (file) => {
-    if (!file) return;
-    const sotrageRef = ref(storage, `${file.name}/${file.name}`);
-    const uploadTask = uploadBytesResumable(sotrageRef, file);
+  const [enterprise, setNewEnterprise] = useState("");
+  const [type, setNewType] = useState("");
+  const [owner, setNewOwner] = useState(0);
+  const [address, setNewAddress] = useState("");
+  const [phone, setNewPhone] = useState("");
+  const [since, setNewSince] = useState("");
+  const [des, setNewDescription] = useState(0);
+  const [lat, setNewLattitude] = useState(0);
+  const [lon, setNewLongertitude] = useState(0);
+  const [newImageOwner, setNewImageOwner] = useState("");
+
+  const uploadFiles = () => {
+    if (!newImageOwner) return;
+    const sotrageRef = ref(storage, `images/${newImageOwner.name}`);
+    const uploadTask = uploadBytesResumable(sotrageRef, newImageOwner);
 
     uploadTask.on(
       "state_changed",
@@ -29,7 +39,7 @@ export default function AUser() {
         );
         setProgress(prog);
       },
-      (error) => console.log(error),
+      (error) => console.log("Error in uploading image", error),
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log("File available at", downloadURL);
@@ -38,23 +48,9 @@ export default function AUser() {
     );
   };
 
-  const [enterprise, setNewEnterprise] = useState("");
-  const [type, setNewType] = useState("");
-  const [owner, setNewOwner] = useState(0);
-  const [address, setNewAddress] = useState("");
-  const [phone, setNewPhone] = useState("");
-  const [since, setNewSince] = useState("");
-  const [des, setNewDescription] = useState(0);
-  const [downloadURLOwner, setNewImageOwner] = useState(0);
-  const [downloadURLHeader, setNewImageHeader] = useState(0);
-  const [downloadURLProducts, setNewImageProducts] = useState(0);
-  const [downloadURLShop, setNewImageShop] = useState(0);
-
-
-
   const createUser = async (e) => {
     e.preventDefault();
-    const enter = await addDoc(usersCollectionRef, {
+     await addDoc(usersCollectionRef, {
       enterpriseName: enterprise,
       type: type,
       ownerName: owner,
@@ -62,23 +58,24 @@ export default function AUser() {
       phone: phone,
       since: since,
       description: des,
-      imageOwner: downloadURLOwner,
-      imageHeader: downloadURLHeader,
-      imageProducts: downloadURLProducts,
-      imageShop: downloadURLShop,
-    });
-    console.log(enter.id);
+      lattitude: lat,
+      longertitude: lon,
+      });
+
+    e.preventDefault();
+    uploadFiles();
+    // console.log(enter.id);
   };
 
-  // useEffect(() => {
-  //   const getUsers = async () => {
-  //     const data=await getDocs(usersCollectionRef)
-  //     // console.log(data);
-  //     setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  //   }
+  useEffect(() => {
+    const getUsers = async () => {
+      const data=await getDocs(usersCollectionRef)
+      // console.log(data);
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    }
 
-  //   getUsers();
-  // }, [] );
+    getUsers();
+  }, [] );
 
   return (
     <div className="newUser">
@@ -90,11 +87,22 @@ export default function AUser() {
       <h1 className="newUserTitle">New User</h1>
       <form className="newUserForm" onSubmit={formHandler}>
 
-
         <div className="newUserItem">
           <label>Enterprise Name</label>
           <input
             type="text"
+            placeholder="M.K.W.Nimal"
+            onChange={(event) => {
+              setNewOwner(event.target.value);
+            }}
+          />
+        </div>
+
+        <div className="newUserItem">
+          <label>Brand Name</label>
+          <input
+            type="text"
+            placeholder="Minimuthu Bathik"
             onChange={(event) => {
               setNewEnterprise(event.target.value);
             }}
@@ -102,23 +110,23 @@ export default function AUser() {
         </div>
 
         <div className="newUserItem">
-          <label>Enterprise Type</label>
-          <div className="newUserGender">
-            <input
-              type="text"
-              onChange={(event) => {
-                setNewType(event.target.value);
-              }}
-            />
-          </div>
+          <label>Since</label>
+          <input
+            type="number"
+            placeholder="2007"
+            onChange={(event) => {
+              setNewSince(event.target.value);
+            }}
+          />
         </div>
 
         <div className="newUserItem">
-          <label>Owner Name</label>
+          <label>Phone</label>
           <input
             type="text"
+            placeholder="+94 123 456 789"
             onChange={(event) => {
-              setNewOwner(event.target.value);
+              setNewPhone(event.target.value);
             }}
           />
         </div>
@@ -127,6 +135,7 @@ export default function AUser() {
           <label>Address</label>
           <input
             type="text"
+            placeholder="No:12,Kandy,Sri Lanka"
             onChange={(event) => {
               setNewAddress(event.target.value);
             }}
@@ -134,75 +143,65 @@ export default function AUser() {
         </div>
 
         <div className="newUserItem">
-          <label>Telephone</label>
+          <label>Location</label>
           <input
             type="text"
+            placeholder="Lattitude:"
             onChange={(event) => {
-              setNewPhone(event.target.value);
+              setNewLattitude(event.target.value);
+            }}
+          />
+          <br></br>
+          <input
+            type="text"
+            placeholder="Longertitude:"
+            onChange={(event) => {
+              setNewLongertitude(event.target.value);
             }}
           />
         </div>
 
         <div className="newUserItem">
-          <label>Since</label>
-          <input
+          <label>About</label>
+          <textarea 
             type="text"
-            onChange={(event) => {
-              setNewSince(event.target.value);
-            }}
-          />
-        </div>
-
-        <div className="newUserItem">
-          <label>Description</label>
-          <input
-            type="text"
+            placeholder="Description about:"
             onChange={(event) => {
               setNewDescription(event.target.value);
             }}
           />
         </div>
+
+        <div className="newUserItem">
+          <label>Enterprise Type</label>
+          <select
+            className="newUserSelect"
+            name="active"
+            id="active"
+            onChange={(event) => {
+              setNewType(event.target.value);
+            }}
+          >
+            <option value="bathik">Bathik</option>
+            <option value="cane">Cane</option>
+            <option value="coir">Coir</option>
+            <option value="toddy">Toddy</option>
+            <option value="pottery">Pottery</option>
+            <option value="handloom">Handloom</option>
+            <option value="drums">Drums</option>
+            <option value="mask">Mask</option>
+            <option value="cane">Cane</option>
+          </select>
+        </div>
         <div className="newUserItem">
           <label>Image</label>
           <input
-            type="file"
+            type="file" className="image"
             onChange={(event) => {
-              setNewImageOwner(event.target.value);
+              setNewImageOwner(event.target.files[0]);
             }}
           />
         </div>
-
-        <div className="newUserItem">
-          <label>Image</label>
-          <input
-            type="file"
-            onChange={(event) => {
-              setNewImageHeader(event.target.value);
-            }}
-          />
-        </div>
-
-        <div className="newUserItem">
-          <label>Image</label>
-          <input
-            type="file"
-            onChange={(event) => {
-              setNewImageProducts(event.target.value);
-            }}
-          />
-        </div>
-
-        <div className="newUserItem">
-          <label>Image</label>
-          <input
-            type="file"
-            onChange={(event) => {
-              setNewImageShop(event.target.value);
-            }}
-          />
-        </div>
-
-
 
         <button type="submit" className="newUserButton" onClick={createUser}>
           Create
@@ -211,5 +210,11 @@ export default function AUser() {
     </div>
   );
 }
+
+
+
+
+
+
 
 
