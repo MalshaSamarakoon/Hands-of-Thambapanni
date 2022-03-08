@@ -64,7 +64,15 @@ export default function AUser() {
       image: imageUrl,
       location: new GeoPoint(Number(lat), Number(lon)),
     });
+    
     setNewEnterprise("");
+    setNewType("");
+    setNewOwner("");
+    setNewAddress("");
+    setNewPhone("");
+    setNewSince("");
+    setNewEnterprise("");
+
   };
 
   const createUser = async (e) => {
