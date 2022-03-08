@@ -6,12 +6,10 @@ import "./bathik.css";
 import bathikImg from "../../../data/img/b1.jpg";
 import BathikTile from "./bathikTile";
 
-import { Description} from "../../Description";
-
+import { Description } from "../../Description";
 
 function Bathik({ children }) {
   const [bathikList, setBathikList] = useState([]);
-  const [docId, setDocId] = useState(null);
 
   useEffect(() => {
     const q = query(
@@ -21,8 +19,9 @@ function Bathik({ children }) {
 
     onSnapshot(q, (querySnapshot) => {
       querySnapshot.docs.map((doc) => {
-        setDocId(doc.id);
-        setBathikList((arr) => [...arr, doc.data()]);
+        const bathikData = doc.data();
+        bathikData.docId = doc.id;
+        setBathikList((arr) => [...arr, bathikData]);
       });
     });
   }, []);
@@ -39,54 +38,40 @@ function Bathik({ children }) {
         <Navigation_log />
       </div>
 
-  
-      <div class ="row">
+      <div class="row">
+        <section
+          style={{
+            backgroundImage: `url(${bathikImg})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center center",
+            backgroundSize: "cover",
+          }}
+          id="header "
+          class="jumbotron text-center"
+        >
+          <h1 class="display-3">BATIK </h1>
+          <p class="lead">Slogan on batik.</p>
+        </section>
+      </div>
 
-      <section
-        style={{
-          backgroundImage: `url(${bathikImg})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center center",
-          backgroundSize: "cover",
-        }}
-        id="header "
-        class="jumbotron text-center"
-      >
-        <h1 class="display-3">BATIK </h1>
-        <p class="lead">Slogan on batik.</p>
-      </section>
-</div>
+      <div class="row">
+        <Description />
+      </div>
 
-
-<div class ="row">
-  <Description />
-</div>
-
-<div class ="row">
-
-      <section id="gallery">
-        <div class="container">
-          <div class="row">
-            {bathikList &&
-              bathikList.map((bathik, index) => {
-                return <BathikTile key={index} bathik={bathik} docId={docId} />;
-              })}
+      <div class="row">
+        <section id="gallery">
+          <div class="container">
+            <div class="row">
+              {bathikList &&
+                bathikList.map((bathik, index) => {
+                  return <BathikTile key={index} bathik={bathik} />;
+                })}
+            </div>
           </div>
-        </div>
-      </section>
-</div>
-
-
-      
+        </section>
+      </div>
     </div>
-  
-  
-  
-  
   );
-
-
-  
 }
 
 export default Bathik;

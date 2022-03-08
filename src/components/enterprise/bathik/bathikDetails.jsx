@@ -7,7 +7,7 @@ import { ContactUs } from "../../mailer";
 import { useUserAuth } from "../../../context/UserAuthContext";
 import GoogleMapComponent from "../../map/googleMap";
 
-import {KadeDescription} from "../../KadeDescription";
+import { KadeDescription } from "../../KadeDescription";
 
 const BathikDetails = () => {
   let params = useParams();
@@ -24,7 +24,6 @@ const BathikDetails = () => {
 
     if (docSnap.exists()) setBathikDetails(docSnap.data());
     else setBathikDetails(null);
-
     setLoading(false);
   }, []);
 
@@ -45,11 +44,10 @@ const BathikDetails = () => {
         lat={bathikDetails.location._lat}
         long={bathikDetails.location._long}
       />
-   
-   <div>
-     <KadeDescription />
-   </div>
-   
+
+      <div>
+        <KadeDescription />
+      </div>
     </>
   );
 };
