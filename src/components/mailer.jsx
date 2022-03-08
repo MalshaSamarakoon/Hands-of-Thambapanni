@@ -52,6 +52,10 @@ export const ContactUs = (enterpriseName = null) => {
       )
       .then(
         function (response) {
+          <div class="alert alert-info" role="alert">
+          Info Alert
+        </div>
+      
           console.log("SUCCESS!", response.status, response.text);
         },
         function (error) {

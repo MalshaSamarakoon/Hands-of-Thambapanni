@@ -2,10 +2,6 @@ import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 import { db } from "../../database/firebase-config";
 import { useState, useEffect } from "react";
 
-
-
-
-
 export default function FeaturedInfo() {
 
   // useEffect(() => {

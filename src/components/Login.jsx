@@ -31,26 +31,25 @@ function Login() {
   const { logIn, googleSignIn, user } = useUserAuth();
   const navigate = useNavigate();
 
-  console.log(user?.email, "*****");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
       await logIn(email, password);
       navigate("/donation");
-      <Link to="mailer" spy={true} smooth={true} />;
+      e.preventDefault();
     } catch (err) {
       setError(err.message);
     }
   };
 
   const handleGoogleSignIn = async (e) => {
-    e.preventDefault();
     try {
       await googleSignIn();
+      e.preventDefault();
+
       navigate("/donation");
-      <Link to="mailer" spy={true} smooth={true} />;
+
     } catch (error) {
       setError(error.message);
     }
@@ -90,7 +89,7 @@ function Login() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Admin
+            Hands of Thambapanni
           </Typography>
           <Box
             component="form"

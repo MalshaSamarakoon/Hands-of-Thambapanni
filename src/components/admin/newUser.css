@@ -25,9 +25,26 @@
   
   .newUserItem > input {
     height: 20px;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid gray;
     border-radius: 5px;
+    font-size: 15px;
+    margin-right: 20px;
+  }
+
+  .newUserItem > textarea {
+    height: 50px;
+    padding: 15px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-right: 20px;
+
+  }
+
+  .image {
+    border: none;
+    height: 60px !important;
   }
   
   .newUserGender > input {

@@ -3,6 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "@firebase/firestore";
 
+
 //-------------------Hands-of-Thambapanni (old)
 
 // const firebaseConfig = {
@@ -17,15 +18,15 @@ import { getFirestore } from "@firebase/firestore";
 
 //----------------------HOT-Rott (new)
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyDt-P74LG6y5fUjjPDPf_m4EWm5uQ537SU",
-//   authDomain: "hot-rot.firebaseapp.com",
-//   projectId: "hot-rot",
-//   storageBucket: "hot-rot.appspot.com",
-//   messagingSenderId: "44108530183",
-//   appId: "1:44108530183:web:24f75cb56b7d85ebb460a2",
-//   measurementId: "G-V7VPCE8YV9",
-// };
+const firebaseConfig = {
+  apiKey: "AIzaSyDt-P74LG6y5fUjjPDPf_m4EWm5uQ537SU",
+  authDomain: "hot-rot.firebaseapp.com",
+  projectId: "hot-rot",
+  storageBucket: "hot-rot.appspot.com",
+  messagingSenderId: "44108530183",
+  appId: "1:44108530183:web:24f75cb56b7d85ebb460a2",
+  measurementId: "G-V7VPCE8YV9",
+};
 
 //------------------- Firebase Practice
 
@@ -69,14 +70,14 @@ import { getFirestore } from "@firebase/firestore";
 
 
 //-------Thambapanni
-const firebaseConfig = {
-  apiKey: "AIzaSyBIhMZJkkiykUXmy4lLgdmPx1CtetCbvTM",
-  authDomain: "thambapanni-1c8f2.firebaseapp.com",
-  projectId: "thambapanni-1c8f2",
-  storageBucket: "thambapanni-1c8f2.appspot.com",
-  messagingSenderId: "577185973919",
-  appId: "1:577185973919:web:b69a0f05916de843a6c4aa"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBIhMZJkkiykUXmy4lLgdmPx1CtetCbvTM",
+//   authDomain: "thambapanni-1c8f2.firebaseapp.com",
+//   projectId: "thambapanni-1c8f2",
+//   storageBucket: "thambapanni-1c8f2.appspot.com",
+//   messagingSenderId: "577185973919",
+//   appId: "1:577185973919:web:b69a0f05916de843a6c4aa"
+// };
 
 
 
@@ -85,7 +86,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
-
+// export const firebase = getFirebase(app);
 export const storage = getStorage(app);
 
 export default app;
