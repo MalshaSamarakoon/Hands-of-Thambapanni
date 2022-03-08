@@ -31,8 +31,6 @@ function Login() {
   const { logIn, googleSignIn, user } = useUserAuth();
   const navigate = useNavigate();
 
-  console.log(user?.email, "*****");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -46,11 +44,13 @@ function Login() {
   };
 
   const handleGoogleSignIn = async (e) => {
-    e.preventDefault();
     try {
       await googleSignIn();
+      e.preventDefault();
+
       navigate("/donation");
       <Link to="mailer" spy={true} smooth={true} />;
+
     } catch (error) {
       setError(error.message);
     }
