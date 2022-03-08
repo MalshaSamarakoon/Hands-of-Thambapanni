@@ -4,7 +4,7 @@ import { userData } from "./dummyData";
 import WidgetSm from "../admin/WidgetSm";
 import WidgetLg from "../admin/WidgetLg";
 import Sidebar from "./Sidebar";
-import {Topbar} from "./Topbar";
+import Topbar from "./Topbar";
 import Chart from "./Chart";
 
 export default function AdHome() {

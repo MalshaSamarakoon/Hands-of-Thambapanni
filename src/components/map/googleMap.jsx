@@ -9,7 +9,7 @@ const AnyReactComponent = ({ text }) => (
 const GoogleMapComponent = ({ lat, long }) => {
   if (lat == null || long == null) return <p>Location not available</p>;
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
+    <div style={{ height: "60vh", width: "60vh", margin:"100px"}}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyB8Y4lf4r5d2bStXxAgh-cZg-eolDsqkEw" }}
         defaultCenter={{ lat: lat, lng: long }}

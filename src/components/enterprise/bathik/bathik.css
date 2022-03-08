@@ -1,3 +1,14 @@
 #header {
   background: url(https://drive.google.com/drive/folders/18OH15nEt2H76Nd7JDzETtFwcKthOXJzw) center center / cover no-repeat ;
 }
+body {
+  font-family: "Barlow",Sans-Serif;
+  font-weight: 200;
+  color: #010101;
+  font-size: 1.45rem;
+  line-height: 3.1rem;
+  -webkit-font-smoothing: antialiased;
+}
+body, h1, h2, h3, h4,p,h5 {
+  font-family: sans-serif;
+}

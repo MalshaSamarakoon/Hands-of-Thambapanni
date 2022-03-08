@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { db } from "../../database/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import Sidebar from "./Sidebar";
-import { Topbar } from "./Topbar";
+import Topbar from "./Topbar";
 
 function WidgetSm() {
   const [users, setUsers] = useState([]);

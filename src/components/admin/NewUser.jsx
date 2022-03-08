@@ -2,10 +2,14 @@ import { db, storage } from "./../../database/firebase-config";
 import { useState, useRef, useEffect } from "react";
 import { collection, getDocs, addDoc, GeoPoint } from "@firebase/firestore";
 import Sidebar from "./Sidebar";
-import { Topbar } from "./Topbar";
+import Topbar from "./Topbar";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from 'react-bootstrap/Form';
+
 import "./newUser.css";
+
 
 export default function AUser() {
   const [users, setUsers] = useState([]);
@@ -22,9 +26,20 @@ export default function AUser() {
   const [phone, setNewPhone] = useState("");
   const [since, setNewSince] = useState("");
   const [des, setNewDescription] = useState(0);
+  const [intro, setNewIntro] = useState("");
   const [lat, setNewLattitude] = useState(0);
   const [lon, setNewLongertitude] = useState(0);
   const [newImageOwner, setNewImageOwner] = useState("");
+
+  const [ form, setForm ] = useState({})
+  const [ errors, setErrors ] = useState({})
+
+  const setField = (field, value) => {
+    setForm({
+      ...form,
+      [field]: value
+    })
+  }
 
   const uploadFiles = () => {
     if (!newImageOwner) return;
@@ -60,11 +75,12 @@ export default function AUser() {
       address: address,
       phone: phone,
       since: since,
+      introduction:intro,
       description: des,
       image: imageUrl,
       location: new GeoPoint(Number(lat), Number(lon)),
     });
-    
+
     setNewEnterprise("");
     setNewType("");
     setNewOwner("");
@@ -72,7 +88,7 @@ export default function AUser() {
     setNewPhone("");
     setNewSince("");
     setNewEnterprise("");
-
+    setNewIntro("");
   };
 
   const createUser = async (e) => {
@@ -114,7 +130,7 @@ export default function AUser() {
           <label>Brand Name</label>
           <input
             type="text"
-            placeholder="Minimuthu Bathik"
+            placeholder="Minimuthu Bathik" 
             onChange={(event) => {
               setNewEnterprise(event.target.value);
             }}
@@ -174,6 +190,17 @@ export default function AUser() {
         </div>
 
         <div className="newUserItem">
+          <label>Introduction</label>
+          <textarea
+            type="text"
+            placeholder="Introduction:"
+            onChange={(event) => {
+              setNewIntro(event.target.value);
+            }}
+          />
+        </div>
+
+        <div className="newUserItem">
           <label>About</label>
           <textarea
             type="text"
@@ -220,6 +247,8 @@ export default function AUser() {
           Create
         </button>
       </form>
+
+
     </div>
   );
 }

@@ -6,7 +6,7 @@ import "./bathik.css";
 import bathikImg from "../../../data/img/b1.jpg";
 import BathikTile from "./bathikTile";
 
-import { Description } from "../../Description";
+// import { Description } from "../../Description";
 
 function Bathik({ children }) {
   const [bathikList, setBathikList] = useState([]);
@@ -50,13 +50,13 @@ function Bathik({ children }) {
           class="jumbotron text-center"
         >
           <h1 class="display-3">BATIK </h1>
-          <p class="lead">Slogan on batik.</p>
+          <p class="lead">Marvel in the wonders of eclectic designs and patterns.</p>
         </section>
       </div>
 
-      <div class="row">
+      {/* <div class="row">
         <Description />
-      </div>
+      </div> */}
 
       <div class="row">
         <section id="gallery">
