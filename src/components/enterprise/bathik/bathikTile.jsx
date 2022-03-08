@@ -1,7 +1,7 @@
 import "./bathik.css";
 import { Link } from "react-router-dom";
 
-const BathikTile = ({ bathik, docId }) => {
+const BathikTile = ({ bathik }) => {
   return (
     <>
       <div class="col-lg-4 mb-3">
@@ -11,7 +11,6 @@ const BathikTile = ({ bathik, docId }) => {
             <h5 class="card-title">{bathik.enterpriseName}</h5>
             <p class="card-text">{bathik.since}</p>
             <p class="card-text">{bathik.description}</p>
-          
 
             <label>Owner</label>
             <p class="card-text">{bathik.ownerName}</p>
@@ -25,7 +24,7 @@ const BathikTile = ({ bathik, docId }) => {
             <h5 class="card-title">Sunset</h5>
             <p class="card-text">{bathik.description}</p>
             <Link
-              to={`/bathikDetails/${docId}`}
+              to={`/bathikDetails/${bathik.docId}`}
               class="btn btn-outline-success btn-lg me-2"
             >
               Read More
