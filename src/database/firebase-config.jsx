@@ -3,7 +3,6 @@ import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "@firebase/firestore";
 
-
 //-------------------Hands-of-Thambapanni (old)
 
 // const firebaseConfig = {
@@ -41,10 +40,6 @@ const firebaseConfig = {
   measurementId: "G-9YL2PEC4QP"
 };
 
-
-
-
-
 //------------------Login
 // const firebaseConfig = {
 //   apiKey: "AIzaSyCdAX6YD4vW4RP6Miz4huhkgRxXz4y2HGM",
@@ -56,8 +51,6 @@ const firebaseConfig = {
 //   measurementId: "G-WM9R9TDW49"
 // };
 
-
-
 //----------newhot
 // const firebaseConfig = {
 //   apiKey: "AIzaSyB1sdOCQ-206jWC-z0sK-8bcXLz3iSpx-0",
@@ -67,7 +60,6 @@ const firebaseConfig = {
 //   messagingSenderId: "193849896162",
 //   appId: "1:193849896162:web:c07e90696bb0e5a53302bb"
 // };
-
 
 //-------Thambapanni
 // const firebaseConfig = {
@@ -79,9 +71,6 @@ const firebaseConfig = {
 //   appId: "1:577185973919:web:b69a0f05916de843a6c4aa"
 // };
 
-
-
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
@@ -90,5 +79,3 @@ export const auth = getAuth(app);
 export const storage = getStorage(app);
 
 export default app;
-
-
