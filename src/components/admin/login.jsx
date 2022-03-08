@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import handleSubmit from "@mui/material/styles/makeStyles";
 import { useUserAuth } from "../../context/UserAuthContext";
 import { useNavigate } from "react-router-dom";
+import { RotatingLines } from "react-loader-spinner";
 // import { Form, Alert } from "react-bootstrap";
 // import GoogleButton from "react-google-button";
 // import { useUserAuth } from "../context/UserAuthContext";
@@ -24,17 +25,23 @@ const theme = createTheme();
 function ANewUser() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const { adminLogIn } = useUserAuth();
 
   const navigate = useNavigate();
 
   const handleLogIn = async (e) => {
+    setLoading(true);
+    setError(false);
     try {
       await adminLogIn(email, password);
       navigate("/adhome");
     } catch (error) {
-      console.log(error.message);
+      setError(true);
     }
+    setLoading(false);
   };
 
   return (
@@ -100,20 +107,32 @@ function ANewUser() {
               autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
-            <Button
-              type="button"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={handleLogIn}
-            >
-              Login
-            </Button>
-            <Grid container>
+            /> */}
+            {error && (
+              <p style={{ color: "red" }}>
+                Please enter correct login credentials
+              </p>
+            )}
+            {loading ? (
+              <div style={{ textAlign: "center" }}>
+                <RotatingLines width="30" />
+              </div>
+            ) : (
+              <Button
+                type="button"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                onClick={handleLogIn}
+              >
+                Login
+              </Button>
+            )}
+
+            {/* <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
@@ -124,7 +143,7 @@ function ANewUser() {
                   {}
                 </Link>
               </Grid>
-            </Grid>
+            </Grid> */}
           </Box>
         </Box>
       </Container>

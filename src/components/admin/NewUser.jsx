@@ -4,12 +4,14 @@ import { collection, getDocs, addDoc, GeoPoint } from "@firebase/firestore";
 import Sidebar from "./Sidebar";
 import { Topbar } from "./Topbar";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { RotatingLines } from "react-loader-spinner";
 
 import "./newUser.css";
 
 export default function AUser() {
   const [users, setUsers] = useState([]);
   const usersCollectionRef = collection(db, "Enterprises");
+  const [loading, setLoading] = useState(false);
 
   const [progress, setProgress] = useState(0);
 
@@ -65,10 +67,12 @@ export default function AUser() {
       location: new GeoPoint(Number(lat), Number(lon)),
     });
     setNewEnterprise("");
+    setLoading(false);
   };
 
   const createUser = async (e) => {
     e.preventDefault();
+    setLoading(true);
     uploadFiles();
   };
 
@@ -207,10 +211,13 @@ export default function AUser() {
             }}
           />
         </div>
-
-        <button type="submit" className="newUserButton" onClick={createUser}>
-          Create
-        </button>
+        {loading ? (
+          <RotatingLines width="60" />
+        ) : (
+          <button type="submit" className="newUserButton" onClick={createUser}>
+            Create
+          </button>
+        )}
       </form>
     </div>
   );
