@@ -76,7 +76,7 @@ export const ContactUs = (enterpriseName = null) => {
                 <i class="fh5co-intro-icon icon-wrench"></i>
                 <h2>Make a Donation</h2>
                 <br />
-                <p> Enter amount to danate</p>
+                <p> Your Contribution</p>
                 <div class="app-form">
                   <form>
                     <div class="app-form-group">

@@ -1,60 +1,32 @@
+
 [
     {
-      "category": "cane",
-      "owner": "Piyal Jayasiri",
-      "area": "Mawathagama",
       "link": "./cane",
       "title": "Jayasiri Wewal"
     },
-
     {
-      "category": "brass",
-      "owner": "Chinua Achebe",
-      "area": "Pilimathalawa",
       "link": "./brass",
-      "title": "Adeepa Brass"
+      "title": "Adeepa Brassware"
     },
     {
-      "category": "pottery",
-      "owner": "K.G.KUMARA",
-      "area": "Ambalangoda",
-      "link": "./pottery",
-      "title": "Lanka Pottery"
+      "link": "./cane",
+      "title": "Lanka Cane"
     },
     {
-      "category": "Handloom",
-      "owner": "Perera Group",
-      "area": "Batticaloa",
-      "link": "./handloom",
+      "link": "./bathik",
       "title": "Alankara"
     },
     {
-      "category": "Bathik",
-      "owner": "Ama De Silva",
-      "area": "Ambalangoda",
       "link": "./bathik",
       "title": "Ama Bathik"
     },
     {
-      "category": "carvings",
-      "owner": "K.G.KUMARA",
-      "area": "Galle",
-      "link": "./carvings",
-      "title": "Ruhunu woods"
+      "link": "./cane",
+      "title": "Ruhunu wewal"
     },
     {
-      "category": "drums",
-      "owner": "K.G.Nishantha",
-      "area": "Matara",
-      "link": "./drums",
-      "title": "Lanka drums"
-    },
-    {
-      "category": "beeralu",
-      "owner": "K.G.Darmasena",
-      "area": "Mawathagama",
-      "link": "./pottery",
-      "title": "Darmasena Beeralu"
+      "link": "./bathik",
+      "title": "Darmasena Bathik"
     }
   ]
   

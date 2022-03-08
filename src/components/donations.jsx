@@ -49,29 +49,7 @@ const Donations = (props) => {
         </section>
         {modalOpen && <Signup setOpenModal={setModalOpen} />}
 
-        {/* <section id="fh5co-intro">
-          <div class="container">
-            <div class="row row-bottom-padded-lg">
-              <div class="fh5co-block to-animate">
-                <div class="overlay-darker"></div>
-                <div class="overlay"></div>
-                <div class="fh5co-text">
-                  <i class="fh5co-intro-icon icon-wrench"></i>
-                  <h2>Make a Donation</h2>
-                  <p>bla bla bla to bla bla</p>
-                  <div>
-                     <Button class="btn btn-primary btn-lg">
-                      <a>  <Link to="mailer" spy={true} smooth={true}>
-                  Donate
-                </Link></a>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-          </div>
-        </section> */}
 
         <section id="fh5co-about" data-section="about">
           <div class="container">
@@ -118,7 +96,7 @@ const Donations = (props) => {
                     class=" left-border to-animate"
                     style={{ color: "white" }}
                   >
-                    What we have done?
+                  Our work so far
                   </h2>
                 </div>
               </div>

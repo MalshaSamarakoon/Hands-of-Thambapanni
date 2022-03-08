@@ -60,11 +60,11 @@ export default function AUser() {
       description: des,
       lattitude: lat,
       longertitude: lon,
+      // image:newImageOwner,
       });
 
     e.preventDefault();
     uploadFiles();
-    // console.log(enter.id);
   };
 
   useEffect(() => {
