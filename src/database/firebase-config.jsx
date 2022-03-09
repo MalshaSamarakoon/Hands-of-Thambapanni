@@ -29,16 +29,16 @@ import { getFirestore } from "@firebase/firestore";
 
 //------------------- Firebase Practice
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDg_Lk5ws_LGlV0gpWlHXSiCx5R5D-O4Es",
-  authDomain: "fir-practice-2a561.firebaseapp.com",
-  databaseURL: "https://fir-practice-2a561-default-rtdb.firebaseio.com",
-  projectId: "fir-practice-2a561",
-  storageBucket: "fir-practice-2a561.appspot.com",
-  messagingSenderId: "582710292760",
-  appId: "1:582710292760:web:1bef98dc27bcdd5384ee6d",
-  measurementId: "G-9YL2PEC4QP"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDg_Lk5ws_LGlV0gpWlHXSiCx5R5D-O4Es",
+//   authDomain: "fir-practice-2a561.firebaseapp.com",
+//   databaseURL: "https://fir-practice-2a561-default-rtdb.firebaseio.com",
+//   projectId: "fir-practice-2a561",
+//   storageBucket: "fir-practice-2a561.appspot.com",
+//   messagingSenderId: "582710292760",
+//   appId: "1:582710292760:web:1bef98dc27bcdd5384ee6d",
+//   measurementId: "G-9YL2PEC4QP"
+// };
 
 //------------------Login
 // const firebaseConfig = {
@@ -62,14 +62,14 @@ const firebaseConfig = {
 // };
 
 //-------Thambapanni
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBIhMZJkkiykUXmy4lLgdmPx1CtetCbvTM",
-//   authDomain: "thambapanni-1c8f2.firebaseapp.com",
-//   projectId: "thambapanni-1c8f2",
-//   storageBucket: "thambapanni-1c8f2.appspot.com",
-//   messagingSenderId: "577185973919",
-//   appId: "1:577185973919:web:b69a0f05916de843a6c4aa"
-// };
+const firebaseConfig = {
+  apiKey: "AIzaSyBIhMZJkkiykUXmy4lLgdmPx1CtetCbvTM",
+  authDomain: "thambapanni-1c8f2.firebaseapp.com",
+  projectId: "thambapanni-1c8f2",
+  storageBucket: "thambapanni-1c8f2.appspot.com",
+  messagingSenderId: "577185973919",
+  appId: "1:577185973919:web:b69a0f05916de843a6c4aa"
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

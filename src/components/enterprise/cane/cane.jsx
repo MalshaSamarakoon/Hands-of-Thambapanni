@@ -1,59 +1,73 @@
-import React, { useEffect, useState } from "react";
-import { Navigation } from "../../navigation";
-import { db } from "./../../../database/firebase-config";
-import { collection, where, query, onSnapshot } from "@firebase/firestore";
-import "./cane.css";
-import BathikImg from "../../../data/img/b1.jpg";
-import CaneTile from "./caneTile";
+// import React, { useEffect, useState } from "react";
+// import { Navigation_log } from "../../navigation_log";
+// import { db } from "./../../../database/firebase-config";
+// import { collection, where, query, onSnapshot } from "@firebase/firestore";
+// import "./cane.css";
+// import bathikImg from "../../../data/img/b1.jpg";
+// import BathikTile from "./caneTile";
 
-function Cane() {
-  const [caneList, setCaneList] = useState([]);
+// // import { Description } from "../../Description";
 
-  useEffect(() => {
-    const q = query(
-      collection(db, "Enterprises"),
-      where("type", "==", "cane")
-    );
+// function Bathik({ children }) {
+//   const [caneList, setCaneList] = useState([]);
 
-    onSnapshot(q, (querySnapshot) => {
-      querySnapshot.docs.map((doc) => {
-        setCaneList((arr) => [...arr, doc.data()]);
-      });
-    });
-  }, []);
+//   useEffect(() => {
+//     const q = query(
+//       collection(db, "Enterprises"),
+//       where("type", "==", "cane")
+//     );
 
-  return (
-    <div>
-      <div>
-        <Navigation />
-      </div>
+//     onSnapshot(q, (querySnapshot) => {
+//       querySnapshot.docs.map((doc) => {
+//         const caneData = doc.data();
+//         caneData.docId = doc.id;
+//         setCaneList((arr) => [...arr, caneData]);
+//       });
+//     });
+//   }, []);
 
-      <section
-        style={{
-          backgroundImage: `url(${BathikImg})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center center",
-          backgroundSize: "cover",
-        }}
-        id="header "
-        class="jumbotron text-center"
-      >
-        {/* <img src={bathikImg} alt="" srcset="" /> */}
-        <h1 class="display-3">CANE </h1>
-        <p class="lead">Slogan on batik.</p>
-      </section>
-      <section id="gallery">
-        <div class="container">
-          <div class="row">
-            {caneList &&
-              caneList.map((cane, index) => {
-                return <CaneTile key={index} cane={cane} />;
-              })}
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
+//   const text = children;
+//   const [isReadMore, setIsReadMore] = useState(true);
+//   const toggleReadMore = () => {
+//     setIsReadMore(!isReadMore);
+//   };
 
-export default Cane;
+//   return (
+//     <div>
+//       <div>
+//         <Navigation_log />
+//       </div>
+
+//       <div class="row">
+//         <section
+//           style={{
+//             backgroundImage: `url(${caneImg})`,
+//             backgroundRepeat: "no-repeat",
+//             backgroundPosition: "center center",
+//             backgroundSize: "cover",
+//           }}
+//           id="header "
+//           class="jumbotron text-center"
+//         >
+//           <h1 class="display-3">CANE </h1>
+//           <p class="lead">Marvel in the wonders of eclectic designs and patterns.</p>
+//         </section>
+//       </div>
+
+//       <div class="row">
+//         <section id="gallery">
+//           <div class="container">
+//             <div class="row">
+//               {caneList &&
+//                 caneList.map((cane, index) => {
+//                   return <CaneTile key={index} bathik={cane} />;
+//                 })}
+//             </div>
+//           </div>
+//         </section>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Cane;

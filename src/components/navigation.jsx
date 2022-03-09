@@ -89,7 +89,12 @@ export const Navigation = () => {
             <form className="d-flex pe-3">
               <SearchBar placeholder="Search Enterprise..." data={BookData} />
             </form>
-            <img src={user?.photoURL != "" ? user?.photoURL : profile} width="35px" height="35px" alt=""/>
+            <img
+              src={user?.photoURL != null ? user?.photoURL : profile}
+              width="35px"
+              height="35px"
+              alt=""
+            />
 
             <ReactBootStrap.NavDropdown
               className="navbar-item"

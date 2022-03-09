@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import {db} from '../../database/firebase-config';import {
+import {db} from '../../database/firebase-config';
+import {
   collection,
   getDocs,
 } from "firebase/firestore";
@@ -21,50 +22,9 @@ function WidgetLg() {
   }, []);
 
   return (
-    <div className="App">
-    
+<>
 
-      
-            <div className="widgetSm">
-            <span className="widgetSmTitle">New Join Members</span>
-           
-            <ul className="widgetSmList">
-             
-              <li className="widgetSmListItem">
-              
-                <div className="widgetSmUser">
-                <table class="table table-hover">
-  <thead>
-
-    <tr>
-      <th scope="col">User</th>
-      <th scope="col">Amount</th>
-      <th scope="col">Donated time</th>
-      <th scope="col">Enterprise Name</th>
-    </tr>
-  </thead>
-  <tbody>
-  {users.map((user) => {
-        return (
-    <tr>
-      <td>{user.email}</td>
-      <td>{user.amount}</td>
-      <td>{user.date}</td>
-      {/* <td>{user.enterpriseName}</td> */}
-    </tr>
-    );
-      })}
-  </tbody>
-</table>
-
-                </div>
-               
-              </li>
-      
-            </ul>
-          </div>
-
-    </div>
+</>
   );
 }
 

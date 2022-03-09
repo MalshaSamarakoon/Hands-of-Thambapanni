@@ -56,10 +56,10 @@ export const ContactUs = (enterpriseName = null) => {
   const sendEmail = async () => {
     emailjs
       .send(
-        "service_qmu7wy5",
-        "template_qesi16o",
+        "service_bii6i3s",
+        "template_eq39yy7",
         templateParams,
-        "9lgHgU4Hc45a_tsfL"
+        "NT14pWIgu04Z65eRN"
       )
       .then(
         function (response) {

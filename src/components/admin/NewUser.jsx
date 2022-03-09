@@ -4,6 +4,7 @@ import { collection, getDocs, addDoc, GeoPoint } from "@firebase/firestore";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { RotatingLines } from "react-loader-spinner";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
@@ -14,6 +15,7 @@ import "./newUser.css";
 export default function AUser() {
   const [users, setUsers] = useState([]);
   const usersCollectionRef = collection(db, "Enterprises");
+  const [loading, setLoading] = useState(false);
 
   const [progress, setProgress] = useState(0);
 
@@ -89,10 +91,12 @@ export default function AUser() {
     setNewSince("");
     setNewEnterprise("");
     setNewIntro("");
+    setLoading(false);
   };
 
   const createUser = async (e) => {
     e.preventDefault();
+    setLoading(true);
     uploadFiles();
   };
 
@@ -242,10 +246,13 @@ export default function AUser() {
             }}
           />
         </div>
-
-        <button type="submit" className="newUserButton" onClick={createUser}>
-          Create
-        </button>
+        {loading ? (
+          <RotatingLines width="60" />
+        ) : (
+          <button type="submit" className="newUserButton" onClick={createUser}>
+            Create
+          </button>
+        )}
       </form>
 
 

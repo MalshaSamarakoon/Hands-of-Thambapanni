@@ -7,6 +7,9 @@ import "./bathik.css";
 import { ContactUs } from "../../mailer";
 import { useUserAuth } from "../../../context/UserAuthContext";
 import { Navigation } from "../../navigation";
+import GoogleMapComponent from "../../map/googlemapComponent";
+
+import { KadeDescription } from "../../KadeDescription";
 
 const BathikDetails = () => {
   let params = useParams();
@@ -38,9 +41,9 @@ const BathikDetails = () => {
         <div class="media align-items-end profile-head">
           <div class="profile mr-6" >
             <img
-              src="/img/ravi1.png"
+              src={bathikDetails.image}
               alt="..."
-              width="100%"
+              width="600" height="200"
               class="rounded mb-2 img-thumbnail"
             />
            
@@ -114,20 +117,10 @@ const BathikDetails = () => {
                 </div>
               </div>
               <div class="col-lg-2 col-md-2" ></div>
-              {/* <div class="col-lg-4 col-md-4">
-                <div class="card-body d-flex align-items-center c-detail">
-                  <div class="mr-4 align-self-center">
-                    <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon3.png"/>
-                  </div>
-                  <div class="">
-                    <h6 class="font-weight-medium">Email</h6>
-                    <p class="">
-                      info@wrappixel.com
-                       123@wrappixel.com
-                    </p>
-                  </div>
-                </div>
-              </div> */}
+              <GoogleMapComponent
+        lat={bathikDetails.location._lat}
+        long={bathikDetails.location._long}
+      />
             </div>
           </div>
           

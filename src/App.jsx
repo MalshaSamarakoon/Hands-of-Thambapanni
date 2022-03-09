@@ -22,6 +22,7 @@ import AdHome from "./components/admin/Home";
 import AUser from "./components/admin/NewUser";
 import WidgetLg from "./components/admin/WidgetLg";
 import WidgetSm from "./components/admin/WidgetSm";
+import DonationReport from "./components/admin/feedback";
 import ANewUser from "./components/admin/login";
 import BathikDetails from "./components/enterprise/bathik/bathikDetails";
 
@@ -36,11 +37,9 @@ function App() {
       <Router>
         <UserAuthContextProvider>
           <Routes>
-            {/* <Route exact path = '/paypal' element={()=> <PayPal authorized={false}/>} />   */}
             <Route exact path="/paypal" element={<PayPal />} />
             <Route exact path="/" element={<Home />} />
             <Route exact path="/login" element={<Login />} />
-            {/* <Route exact path="/donation" element={<Donation />} /> */}
             <Route exact path="/signup" element={<Signup />} />
             <Route exact path="/upload" element={<ImageUpload />} />
 
@@ -101,7 +100,18 @@ function App() {
                 // </AdminProtectedRoute>
               }
             />
+
+            <Route
+              exact
+              path="/users"
+              element={
+                // <AdminProtectedRoute>
+                <DonationReport />
+                // </AdminProtectedRoute>
+              }
+            />
           </Routes>
+         
         </UserAuthContextProvider>
       </Router>
     </div>

@@ -8,7 +8,6 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth, db } from "../database/firebase-config";
-import { doc, getDoc } from "@firebase/firestore";
 
 const userAuthContext = createContext();
 
@@ -46,22 +45,6 @@ export function UserAuthContextProvider({ children }) {
     };
   }, []);
 
-  // useEffect(() => {
-  //   if (user && user.uid) {
-  //     // const docRef = doc(db, "Users", user.uid);
-  //     // const docSnap = await getDoc(docRef);
-
-  //     // if (docSnap.exists()) {
-  //     //   console.log("Document data:", docSnap.data().Role);
-  //     //   setUserRole("ADMIN");
-  //     // } else {
-  //     //   console.log("test");
-  //     //   setUserRole(null);
-  //     // }
-  //     setUserRole("ADMIN");
-  //     console.log("teateateata", userRole);
-  //   }
-  // }, [user]);
 
   return (
     <userAuthContext.Provider
